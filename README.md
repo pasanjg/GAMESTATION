@@ -12,5 +12,5 @@ Download [XAMPP](https://www.apachefriends.org/download.html)
 
 ----
 ## Steps
-1. Install GameStation to htdocs
+1. Install GameStation
 2. Import gamestation.sql

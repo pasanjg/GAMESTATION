@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 20, 2018 at 10:35 AM
--- Server version: 5.7.21
--- PHP Version: 5.6.35
+-- Host: 127.0.0.1
+-- Generation Time: Jun 11, 2019 at 07:02 PM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,18 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `contact`
 --
 
-DROP TABLE IF EXISTS `contact`;
-CREATE TABLE IF NOT EXISTS `contact` (
+CREATE TABLE `contact` (
   `messageid` varchar(10) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `message` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`messageid`)
+  `message` varchar(500) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contact`
---
 
 -- --------------------------------------------------------
 
@@ -47,16 +41,10 @@ CREATE TABLE IF NOT EXISTS `contact` (
 -- Table structure for table `favourite`
 --
 
-DROP TABLE IF EXISTS `favourite`;
-CREATE TABLE IF NOT EXISTS `favourite` (
+CREATE TABLE `favourite` (
   `userID` varchar(10) NOT NULL,
-  `gameID` varchar(10) NOT NULL,
-  PRIMARY KEY (`userID`,`gameID`)
+  `gameID` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `favourite`
---
 
 -- --------------------------------------------------------
 
@@ -64,8 +52,7 @@ CREATE TABLE IF NOT EXISTS `favourite` (
 -- Table structure for table `game`
 --
 
-DROP TABLE IF EXISTS `game`;
-CREATE TABLE IF NOT EXISTS `game` (
+CREATE TABLE `game` (
   `gameID` varchar(10) NOT NULL,
   `gameName` varchar(20) NOT NULL,
   `category` varchar(10) NOT NULL,
@@ -97,8 +84,7 @@ INSERT INTO `game` (`gameID`, `gameName`, `category`, `tag`) VALUES
 -- Table structure for table `gameurl`
 --
 
-DROP TABLE IF EXISTS `gameurl`;
-CREATE TABLE IF NOT EXISTS `gameurl` (
+CREATE TABLE `gameurl` (
   `GameID` varchar(10) NOT NULL,
   `code` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -128,8 +114,7 @@ INSERT INTO `gameurl` (`GameID`, `code`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `userID` varchar(10) NOT NULL,
   `firstName` varchar(20) DEFAULT NULL,
   `lastName` varchar(20) DEFAULT NULL,
@@ -138,8 +123,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `platform` varchar(20) DEFAULT NULL,
   `userName` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `type` varchar(10) NOT NULL DEFAULT 'user',
-  PRIMARY KEY (`userID`,`userName`,`email`)
+  `type` varchar(10) NOT NULL DEFAULT 'user'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -155,18 +139,46 @@ INSERT INTO `user` (`userID`, `firstName`, `lastName`, `gender`, `country`, `pla
 -- Table structure for table `useraccount`
 --
 
-DROP TABLE IF EXISTS `useraccount`;
-CREATE TABLE IF NOT EXISTS `useraccount` (
+CREATE TABLE `useraccount` (
   `userID` varchar(10) NOT NULL,
   `userName` varchar(20) NOT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`userID`,`userName`)
+  `password` varchar(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `useraccount`
 --
 
+INSERT INTO `useraccount` (`userID`, `userName`, `password`) VALUES
+('P1001', 'admin', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`messageid`);
+
+--
+-- Indexes for table `favourite`
+--
+ALTER TABLE `favourite`
+  ADD PRIMARY KEY (`userID`,`gameID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`,`userName`,`email`);
+
+--
+-- Indexes for table `useraccount`
+--
+ALTER TABLE `useraccount`
+  ADD PRIMARY KEY (`userID`,`userName`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

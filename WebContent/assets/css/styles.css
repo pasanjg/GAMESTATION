@@ -1,0 +1,155 @@
+/* Header CSS */
+
+	body{
+		background-color: #F9F9F9;
+	}
+
+	#navSearchBar{
+		width: 400px;
+		color: white;
+		background-color: #222222;
+		border: none;
+	}
+
+	#searchBtn{
+		inherit: none;
+		color: white;
+		border: 1px solid red;
+		background-color: red;
+		transition: background-color 0.2s;
+	}
+
+	#searchBtn:hover{
+		color: white;
+		border: 1px solid #ff4444;
+		background-color: #ff4444;
+	}
+
+	#searchBtn:active, #searchBtn:focus, #searchBtn:active:focus{
+		outline: 0;
+		box-shadow: none;
+	}
+	
+	.btn-danger {
+  		color: #fff;
+  		background-color: red;
+  		border-color: red;
+}
+
+.btn-danger:hover {
+  		color: #fff;
+  		background-color: #FF4D4D;
+  		border-color: #FF4D4D;
+}
+
+/* 	#navigation a{ */
+/* 		margin-left: 15px; */
+/* 	} */
+
+	#content{
+		margin-top: 100px;
+		margin-bottom: 30px;
+	}
+
+	@media only screen and (max-width: 1200px) {
+    		#navSearchBar{
+			width: 250px;
+		}
+	}
+
+/* Footer CSS */
+
+	.footer-dark{
+		background-color: #2d2d2d;
+		padding: 30px;
+		color: white;
+	}
+
+	.footer-dark h6{
+		color: gray;
+	}
+
+	.footer-dark #social{
+		text-align: center;
+	}
+
+	.fa {
+  		padding: 12px;
+  		font-size: 20px;
+  		width: 40px;
+		height: 40px;
+  		text-align: center;
+  		text-decoration: none;
+  		margin: 20px 3px 20px;
+		border-radius: 50%;
+ 	 	display: inline-block;
+	}
+
+	.fa:hover {
+    		opacity: 0.7;
+		text-decoration: none;
+	}
+
+	.fa-facebook {
+  		background: #3B5998;
+  		color: white;
+	}
+
+	.fa-twitter {
+  		background: #55ACEE;
+  		color: white;
+	}
+
+	.fa-instagram {
+  		background: #125688;
+  		color: white;
+	}
+
+	.fa-youtube {
+  		background: #bb0000;
+  		color: white;
+	}
+
+	.footer-dark ul li{
+  		list-style-type: none;
+		margin-left: -40px;
+	}
+
+
+/* Profile CSS */
+
+	#profile-sidebar{
+		text-align: center;
+	}
+
+	#profile-details{
+		background-color: white;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		padding: 15px;
+		margin-bottom: 30px;
+	}
+
+	#profile-main{
+		padding: 0px 10px 10px 10px;
+	}
+
+	.card {
+		text-align: center;
+    		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		padding: 10px 10px 20px 10px;
+		margin-bottom: 15px;
+    		transition: 0.3s;
+	}
+
+	.card:hover {
+    		box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+	}
+
+	.card-container {
+    		padding: 2px 16px;
+	}
+
+	.card input{
+		width: 45%;
+	}
+

@@ -8,17 +8,18 @@ Download [Tomcat](https://tomcat.apache.org/download-80.cgi)
 
 Download [XAMPP](https://www.apachefriends.org/download.html)
 
-> This project is developed using Eclipse JEE. Download the required applications from the above links.
+> This project is developed using Eclipse JEE. Download and install the required applications from the above links.
 
 
 ## Steps
-### 1. Clone GameStation
-    `git clone https://github.com/pasanjg/GAMESTATION.git`
+#### 1. Clone GameStation
 
-### 2. Import gamestation.sql to phpMyAdmin
+    git clone https://github.com/pasanjg/GAMESTATION.git
 
-### 3. Open project with Eclipse JEE
+#### 2. Import `gamestation.sql` to phpMyAdmin.
 
-### 4. Initialize TomCat Server
+#### 3. Open project with Eclipse JEE.
 
-### 5. Run on Server
+#### 4. Initialize TomCat Server.
+
+#### 5. Run on Server.

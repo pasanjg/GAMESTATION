@@ -1,56 +1,95 @@
-.metadata
+# Directories #
+build/
 bin/
+target/
+libs/
 tmp/
+node_modules/
+ 
+# OS Files #
+.DS_Store
+ 
+*.class
+ 
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+rebel.xml
+
+######################
+# Windows
+######################
+ 
+# Windows image file caches
+Thumbs.db 
+ 
+# Folder config file
+Desktop.ini
+ 
+######################
+# OSX
+######################
+ 
+.DS_Store
+.svn
+ 
+# Thumbnails
+._*
+ 
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# NetBeans
+######################
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+ 
+######################
+# IDEA
+######################
+*.iml
+*.ipr
+*.iws
+.idea/
+atlassian-ide-plugin.xml
+
+ 
+######################
+# Eclipse
+######################
+ 
+*.pydevproject
+.project
+.metadata
 *.tmp
 *.bak
 *.swp
 *~.nib
 local.properties
+.classpath
 .settings/
 .loadpath
-.recommenders
-.project
 
 # External tool builders
 .externalToolBuilders/
-
+ 
 # Locally stored "Eclipse launch configurations"
 *.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
+ 
+# CDT-specific
 .cproject
-
-# CDT- autotools
-.autotools
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
+ 
+# PDT-specific
 .buildpath
 
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
-
-# Code Recommenders
-.recommenders/
-
-# Annotation Processing
-.apt_generated/
-
-# Scala IDE specific (Scala & Java development for Eclipse)
-.cache-main
-.scala_dependencies
-.worksheet
+# Testing environment specific
+derby.log

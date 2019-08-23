@@ -20,64 +20,64 @@ import com.gamestation.service.UserServiceImpl;
 @WebServlet("/delete-profile")
 public class DeleteProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteProfile() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
+	public DeleteProfile() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession(); 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("currentSessionUser");
-		
+
 		IUserService iuserService = new UserServiceImpl();
-		
+
 		String userID = user.getUserID();
 		String currentPassword = request.getParameter("password");
 		String getPassword = iuserService.getPassword(userID);
-		
-		
-		if(getPassword.equals(currentPassword)) {
-			
+
+		if (getPassword.equals(currentPassword)) {
+
 			iuserService.deleteUser(userID);
-			
+
 			session.invalidate();
-			
+
 			String delete_confirm = "You account has been deleted!";
 			request.setAttribute("delete_confirm", delete_confirm);
-			
+
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
 			dispatcher.forward(request, response);
 
 		}
-		
+
 		else {
-			
+
 			String delete_error = "Current password did not match!";
 			request.setAttribute("delete_error", delete_error);
-			
+
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/getProfile.jsp");
 			dispatcher.forward(request, response);
 
 		}
-		
-		
-		
+
 	}
 
 }

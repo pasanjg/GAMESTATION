@@ -2,11 +2,10 @@ package com.gamestation.util;
 
 import java.util.ArrayList;
 
-
 public class CommonUtil {
 
 	public static String generateUserIDs(ArrayList<String> arrayList) {
-		
+
 		String id;
 		int next = arrayList.size();
 		next++;
@@ -17,9 +16,9 @@ public class CommonUtil {
 		}
 		return id;
 	}
-	
+
 	public static String generateGameIDs(ArrayList<String> arrayList) {
-		
+
 		String gid;
 		int next = arrayList.size();
 		next++;
@@ -30,9 +29,9 @@ public class CommonUtil {
 		}
 		return gid;
 	}
-	
+
 	public static String generateMessageIDs(ArrayList<String> arrayList) {
-		
+
 		String mid;
 		int next = arrayList.size();
 		next++;
@@ -43,5 +42,5 @@ public class CommonUtil {
 		}
 		return mid;
 	}
-	
+
 }

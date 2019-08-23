@@ -23,51 +23,50 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/register")
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	
-    public Register() {
-        super();
 
-    }
-    
+	public Register() {
+		super();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-    	
-    	HttpSession session = request.getSession(); 
-    	User user = (User) session.getAttribute("currentSessionUser");
-		
-		if(request.getAttribute("delete_confirm") != null) {
-
-			session.invalidate();
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
-			dispatcher.forward(request, response);
-		
-		}
-		
-		if(user != null) {
-			
-			response.sendRedirect("index.jsp");
-			
-		}
-		
-		else {
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
-			dispatcher.forward(request, response);
-			
-		}
-		
 	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("currentSessionUser");
+
+		if (request.getAttribute("delete_confirm") != null) {
+
+			session.invalidate();
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
+			dispatcher.forward(request, response);
+
+		}
+
+		if (user != null) {
+
+			response.sendRedirect("index.jsp");
+
+		}
+
+		else {
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
+			dispatcher.forward(request, response);
+
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		User user = new User();
 		IUserService iUserService = new UserServiceImpl();
 		String userID = CommonUtil.generateUserIDs(iUserService.getUserIDs());
-		
+
 		user.setUserID(userID);
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
@@ -78,15 +77,15 @@ public class Register extends HttpServlet {
 		user.setPassword(request.getParameter("password1"));
 		user.setEmail(request.getParameter("email"));
 		user.setType("user");
-		
+
 		iUserService.addUser(user);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("currentSessionUser", user);
-		
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/viewUser.jsp");
 		dispatcher.forward(request, response);
-		
+
 	}
 
 }

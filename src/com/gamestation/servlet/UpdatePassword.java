@@ -20,62 +20,65 @@ import com.gamestation.service.UserServiceImpl;
 @WebServlet("/update-password")
 public class UpdatePassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdatePassword() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UpdatePassword() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		HttpSession session = request.getSession(); 
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("currentSessionUser");
-		
+
 		IUserService iuserService = new UserServiceImpl();
-		
+
 		String userID = user.getUserID();
 		String currentPassword = request.getParameter("currentPassword");
 		String getPassword = iuserService.getPassword(userID);
 		String newPassword = request.getParameter("password1");
 
-		
-		if(getPassword.equals(currentPassword)) {
-			
+		if (getPassword.equals(currentPassword)) {
+
 			iuserService.updatePassword(userID, newPassword);
-			
+
 			String confirmString = "Password changed!";
 			request.setAttribute("confirmString", confirmString);
-			
+
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
 			dispatcher.forward(request, response);
 
 		}
-		
+
 		else {
-			
+
 			String errorString = "Current password did not match!";
 			request.setAttribute("errorString", errorString);
-			
+
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/getProfile.jsp");
 			dispatcher.forward(request, response);
 
 		}
-		
+
 	}
 
 }

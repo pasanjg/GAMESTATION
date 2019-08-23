@@ -21,51 +21,55 @@ import com.gamestation.service.UserServiceImpl;
 @WebServlet("/update-profile")
 public class UpdateProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateProfile() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UpdateProfile() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		IUserService iUserService = new UserServiceImpl();
-		
+
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("currentSessionUser");
-		
+
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
 		user.setGender(request.getParameter("gender"));
 		user.setCountry(request.getParameter("country"));
 		user.setPlatform(request.getParameter("platform"));
 		user.setEmail(request.getParameter("email"));
-		
+
 		user = iUserService.updateUser(user);
-		
+
 		session.setAttribute("currentSessionUser", user);
-		
+
 		String confirmString = "Profile updated!";
 		request.setAttribute("confirmString", confirmString);
-		
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
 		dispatcher.forward(request, response);
-		
+
 	}
 
 }

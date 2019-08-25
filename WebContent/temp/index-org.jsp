@@ -38,6 +38,17 @@
             padding: 40px;
         }
         
+        .subContent{
+        	background-size: contain;
+        	background-repeat: no-repeat;
+        	background-position: center center;
+        	transition: transform 0.1s;
+        }
+        
+        .subContent:hover{
+			transform: scale(1.1);
+        }
+        
         .gamers a{
         	transition: color 0.2s;
         }
@@ -90,70 +101,61 @@
         
     </head>
     <body>
-    
-    <div class="container-fluid px-0">
+
+	<!-- 
+	<div class="mainImage">
+        
+    </div>
+    -->
     
     <jsp:include page="WEB-INF/views/carousel.jsp"/>
     
     <div class="gamers">
-        <div class="container">
-            <strong><h1>GAMERS ON ANY PLATFORM</h1></strong><br>
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>PlayStation</h3>
-                    <img class="img-responsive sub-content" src="images/ps4.png"/>
-                </div>
-            
-                <div class="col-md-4">
-                    <h3>PC</h3>
-                    <img class="img-responsive sub-content" src="images/pc.png"/>
-                </div>
-            
-                <div class="col-md-4">
-                    <h3>Xbox</h3>
-                    <img class="img-responsive sub-content" src="images/xboxone.png"/>
-                </div>
-            </div>
-            
-            <%if(user == null){ %>
-                <h2 colspan="3"><a href="register">Register Now!</a></h2>
-            <%}else{ %>
-                <h2 colspan="4"><a href="games">Play Now!</a></h2>
-            <%} %>
-        </div>
+        <h1>GAMERS ON ANY PLATFORM</h1>
+        <table width="1200" align="center">
+        <tr id="heading">
+            <th width="300" height="50">PlayStation</th>
+            <th width="300" height="50">PC</th>
+            <th width="300" height="50">Xbox</th>
+        </tr>
+        <tr>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/ps4.png); background-size: cover;"></th>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/pc.png); background-size: cover;"></th>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/xboxone.png); background-size: cover;"></th>
+        </tr>
+        <tr id="heading">
+        <%if(user == null){ %>
+        	<th colspan="3"><a href="register">Register Now!</a></th>
+        <%}else{ %>
+        	<th colspan="4"><a href="games">Play Now!</a></th>
+        <%} %>
+        </tr>
+        </table>
     </div>
     
-    <div class="gamers" style="background-color: #717171;">    
-        <div class="container">
-            <strong><h1>GAMING CATEGORIES</h1></strong><br>
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Action</h3>
-                    <img class="img-responsive sub-content" src="images/action.png"/>
-                </div>
-            
-                <div class="col-md-3">
-                    <h3>Racing</h3>
-                    <img class="img-responsive sub-content" src="images/racing.png"/>
-                </div>
-            
-                <div class="col-md-3">
-                    <h3>Sports</h3>
-                    <img class="img-responsive sub-content" src="images/sports.png"/>
-                </div>
-                
-                <div class="col-md-3">
-                    <h3>Puzzle</h3>
-                    <img class="img-responsive sub-content" src="images/puzzle.png"/>
-                </div>
-            </div><br>
-            
-            <%if(user == null){ %>
-                <h2 colspan="3"><a href="register">Register Now!</a></h2>
-            <%}else{ %>
-                <h2 colspan="4"><a href="games">Play Now!</a></h2>
-            <%} %>
-        </div>
+    <div class="gamers" style="background-color: #717171;">
+        <h1>GAMING CATEGORIES</h1>
+        <table width="1200" align="center">
+        <tr id="heading">
+            <th width="300" height="50">Action</th>
+            <th width="300" height="50">Racing</th>
+            <th width="300" height="50">Sports</th>
+            <th width="300" height="50">Puzzle</th>
+        </tr>
+        <tr>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/action.png);"></th>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/racing.png);"></th>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/sports.png);"></th>
+            <th class="subContent" width="300" height="300" style="background-image: url(images/puzzle.png);"></th>
+        </tr>
+        <tr id="heading">
+        <%if(user == null){ %>
+        	<th colspan="4"><a href="register">Register Now!</a></th>
+        <%}else{ %>
+        	<th colspan="4"><a href="games">Play Now!</a></th>
+        <%} %>
+        </tr>
+        </table>
     </div>
     
     <div class="gamers" style="background-color: white;">
@@ -177,7 +179,5 @@
     <jsp:include page="WEB-INF/views/scrolltop.jsp"/>
     
 	<jsp:include page="WEB-INF/views/footer.jsp"/>
-	
-	</div>
 </body>
 </html>

@@ -8,12 +8,9 @@
 
 <head>
 
-    <%-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --%>
+	<link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css">
 
-	<link rel="stylesheet" href="assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -27,7 +24,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <%
+        <%
 			User user = (User) session.getAttribute("currentSessionUser");
 			
 			String type = (String)request.getAttribute("type");
@@ -35,164 +32,8 @@
 		%>
 
     <style>
-        /* body{
-                font-family: calibri;
-                margin: 0px;
-                background-color: #F8F8F8;
-            }
-            
-            a{
-                text-decoration: none;
-            }
-        
-            .mainHeader{
-	            height: 50px;
-	            width: 100%;
-	            background-color: black;
-	            padding-top: 10px;
-	            padding-bottom: 10px;
-	            position: fixed;
-	            top: 0;
-	            z-index: 100;
-            }
-            
-            .logo{
-				height: 50px;
-				width: 200px;
-				float: left;
-            }
-            
-            .logo button{
-				height: 50px;
-				width: 200px;
-                border: none;
-                background-image: url(images/GameStation.png);
-                background-size: cover;
-				float: left;
-            }
-            
-            .searchArea{
-				height: 30px;
-				width: 500px;
-				padding: 10px;
-				float: left;
-            }
-            
-            #searchBar{
-                height: 20px;
-                width: 400px;
-                font-size: 16px;
-                color: white;
-                background-color: #363636;
-                border: 0px;
-                border-radius: 5px;
-                padding: 5px;
-            }
-            
-            #searchButton{
-                height: 30px;
-				width: 70px;
-				background-color: red;
-				color: white;
-                font-size: 16px;
-                border: none;
-				border-radius: 5px;
-                float: right;
-                transition: background-color 0.2s ease-in-out;
-            }
-            
-            #searchButton:hover{
-                background-color: #FF4D4D;
-                color: white;
-            }
-            
-            .topNav{
-	            height: 30px;
-	            width: auto;
-	            margin-top: 4px;
-	            margin-left: 15px;
-	            color: white;
-	            font-size: 18px;
-	            float: left;
-	            padding: 10px;
-            }
-            
-            .topNav a{
-                margin-right: 30px;
-                text-decoration: none;
-                color: white;
-                transition: color 0.2s ease-in-out;
-            }
-            
-            .topNav a:hover{
-                color: red;
-            }
-            
-            .userLog{
-                height: 30px;
-                width: 270px;
-                float: right;
-                padding: 10px;
-            }
-        
-        	.userLog button {
-				height: 30px;
-				width: 60px;
-				border: 0px;
-				border-radius: 5px;
-                margin-right: 10px;
-                float: right;
-                transition: background-color 0.2s ease-in-out;
-			}
-            
-            .userLog .account{
-				height: 40px;
-				width: 40px;
-                background-image: url(images/default.png);
-                background-size: cover;
-				border: 1.5px solid #00d32d;
-				border-radius: 100px;
-                margin-top: -5px;
-                margin-right: 30px;
-                transition: border 0.2s ease-in-out;
-			}
-            
-            .userLog .account:hover{
-				border: 1.5px solid red;
-			}
-            
-            .userLog .logout {
-            	background-color: red;
-            	color: white;
-				height: 30px;
-				width: 60px;
-				border: 0px;
-				border-radius: 5px;
-			}
-            
-            .userLog .logout:hover{
-                background-color: #FF3333;
-                border: none;
-			}
-            
-            .userLog .loginButton:hover{
-                color: red;
-                border: 1px solid red;
-                border-radius: 5px;
-			}
-			
-			.userLog .signupButton{
-				background-color: red;
-				color: white;
-			}
-            
-            .userLog .signupButton:hover{
-                background-color: #FF4D4D;
-			}
-         	
-         	button, input[type="submit"], input[type="reset"], input[type="button"]{
-         		outline:none;
-         	} */
+      
+		
     </style>
     <link rel="shortcut icon" href="favicon.ico" />
 
@@ -233,7 +74,7 @@
                 <form class="form-inline mx-3 my-lg-0" method="GET" action="search" onSubmit="return checkSearch();">
                     <input id="navSearchBar" name="q" class="form-control mr-sm-2" type="search"
                         placeholder="What are you looking for?" aria-label="Search">
-                    <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-gs my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 
                 <% if(user != null){ %>
@@ -279,7 +120,7 @@
                             <a class="dropdown-item" href="edit-profile">Edit Profile</a>
                             <div class="dropdown-divider"></div>
                             <a href="login">
-                    	        <button type="submit" class="btn btn-danger w-100 rounded-0">Logout</button>
+                    	        <button type="submit" class="btn btn-gs w-100 rounded-0">Logout</button>
                             </a>
                         </div>
                     </li>
@@ -302,8 +143,8 @@
 
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a href="login"><button class="btn btn-danger mr-2">Login</button></a>
-                        <a href="register"><button class="btn btn-danger">Signup</button></a>
+                        <a href="login"><button class="btn btn-gs mr-2">Login</button></a>
+                        <a href="register"><button class="btn btn-gs">Signup</button></a>
                     </li>
                 </ul>
 
@@ -312,8 +153,6 @@
             </div>
         </div>
     </nav>
-
-
 
 </body>
 

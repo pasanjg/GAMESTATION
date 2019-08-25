@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700&display=swap');
+
 /* Header CSS */
 
 	body{
 		background-color: #F9F9F9;
+		font-family: 'Maven Pro', sans-serif !important;
 	}
+	
+	a{text-decoration: none !important;}
 
 	#navSearchBar{
 		width: 400px;
@@ -29,18 +34,20 @@
 		outline: 0;
 		box-shadow: none;
 	}
-	
-	.btn-danger {
-  		color: #fff;
-  		background-color: red;
-  		border-color: red;
-}
 
-.btn-danger:hover {
-  		color: #fff;
-  		background-color: #FF4D4D;
-  		border-color: #FF4D4D;
-}
+	.btn-gs{
+		border: 1px solid red;
+		color: white;
+		background-color: red;
+		transition: background-color 0.2s ease-in-out;
+	}
+	
+	.btn-gs:hover{
+		color: red;
+		background-color: transparent;
+		border: 1px solid red;
+		border-radius: 5px;
+	}
 
 /* 	#navigation a{ */
 /* 		margin-left: 15px; */
@@ -56,6 +63,18 @@
 			width: 250px;
 		}
 	}
+
+/* Index Page */
+
+.sub-content{
+	display: flex;
+	transition: transform 0.1s;
+}
+
+.sub-content:hover{
+	transform: scale(1.1);
+}
+
 
 /* Footer CSS */
 

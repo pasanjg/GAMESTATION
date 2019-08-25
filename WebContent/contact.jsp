@@ -67,7 +67,7 @@
 		}
         
         textarea{
-        	font-family: calibri;
+        	/* font-family: calibri; */
         	font-size: 20px;
         	width: 600px;
 			height: 150px;

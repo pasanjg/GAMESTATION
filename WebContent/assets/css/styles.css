@@ -2,69 +2,65 @@
 
 /* Header CSS */
 
-	body{
-		background-color: #F9F9F9;
-		font-family: 'Maven Pro', sans-serif !important;
-	}
-	
-	a{text-decoration: none !important;}
+body{
+	background-color: #F9F9F9;
+	font-family: 'Maven Pro', sans-serif !important;
+}
 
-	#navSearchBar{
-		width: 400px;
-		color: white;
-		background-color: #222222;
-		border: none;
-	}
+a{
+	text-decoration: none !important;
+	color: inherit;
+}
 
-	#searchBtn{
-		inherit: none;
-		color: white;
-		border: 1px solid red;
-		background-color: red;
-		transition: background-color 0.2s;
-	}
+#navSearchBar{
+	width: 400px;
+	color: white;
+	background-color: #222222;
+	border: none;
+}
 
-	#searchBtn:hover{
-		color: white;
-		border: 1px solid #ff4444;
-		background-color: #ff4444;
-	}
+.btn-gs{
+	border: 1px solid red;
+	color: white;
+	background-color: red;
+	transition: background-color 0.2s ease-in-out;
+}
 
-	#searchBtn:active, #searchBtn:focus, #searchBtn:active:focus{
-		outline: 0;
-		box-shadow: none;
-	}
-
-	.btn-gs{
-		border: 1px solid red;
-		color: white;
-		background-color: red;
-		transition: background-color 0.2s ease-in-out;
-	}
-	
-	.btn-gs:hover{
-		color: red;
-		background-color: transparent;
-		border: 1px solid red;
-		border-radius: 5px;
-	}
+.btn-gs:hover{
+	color: red;
+	background-color: transparent;
+	border: 1px solid red;
+	border-radius: 5px;
+}
 
 /* 	#navigation a{ */
 /* 		margin-left: 15px; */
 /* 	} */
 
-	#content{
-		margin-top: 100px;
-		margin-bottom: 30px;
-	}
+#content{
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
 
-	@media only screen and (max-width: 1200px) {
-    		#navSearchBar{
-			width: 250px;
-		}
+@media only screen and (max-width: 1200px) {
+	#navSearchBar{
+	width: 250px;
 	}
+}
 
 /* Index Page */
+
+.main{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+	
+.main a{
+	transition: color 0.2s;
+}
+			
+.main a:hover{
+	color: #FFB900;
+}
 
 .sub-content{
 	display: flex;
@@ -76,99 +72,121 @@
 }
 
 
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+} 
+
+.embed-container 
+iframe, 
+.embed-container 
+object, 
+.embed-container 
+embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+}
+
+
 /* Footer CSS */
 
-	.footer-dark{
-		background-color: #2d2d2d;
-		padding: 30px;
-		color: white;
-	}
+.footer-dark{
+	background-color: #2d2d2d;
+	padding: 30px;
+	color: white;
+}
 
-	.footer-dark h6{
-		color: gray;
-	}
+.footer-dark h6{
+	color: gray;
+}
 
-	.footer-dark #social{
-		text-align: center;
-	}
+.footer-dark #social{
+	text-align: center;
+}
 
-	.fa {
-  		padding: 12px;
-  		font-size: 20px;
-  		width: 40px;
-		height: 40px;
-  		text-align: center;
-  		text-decoration: none;
-  		margin: 20px 3px 20px;
-		border-radius: 50%;
- 	 	display: inline-block;
-	}
+.fa {
+	padding: 12px;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	text-decoration: none;
+	margin: 20px 3px 20px;
+	border-radius: 50%;
+	display: inline-block;
+}
 
-	.fa:hover {
-    		opacity: 0.7;
-		text-decoration: none;
-	}
+.fa:hover {
+	opacity: 0.7;
+	text-decoration: none;
+}
 
-	.fa-facebook {
-  		background: #3B5998;
-  		color: white;
-	}
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+}
 
-	.fa-twitter {
-  		background: #55ACEE;
-  		color: white;
-	}
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+}
 
-	.fa-instagram {
-  		background: #125688;
-  		color: white;
-	}
+.fa-instagram {
+	background: #125688;
+	color: white;
+}
 
-	.fa-youtube {
-  		background: #bb0000;
-  		color: white;
-	}
+.fa-youtube {
+	background: #bb0000;
+	color: white;
+}
 
-	.footer-dark ul li{
-  		list-style-type: none;
-		margin-left: -40px;
-	}
+.footer-dark ul li{
+	list-style-type: none;
+	margin-left: -40px;
+}
 
 
 /* Profile CSS */
 
-	#profile-sidebar{
-		text-align: center;
-	}
+#profile-sidebar{
+	text-align: center;
+}
 
-	#profile-details{
-		background-color: white;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-		padding: 15px;
-		margin-bottom: 30px;
-	}
+#profile-details{
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 15px;
+	margin-bottom: 30px;
+}
 
-	#profile-main{
-		padding: 0px 10px 10px 10px;
-	}
+#profile-main{
+	padding: 0px 10px 10px 10px;
+}
 
-	.card {
-		text-align: center;
-    		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-		padding: 10px 10px 20px 10px;
-		margin-bottom: 15px;
-    		transition: 0.3s;
-	}
+.card {
+	text-align: center;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 10px 10px 20px 10px;
+	margin-bottom: 15px;
+	transition: 0.3s;
+}
 
-	.card:hover {
-    		box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
-	}
+.card:hover {
+	box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+}
 
-	.card-container {
-    		padding: 2px 16px;
-	}
+.card-container {
+	padding: 2px 16px;
+}
 
-	.card input{
-		width: 45%;
-	}
+.card input{
+	width: 45%;
+}
 

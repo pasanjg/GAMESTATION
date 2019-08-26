@@ -13,7 +13,7 @@
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: #FF5252;
+  background-color: #FF4444;
   color: white;
   font-weight: bold;
   text-align: center;

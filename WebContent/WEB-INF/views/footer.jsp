@@ -2,84 +2,62 @@
 <html>
 <head>
         <style>
-            
-            /* body{
-                
-                font-family: calibri;
-                margin: 0px;
-            } */
-        
-            .mainFooter{
-                
-	            height: auto;
-	            width: auto;
-                margin-left:auto;
-                margin-right: auto;
-	            background-color: #363636;
-	            padding: 30px;
-            }
-            
-            .details th, .details td{
-                color: white;
-                text-align: left;
-            }
-            
-            .details th{
-                color: dimgray;
-            }
-            
-            
-            
+                   
         </style>
     </head>
     <body>
     
-        <div class="mainFooter">    
-            <div class="details">
-                <table align="center">
-                    <tr>
-                    	<th style="width: 300px;">CATEGORIES</th>
-                        <th style="width: 300px;">ABOUT</th>
-                        <th style="width: 300px;">SUPPORT</th>
-                        <th>FOLLOW US</th>
-                    </tr>
-                
-                    <tr>
-                    	<td>Action</td>
-                        <td>Gaming</td>
-                        <td>Customer Support</td>
-                        <td>Google</td>
-                    </tr>
-                
-                    <tr>
-                    	<td>Racing</td>
-                        <td>Press & News</td>
-                        <td>Trust & Safety</td>
-                        <td>Facebook</td>
-                    </tr>
-                
-                    <tr>
-                    	<td>Sport</td>
-                        <td>Terms of Service</td>
-                        <td></td>
-                        <td>Instagram</td>
-
-                    </tr>
-                    
-                    <tr>
-                    	<td>Puzzle</td>
-                        <td>Privacy Policy</td>
-                        <td></td>
-                        <td>Twitter</td>
-                        
-                    </tr>
-                </table>
-                <br/>
+        <div class="container-fluid bg-dark text-white py-3">                
+            <div class="container">
+            	<div class="row">
+            		<div class="col-sm-6 col col-md-3">
+            			<strong class="text-secondary">CATEGORIES</strong>
+            			<ul class="list-unstyled">
+  							<li>Action</li>
+  							<li>Racing</li>
+  							<li>Sports</li>
+  							<li>Puzzle</li>
+						</ul>
+            		</div> 
+            		<div class="col-sm-6 col-md-3">
+            			<strong class="text-secondary">ABOUT</strong>
+            			<ul class="list-unstyled">
+  							<li>Gaming</li>
+  							<li>Press & News</li>
+  							<li>Terms of Service</li>
+  							<li>Privacy Policy</li>
+						</ul>
+            		</div>
+            		<div class="col-sm-6 col-md-3">
+            			<strong class="text-secondary">SUPPORT</strong>
+            			<ul class="list-unstyled">
+  							<li>Customer Support</li>
+  							<li>Trust & Safety</li>
+						</ul>
+            		</div>
+            		<div class="col-sm-6 col col-md-3">
+            			<strong class="text-secondary">FOLLOW US</strong>
+            			<ul class="list-unstyled">
+  							<li>Google</li>
+  							<li>Facebook</li>
+  							<li>Instagram</li>
+  							<li>Twitter</li>
+						</ul>
+            		</div>            
+            	</div>
             </div>
+            
             <footer style="color: dimgray; text-align: center;">
             	Last updated: <%= new java.util.Date() %><br/>
-            	Copyright &copy; GameStation | Online Gaming Site 2018. All Rights Reserved.
+            	<!-- <span id="date"></span><br> -->
+            	<span>Copyright &copy; GameStation | Online Gaming Site 2018. All Rights Reserved.</span>
             </footer>
+            
         </div>
+        <script>
+        	var today = new Date();
+        	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        	document.getElementById("date").innerHTML = date;
+        </script>
     </body>
 </html>

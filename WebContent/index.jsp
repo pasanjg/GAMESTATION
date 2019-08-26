@@ -14,77 +14,7 @@
     <title>GameStation | Online Gaming Site</title>
         
     <style>
-        
-        .mainImage{
-            width: auto;
-            text-align: center;
-            height: 500px;
-            background-image: url(images/banner.jpg);
-			background-size: cover;
-    		background-repeat: no-repeat;
-    		background-position: center center;
-    		margin-top: 70px;
-        }
-        
-        .gamers{
-            width: auto;
-            text-align: center;
-            color: white;
-            background-color: #e74c3c;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            height: auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 40px;
-        }
-        
-        .gamers a{
-        	transition: color 0.2s;
-        }
-                
-        .gamers a:hover{
-        	color: #FFB900;
-        }
-        
-        .about{
-            width: auto;
-            height: 300px;
-            text-align: left;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 20px;
-            padding-top: 10px;
-        }
-        
-        .aboutContent{
-            width: 800px;
-            height: 200px;
-            font-size: 20px;
-            float: left;
-        }
-        
-        .mainLogo{
-            width: 200px;
-            height: 200px;
-            background-image: url(images/logo.png);
-            background-size: cover;
-    		background-repeat: no-repeat;
-    		background-position: center center;
-            float: right;
-        }
-        
-        table #heading{
-            font-size: 30px;
-        }
-        
-        a{
-        	text-decoration: none;
-        	color: inherit;
-        }
-        
-        
+
     </style>
 
         
@@ -95,9 +25,9 @@
     
     <jsp:include page="WEB-INF/views/carousel.jsp"/>
     
-    <div class="gamers">
+    <div class="main col-md-12 text-center text-white my-5 py-5" style="background-color: #e74c3c;">
         <div class="container">
-            <strong><h1>GAMERS ON ANY PLATFORM</h1></strong><br>
+            <strong><h3 class="font-weight-bold">GAMERS ON ANY PLATFORM</h3></strong><br>
             <div class="row">
                 <div class="col-md-4">
                     <h3>PlayStation</h3>
@@ -123,9 +53,9 @@
         </div>
     </div>
     
-    <div class="gamers" style="background-color: #717171;">    
+    <div class="main col-md-12 text-center text-white my-5 py-5" style="background-color: #717171;">    
         <div class="container">
-            <strong><h1>GAMING CATEGORIES</h1></strong><br>
+            <strong><h3 class="font-weight-bold">GAMING CATEGORIES</h3></strong><br>
             <div class="row">
                 <div class="col-md-3">
                     <h3>Action</h3>
@@ -156,22 +86,37 @@
         </div>
     </div>
     
-    <div class="gamers" style="background-color: white;">
-        <h1 style="color: black;">PlayerUnknown's Battlegrounds Gameplay</h1>
-        
-        <iframe width="1200" height="540" src="https://www.youtube-nocookie.com/embed/dHuk72sMljE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        
+    <div class="main col-md-12 text-center my-5 py-5">
+    	<div class="container">
+    		<h1>PlayerUnknown's Battlegrounds Gameplay</h1><br>
+        	<div class="embed-container">
+        	<iframe src='https://www.youtube.com/embed/dHuk72sMljE' frameborder='0' allowfullscreen></iframe>
+        	</div>
+    	</div>
     </div>
         
-    <div class="about">
-        <h1>About Us</h1>
-        <div class="aboutContent">
-            <p>
-                Welcome to GameStation. This is the best platform to all your gaming related needs that also helps players to communicate with the most up-to-date technology.
-                <br/>GameStation is a high-end enthusiast online gaming site offering the best in high performance gaming with a reliable and exceptional customer service.
-            </p>
-        </div>
-        <div class="mainLogo"></div>
+    <div class="main col-md-12 my-5 py-5 text-center">
+    	<div class="container">
+    	<h1>About Us</h1><br>
+    		<div class="row">
+            	<div class="col-md-9 text-left justify-content">
+                	<p>
+                    	"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta 
+                        sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
+                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem 
+                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt 
+                        ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem 
+                        ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
+                        reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+                        eum fugiat quo voluptas nulla pariatur?"
+                	</p>
+            	</div>
+            	<div class="col-md-3 sub-content">
+        	    	<img class="img-responsive" src="images/logo.png"/>
+            	</div>            	
+        	</div>
+    	</div>
     </div>
     
     <jsp:include page="WEB-INF/views/scrolltop.jsp"/>

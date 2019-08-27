@@ -37,6 +37,18 @@ a{
 	border-radius: 5px;
 }
 
+.btn-red{
+	color: white;
+	background-color: red;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.btn-red:hover{
+	color: red;
+	background-color: white;
+	transition: background-color 0.2s ease-in-out;
+}
+
 /* 	#navigation a{ */
 /* 		margin-left: 15px; */
 /* 	} */

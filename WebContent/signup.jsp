@@ -61,7 +61,7 @@
         			<%} %>
 					
 					<div class="card-body">
-						<form method="POST" action="register" method="post" onsubmit="return checkPassword();" autocomplete="oFf">
+						<form method="POST" action="register" method="post" onsubmit="return checkPassword();">
 							<div class="form-group">
 								<input type="text" class="form-control" name="firstName" id="colFormLabel" placeholder="First Name" required>
 							</div>
@@ -73,11 +73,11 @@
 							</div>
 							<div class="form-group">
 								<div class="custom-control custom-radio custom-control-inline">
-  									<input type="radio" id="male" name="customRadioInline1" class="custom-control-input" required>
+  									<input type="radio" id="male" name="gender" value="Male" class="custom-control-input" required>
  								 	<label class="custom-control-label" for="male">Male</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline">
-  									<input type="radio" id="female" name="customRadioInline1" class="custom-control-input" required>
+  									<input type="radio" id="female" name="gender" value="Female" class="custom-control-input" required>
   									<label class="custom-control-label" for="female">Female</label>
 								</div>
 							</div>
@@ -94,7 +94,7 @@
 								<select class="custom-select" name="platform" required>
 									<option value="" disabled selected>Select your platform</option>
 									<option value="PC">PC</option>
-									<option value="Playstation">Playstation</option>
+									<option value="Playstation">PlayStation</option>
 									<option value="Xbox">Xbox</option>
 								</select>
 							</div>

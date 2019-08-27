@@ -110,7 +110,7 @@
 
                     <%} %>
                 <ul class="nav justify-content-end">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown text-white">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="images/default.png" width="32" />
@@ -120,7 +120,7 @@
                             <a class="dropdown-item" href="edit-profile">Edit Profile</a>
                             <div class="dropdown-divider"></div>
                             <a href="login">
-                    	        <button type="submit" class="btn btn-gs w-100 rounded-0">Logout</button>
+                    	        <button type="submit" class="btn btn-red w-100 rounded-0">Logout</button>
                             </a>
                         </div>
                     </li>

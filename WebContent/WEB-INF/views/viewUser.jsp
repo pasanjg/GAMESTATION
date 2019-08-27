@@ -123,7 +123,7 @@
 						}
 					%>
 						
-					<a href="profile"><button class="btn btn-gs">View Profile</button></a> 
+					<a href="profile"><button class="btn btn-gs-red">View Profile</button></a> 
         
     			</div>
     		</div>

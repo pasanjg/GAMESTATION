@@ -23,14 +23,14 @@ a{
 	border: none;
 }
 
-.btn-gs{
+.btn-gs-red{
 	border: 1px solid red;
 	color: white;
 	background-color: red;
 	transition: background-color 0.2s ease-in-out;
 }
 
-.btn-gs:hover{
+.btn-gs-red:hover{
 	color: red;
 	background-color: transparent;
 	border: 1px solid red;
@@ -107,13 +107,6 @@ embed {
 	left: 0; 
 	width: 100%; 
 	height: 100%; 
-}
-
-
-/* Login Page */
-
-.card{
-	
 }
 
 /* Footer CSS */

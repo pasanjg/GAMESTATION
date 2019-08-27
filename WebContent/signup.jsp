@@ -61,7 +61,7 @@
         			<%} %>
 					
 					<div class="card-body">
-						<form method="POST" action="register" method="post" onsubmit="return checkPassword();">
+						<form method="POST" action="register" method="post" onsubmit="return checkPassword();" autocomplete="off">
 							<div class="form-group">
 								<input type="text" class="form-control" name="firstName" id="colFormLabel" placeholder="First Name" required>
 							</div>
@@ -112,8 +112,8 @@
 								<span id="status" style="color: red;"></span>
 							</div>
 							
-							<button class="btn btn-gs px-4" type="reset" name="login" value="Login">Reset</button>
-							<button class="btn btn-gs px-4" type="submit" name="login" value="Login">Submit</button> <br/> <br/>
+							<button class="btn btn-gs-red px-4" type="reset" name="login" value="Login">Reset</button>
+							<button class="btn btn-gs-red px-4" type="submit" name="login" value="Login">Submit</button> <br/> <br/>
 							<span>Already a member? <a href="login" style="color: red;">Log in</a></span> 
 						</form>
 					</div>

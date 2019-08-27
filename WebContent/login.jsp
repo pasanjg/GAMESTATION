@@ -40,14 +40,14 @@
 					<%} %>
 					
 					<div class="card-body">
-						<form method="POST" action="login">
+						<form method="POST" action="login" autocomplete="off">
 							<div class="form-group">
 								<input type="text" class="form-control" name="userName" id="colFormLabel" placeholder="username" required>
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="colFormLabel" placeholder="password" required>
 							</div>
-							<button class="btn btn-gs px-4" type="submit" name="login" value="Login">Login</button> <br/> <br/>
+							<button class="btn btn-gs-red px-4" type="submit" name="login" value="Login">Login</button> <br/> <br/>
 							<span>Not a member yet? <a href="register" style="color: red;">Join now</a></span>
 						</form>
 					</div>

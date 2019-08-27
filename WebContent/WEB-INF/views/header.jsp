@@ -74,7 +74,7 @@
                 <form class="form-inline mx-3 my-lg-0" method="GET" action="search" onSubmit="return checkSearch();">
                     <input id="navSearchBar" name="q" class="form-control mr-sm-2" type="search"
                         placeholder="What are you looking for?" aria-label="Search">
-                    <button class="btn btn-gs my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-gs-red my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 
                 <% if(user != null){ %>
@@ -143,8 +143,8 @@
 
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a href="login"><button class="btn btn-gs mr-2">Login</button></a>
-                        <a href="register"><button class="btn btn-gs">Signup</button></a>
+                        <a href="login"><button class="btn btn-gs-red mr-2">Login</button></a>
+                        <a href="register"><button class="btn btn-gs-red">Signup</button></a>
                     </li>
                 </ul>
 

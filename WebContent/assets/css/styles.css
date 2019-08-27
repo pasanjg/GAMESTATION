@@ -37,6 +37,20 @@ a{
 	border-radius: 5px;
 }
 
+.btn-gs-green{
+	border: 1px solid #28a745;
+	color: white;
+	background-color: #28a745;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.btn-gs-green:hover{
+	color: #28a745;
+	background-color: transparent;
+	border: 1px solid #28a745;
+	border-radius: 5px;
+}
+
 .btn-red{
 	color: white;
 	background-color: red;
@@ -179,14 +193,27 @@ embed {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 15px;
 	margin-bottom: 30px;
+	border-radius: 5px;
+}
+
+#top-bar{
+	background-color: white;
+	border-radius: 5px 5px 0 0;
+	padding: 5px 0 5px 0;
+	margin: 0 0px 20px 0px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 #profile-main{
-	padding: 0px 10px 10px 10px;
+	background-color: white;
+	border-radius: 5px 5px 0 0;
 }
 
 .card {
+	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin-bottom: 25px;
+	padding-top: 20px;
 	transition: 0.3s;
 }
 
@@ -195,6 +222,12 @@ embed {
 }
 
 .card-container {
+	margin-top: 10px;
 	padding: 2px 16px;
+	margin-bottom: 25px;
+}
+
+.card button{
+	width: 45%;
 }
 

@@ -36,210 +36,163 @@
 	
 	<style>
 
-        h1{
-			color:black;
-			text-align: center;
-			font-size: 30px;
-            margin: 0px;
-		}
         
-		body{
-			
-			margin: 0px;
-		}
         
-        .mainArea{
-            width: auto;
-            min-height: 700px;
-            margin-top: 100px;
-        }
         
-        .sideBar{
-           width: 260px;
-            height: 560px;
-            margin-left: 30px;
-            margin-right: 20px;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-            float: left;
-        }
-        
-        .content{
-            min-width: 900px;
-            height: 560px;
-            margin-top: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-            margin-right: 30px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-            float: right;
-            overflow: auto;
-          
-        }
-        
-        input[type="button"], input[type="submit"], .play{
-			height: 40px;
-			width: auto;
-			font-size: 16px;
-			color: white;
-			background-color: red;
-			border: 1px solid red;
-			border-radius: 5px;
-			transition: background-color 0.2s ease-in-out;
-		}
-        
-        input[type="button"]:hover, input[type="submit"]:hover, .play:hover{
-			color: red;
-			background-color: white;
-			border: 1px solid red;
-			border-radius: 5px;
-		}
 		
         
 	</style>
 	
 </head>
 <body>
-    
-    <div class="mainArea">
-        <div class="sideBar">
-        
-			<!-- Add side bar content here -->
+
+	<div id="content" class="container gs-top">
+		<div class="row">
+			<!-- sidebar -->
+
+			<div class="col-sm-12 col-md-4" id="profile-sidebar">
 			
 			<% if(user != null) { 
 			
 				arrayList = iGameService.getFav(user.getUserID());
 			%>
-			
-			<form action="edit">
-			<table align="center">
-			
-				<tr>
-					<td colspan="2">
-						<h2 align="center"><%= user.getFirstName() +" "+ user.getLastName()%><br> 
-						<span><%= user.getUserName() %></span></h2>
-					</td>
-				</tr>
-				
-				<tr>
-					<td><h4>ID&nbsp; &nbsp;</h4></td>
-					<td align="right"><h4><%= user.getUserID() %></h4></td>
-				</tr>
-				
-				<tr>
-					<td><h4>Platform &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h4> </td>
-					<td align="right"><h4><%= user.getPlatform() %></h4></td>			
-				</tr>
-				
-				<tr>
-					<td><h4>From&nbsp;</h4></td>
-					<td align="right"><h4><%= user.getCountry() %></h4></td>
-				</tr>
-				
-				<tr>
-					<td><h4>Gender&nbsp;</h4></td>
-					<td align="right"><h4><%= user.getGender() %></h4></td>
-				</tr>
-				
-				<tr>
-					<td><h4>Type&nbsp;</h4></td>
-					<td align="right"><h4><%= user.getType() %></h4></td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" align="center"> <a href="edit-profile"><input type="button" value="Edit Profile"></a></td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" align="center"> 
+
+				<div class="col-sm-12" id="profile-details">
+					<div class="picture pt-2">
+						<img src="images/default.png" width="150"/> <br/><br/>
+						<h5><%= user.getUserName() %></h5> <hr> 
+					</div>
+
+					<table style="width: 100%">
+						<tr>
+							<td align="left"><b>Name </td>
+							<td align="right"><b><%= user.getFirstName() + " " + user.getLastName() %></td>
+						</tr>
+
+						<tr>
+							<td align="left"><b>From</td>
+							<td align="right"><b><%= user.getCountry() %></td>
+						</tr>
+
+						<tr>
+							<td align="left"><b>Platform</td>
+							<td align="right"><b><%= user.getPlatform() %></td>
+						</tr>
+
+						<tr>
+							<td align="left"></td>
+							<td align="right">
+									<a href="edit-profile">
+										<button type="submit" class="btn btn-secondary" style="margin-top: 5px; padding: 3px 5px 0 5px;">
+											<i class="material-icons">&#xe3c9;</i>
+										</button>
+									</a>
+						
+							</td>
+							
+						</tr>
+						<tr>
+							<td colspan="2" align="center"> 
+								<% if(confirm != null) { %>
+        							<p style="color: green;" align="center"><br/><%= confirm %></p>
+        						<%} %>
+							</td>
+						</tr>
+					</table>
+
 					
-						<% if(confirm != null) { %>
-        					<p style="color: green;" align="center"><br/><%= confirm %></p>
-        				<%} %>
+				</div>
+
+				<div class="col-sm-12" id="profile-details">
+					<span class="text-left"><b>About</b></span> <hr>
+					<p style="text-align: left;">
+						This paragraph contains a breif description about the user. Editable text.
+					</p>
+					<p style="text-align: right; margin: 0">
+						<button class="btn btn-secondary" style="margin-top: 5px; padding: 3px 5px 0 5px;"><i class="material-icons">&#xe3c9;</i></button>
+					</p>
+				</div>
+
+				<div class="col-sm-12" id="profile-details">
+					another section
+				</div>
+				
+				<% } %>				
+
+			</div>
+
+			<!-- main content -->
+			<div class="col-sm-12 col-md-8" id="profile-main">
+			
+				<div class="row">
+					<div id="top-bar" class="col-sm-12 text-center">
+						<h4>Favourites</h4>
+					</div>
 					
-					</td>
-				</tr>
-			
-			</table>
-			</form>
-			
-			<% } %>
-			
-			
-        </div>
-        <div class="content">
-            
-			<!-- Add main content here -->
-			
-			<h1>Favourites</h1>
-			<%if(confirmAddOrRem != null) {%>
-				<p align="center" style="color: green; text-align: center;"><%= confirmAddOrRem %></p>
-			<%} %>
-			
-		<%if(arrayList.size() != 0) { %>
-			
-			<table align="center">
-			<%	
-				for(String gameID : arrayList){
-			%>
-            
-            	<tr>
-        			<td colspan="2" style="width: 200px">
-        				<!-- Add game image & details -->
-        				<a href="play-game?GameID=<%= gameID %>" style="color: black">
-        					<img src="images/<%= gameID %>.jpg" width="80" alt="<%= gameID %>">
-        					<h3><%= iGameService.loadGameName(gameID) %></h3>
-        				</a>
-        				
-        			</td>
-	
-        			<td style="width: 200px">
-        				<!-- Add buttons -->
-        				<form method="GET" action="play-game">
-							<input type="hidden" name="GameID" value="<%= gameID %>">
-				 			<input type="submit" value= "Play Game"/>
-				 		</form>
-				 	</td>
-				 	
-				 	<td style="width: 200px">	
-				 		<form method="GET" action="remove-fav">
-							<input type="hidden" name="GameID" value="<%= gameID %>">
-				 			<input type="submit" value= "Remove"/>
-				 		</form>
-        			</td>
-        		</tr>
-        		
-        		<tr>
-        			<td colspan="3"><hr></td>
-        		</tr>
-            	
-            <%} %>
-            </table>
-            
-        <%} else {%>
-        
-        	<img align="middle" src="images/error.png">
-			
-			<h1 align="center">Oops! Your list is empty. <br/> 
-				But it doesn't have to be.
-			</h1>
-			
-			<h2 style="color: dimgray;">Join our play area now and add games to your favourites. <br/>
-				Keep Gaming!
-			</h2>
-			
-			<a href="games"><button class="play">Play Now</button></a>
-		
-		<%} %>
-            
-            
-        </div>
-    </div>
+					<%if(confirmAddOrRem != null) {%>
+						<div class="col-sm-12 text-center">
+							<p align="center" style="color: green; text-align: center;"><%= confirmAddOrRem %></p>
+						</div>
+					<%} %>
+					
+					<% if(arrayList.size() != 0) { %>
+					
+						<%	
+							for(String gameID : arrayList){
+						%>
+
+							<div class="col-sm-12 col-md-6 col-lg-4">
+								<div class="card text-center pt-4">
+									<a href="play-game?GameID=<%= gameID %>" style="color: black">
+										<img src="images/<%= gameID %>.jpg" height="135" alt="<%= gameID %>" style="margin: auto;">
+									</a>
+									<div class="card-container">
+										<h6><b><%= iGameService.loadGameName(gameID) %></b></h6> 
+										<p>Game Category</p>
+										
+										<div class="d-inline">
+										<form class="d-inline" method="GET" action="play-game">
+											<input class="form-control" type="hidden" name="GameID" value="<%= gameID %>">
+											<button class="btn btn-gs-green" type="submit">Play</button>
+										</form>
+										</div>
+										<div class="d-inline">
+										<form class="d-inline" method="GET" action="remove-fav">
+											<input class="form-control" type="hidden" name="GameID" value="<%= gameID %>">
+											<button class="btn btn-gs-red" type="submit">Remove</button>
+										</form>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						
+						<% } %>
+					
+					<% } else {%>
+					
+							<div class="col text-center">
+					
+								<img class="img-responsive" src="images/error.png">
+								<h4>Oops! Your list is empty. <br/> 
+									But it doesn't have to be.
+								</h4>
+								<h5 class="text-secondary mb-4">Join our play area now and add games to your favourites. <br/>
+									Keep Gaming!
+								</h5>
+								<a href="games">
+									<button class="btn btn-gs-red">Play Now</button>
+								</a>
+						
+						</div>
+					
+					<%} %>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
     
     <jsp:include page="WEB-INF/views/footer.jsp"/>
     

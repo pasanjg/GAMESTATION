@@ -12,6 +12,10 @@ a{
 	color: inherit;
 }
 
+.gs-top{
+  	margin-top: 70px;
+ }
+
 #navSearchBar{
 	width: 400px;
 	color: white;
@@ -94,6 +98,12 @@ embed {
 }
 
 
+/* Login Page */
+
+.card{
+	
+}
+
 /* Footer CSS */
 
 .footer-dark{
@@ -171,10 +181,7 @@ embed {
 }
 
 .card {
-	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	padding: 10px 10px 20px 10px;
-	margin-bottom: 15px;
 	transition: 0.3s;
 }
 
@@ -184,9 +191,5 @@ embed {
 
 .card-container {
 	padding: 2px 16px;
-}
-
-.card input{
-	width: 45%;
 }
 

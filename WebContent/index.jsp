@@ -16,7 +16,6 @@
     <style>
 
     </style>
-
         
     </head>
     <body>
@@ -50,6 +49,7 @@
             <%}else{ %>
                 <h2 colspan="4"><a href="games">Play Now!</a></h2>
             <%} %>
+            
         </div>
     </div>
     
@@ -83,6 +83,7 @@
             <%}else{ %>
                 <h2 colspan="4"><a href="games">Play Now!</a></h2>
             <%} %>
+            
         </div>
     </div>
     

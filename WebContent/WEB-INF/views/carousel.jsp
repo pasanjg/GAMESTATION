@@ -16,17 +16,13 @@
   	
   	<style>
   	
-  		.mainCarousel{
-  			margin-top: 45px;
-  		}
-  	
   	</style>
 
 </head>
 
 <body>
 
-<div class="mainCarousel">
+<div class="mainCarousel gs-top">
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">

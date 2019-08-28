@@ -83,7 +83,7 @@
 							<td align="left"></td>
 							<td align="right">
 									<a href="edit-profile">
-										<button type="submit" class="btn btn-secondary" style="margin-top: 5px; padding: 3px 5px 0 5px;">
+										<button type="submit" class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;">
 											<i class="material-icons">&#xe3c9;</i>
 										</button>
 									</a>
@@ -109,7 +109,7 @@
 						This paragraph contains a breif description about the user. Editable text.
 					</p>
 					<p style="text-align: right; margin: 0">
-						<button class="btn btn-secondary" style="margin-top: 5px; padding: 3px 5px 0 5px;"><i class="material-icons">&#xe3c9;</i></button>
+						<button class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;"><i class="material-icons">&#xe3c9;</i></button>
 					</p>
 				</div>
 
@@ -153,13 +153,13 @@
 										<div class="d-inline">
 										<form class="d-inline" method="GET" action="play-game">
 											<input class="form-control" type="hidden" name="GameID" value="<%= gameID %>">
-											<button class="btn btn-gs-green w-50" type="submit">Play</button>
+											<button class="btn btn-gs-green w-45" type="submit">Play</button>
 										</form>
 										</div>
 										<div class="d-inline">
 										<form class="d-inline" method="GET" action="remove-fav">
 											<input class="form-control" type="hidden" name="GameID" value="<%= gameID %>">
-											<button class="btn btn-gs-red" type="submit">Remove</button>
+											<button class="btn btn-gs-red w-45" type="submit">Remove</button>
 										</form>
 										</div>
 

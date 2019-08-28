@@ -12,6 +12,10 @@ a{
 	color: inherit;
 }
 
+.w-45{
+	width: 45%;
+}
+
 .gs-top{
   	margin-top: 70px;
  }
@@ -60,6 +64,18 @@ a{
 .btn-red:hover{
 	color: red;
 	background-color: white;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.btn-grey{
+	color: #525252;
+	background-color: #d2d2d2;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.btn-grey:hover{
+	color: #525252;
+	background-color: #c2c2c2;
 	transition: background-color 0.2s ease-in-out;
 }
 

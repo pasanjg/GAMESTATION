@@ -147,13 +147,13 @@
 										<img src="images/<%= gameID %>.jpg" height="135" alt="<%= gameID %>" style="margin: auto;">
 									</a>
 									<div class="card-container">
-										<h6><b><%= iGameService.loadGameName(gameID) %></b></h6> 
+										<h6><b><%= iGameService.loadGameName(gameID) %></b></h6>
 										<p>Game Category</p>
 										
 										<div class="d-inline">
 										<form class="d-inline" method="GET" action="play-game">
 											<input class="form-control" type="hidden" name="GameID" value="<%= gameID %>">
-											<button class="btn btn-gs-green" type="submit">Play</button>
+											<button class="btn btn-gs-green w-50" type="submit">Play</button>
 										</form>
 										</div>
 										<div class="d-inline">

@@ -28,7 +28,7 @@
     
     <div class="container gs-top px-5">
 		<div class="row justify-content-center">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<div class="card my-5 p-4 text-center">
 					<h3>Welcome back!</h3>
 					<div class="col my-3">
@@ -47,7 +47,7 @@
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="colFormLabel" placeholder="password" required>
 							</div>
-							<button class="btn btn-gs-red px-4" type="submit" name="login" value="Login">Login</button> <br/> <br/>
+							<button class="btn btn-gs-red w-25" type="submit" name="login" value="Login">Login</button> <br/> <br/>
 							<span>Not a member yet? <a href="register" style="color: red;">Join now</a></span>
 						</form>
 					</div>

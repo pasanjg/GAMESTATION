@@ -19,6 +19,14 @@ a{
 .gs-top{
   	margin-top: 70px;
  }
+ 
+.fa, .fas{
+ 	color: red !important;
+}
+ 
+.fa:hover, .fas:hover{
+ 	color: #ff6060!important;
+}
 
 #navSearchBar{
 	width: 400px;
@@ -228,8 +236,6 @@ embed {
 .card {
 	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	margin-bottom: 25px;
-	padding-top: 20px;
 	transition: 0.3s;
 }
 

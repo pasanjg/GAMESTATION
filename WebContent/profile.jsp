@@ -142,7 +142,7 @@
 						%>
 
 							<div class="col-sm-12 col-md-6 col-lg-4">
-								<div class="card text-center pt-4">
+								<div class="card text-center mb-4 pt-4">
 									<a href="play-game?GameID=<%= gameID %>" style="color: black">
 										<img src="images/<%= gameID %>.jpg" height="135" alt="<%= gameID %>" style="margin: auto;">
 									</a>

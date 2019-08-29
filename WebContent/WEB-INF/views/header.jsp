@@ -24,20 +24,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        
+    <script src="https://kit.fontawesome.com/64e4326dc2.js"></script>
 
         <%
 			User user = (User) session.getAttribute("currentSessionUser");
-			
 			String type = (String)request.getAttribute("type");
-			
 		%>
 
     <style>
       
-		
     </style>
+    
     <link rel="shortcut icon" href="favicon.ico" />
-
 
     <script type="text/javascript">
 
@@ -55,7 +54,6 @@
         }
 
     </script>
-
 
 </head>
 

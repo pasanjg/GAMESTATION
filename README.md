@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/pasanjg/GAMESTATION/master/WebContent/images/GameStation.png?token=AKRHLVS2IIUV5WHXYVGSDO25NDEJM">
+![Image](WebContent/images/GameStation.png)
 
 
 # JSP/SERVLET WEB APPLICATION

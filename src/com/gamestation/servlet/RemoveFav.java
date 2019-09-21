@@ -20,44 +20,47 @@ import com.gamestation.service.IGameService;
 @WebServlet("/remove-fav")
 public class RemoveFav extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RemoveFav() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		String gameID = request.getParameter("GameID");
-		
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("currentSessionUser");
-		
-		IGameService iGameService = new GameServiceImpl();
-		iGameService.removeFav(user.getUserID(), gameID);
-		
-		String confirm = "Game removed from Favourites!";
-		request.setAttribute("confirm", confirm);
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
-		dispatcher.forward(request, response);
-		
+	public RemoveFav() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+
+		String gameID = request.getParameter("GameID");
+
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("currentSessionUser");
+
+		IGameService iGameService = new GameServiceImpl();
+		iGameService.removeFav(user.getUserID(), gameID);
+
+		String confirm = "Game removed from Favourites!";
+		request.setAttribute("confirm", confirm);
+
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
 	}
 
 }

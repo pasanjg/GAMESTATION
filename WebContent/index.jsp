@@ -14,170 +14,116 @@
     <title>GameStation | Online Gaming Site</title>
         
     <style>
-        
-        .mainImage{
-            width: auto;
-            text-align: center;
-            height: 500px;
-            background-image: url(images/banner.jpg);
-			background-size: cover;
-    		background-repeat: no-repeat;
-    		background-position: center center;
-    		margin-top: 70px;
-        }
-        
-        .gamers{
-            width: auto;
-            text-align: center;
-            color: white;
-            background-color: #e74c3c;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            height: auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 40px;
-        }
-        
-        .subContent{
-        	background-size: contain;
-        	background-repeat: no-repeat;
-        	background-position: center center;
-        	transition: transform 0.1s;
-        }
-        
-        .subContent:hover{
-			transform: scale(1.1);
-        }
-        
-        .gamers a{
-        	transition: color 0.2s;
-        }
-                
-        .gamers a:hover{
-        	color: #FFB900;
-        }
-        
-        .about{
-            width: auto;
-            height: 300px;
-            text-align: left;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 20px;
-            padding-top: 10px;
-        }
-        
-        .aboutContent{
-            width: 800px;
-            height: 200px;
-            font-size: 20px;
-            float: left;
-        }
-        
-        .mainLogo{
-            width: 200px;
-            height: 200px;
-            background-image: url(images/logo.png);
-            background-size: cover;
-    		background-repeat: no-repeat;
-    		background-position: center center;
-            float: right;
-        }
-        
-        table #heading{
-            font-size: 30px;
-        }
-        
-        a{
-        	text-decoration: none;
-        	color: inherit;
-        }
-        
-        
-    </style>
 
+    </style>
         
     </head>
     <body>
-
-	<!-- 
-	<div class="mainImage">
-        
-    </div>
-    -->
+    
+    <div class="container-fluid px-0">
     
     <jsp:include page="WEB-INF/views/carousel.jsp"/>
     
-    <div class="gamers">
-        <h1>GAMERS ON ANY PLATFORM</h1>
-        <table width="1200" align="center">
-        <tr id="heading">
-            <th width="300" height="50">PlayStation</th>
-            <th width="300" height="50">PC</th>
-            <th width="300" height="50">Xbox</th>
-        </tr>
-        <tr>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/ps4.png); background-size: cover;"></th>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/pc.png); background-size: cover;"></th>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/xboxone.png); background-size: cover;"></th>
-        </tr>
-        <tr id="heading">
-        <%if(user == null){ %>
-        	<th colspan="3"><a href="register">Register Now!</a></th>
-        <%}else{ %>
-        	<th colspan="4"><a href="games">Play Now!</a></th>
-        <%} %>
-        </tr>
-        </table>
-    </div>
-    
-    <div class="gamers" style="background-color: #717171;">
-        <h1>GAMING CATEGORIES</h1>
-        <table width="1200" align="center">
-        <tr id="heading">
-            <th width="300" height="50">Action</th>
-            <th width="300" height="50">Racing</th>
-            <th width="300" height="50">Sports</th>
-            <th width="300" height="50">Puzzle</th>
-        </tr>
-        <tr>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/action.png);"></th>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/racing.png);"></th>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/sports.png);"></th>
-            <th class="subContent" width="300" height="300" style="background-image: url(images/puzzle.png);"></th>
-        </tr>
-        <tr id="heading">
-        <%if(user == null){ %>
-        	<th colspan="4"><a href="register">Register Now!</a></th>
-        <%}else{ %>
-        	<th colspan="4"><a href="games">Play Now!</a></th>
-        <%} %>
-        </tr>
-        </table>
-    </div>
-    
-    <div class="gamers" style="background-color: white;">
-        <h1 style="color: black;">PlayerUnknown's Battlegrounds Gameplay</h1>
-        
-        <iframe width="1200" height="540" src="https://www.youtube-nocookie.com/embed/dHuk72sMljE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        
-    </div>
-        
-    <div class="about">
-        <h1>About Us</h1>
-        <div class="aboutContent">
-            <p>
-                Welcome to GameStation. This is the best platform to all your gaming related needs that also helps players to communicate with the most up-to-date technology.
-                <br/>GameStation is a high-end enthusiast online gaming site offering the best in high performance gaming with a reliable and exceptional customer service.
-            </p>
+    <div class="main col-md-12 text-center text-white my-5 py-5" style="background-color: #e74c3c;">
+        <div class="container">
+            <strong><h3 class="font-weight-bold">GAMERS ON ANY PLATFORM</h3></strong><br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>PlayStation</h3>
+                    <img class="img-responsive sub-content" src="images/ps4.png"/>
+                </div>
+            
+                <div class="col-md-4">
+                    <h3>PC</h3>
+                    <img class="img-responsive sub-content" src="images/pc.png"/>
+                </div>
+            
+                <div class="col-md-4">
+                    <h3>Xbox</h3>
+                    <img class="img-responsive sub-content" src="images/xboxone.png"/>
+                </div>
+            </div>
+            
+            <%if(user == null){ %>
+                <h2 colspan="3"><a href="register">Register Now!</a></h2>
+            <%}else{ %>
+                <h2 colspan="4"><a href="games">Play Now!</a></h2>
+            <%} %>
+            
         </div>
-        <div class="mainLogo"></div>
+    </div>
+    
+    <div class="main col-md-12 text-center text-white my-5 py-5" style="background-color: #717171;">    
+        <div class="container">
+            <strong><h3 class="font-weight-bold">GAMING CATEGORIES</h3></strong><br>
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Action</h3>
+                    <img class="img-responsive sub-content" src="images/action.png"/>
+                </div>
+            
+                <div class="col-md-3">
+                    <h3>Racing</h3>
+                    <img class="img-responsive sub-content" src="images/racing.png"/>
+                </div>
+            
+                <div class="col-md-3">
+                    <h3>Sports</h3>
+                    <img class="img-responsive sub-content" src="images/sports.png"/>
+                </div>
+                
+                <div class="col-md-3">
+                    <h3>Puzzle</h3>
+                    <img class="img-responsive sub-content" src="images/puzzle.png"/>
+                </div>
+            </div><br>
+            
+            <%if(user == null){ %>
+                <h2 colspan="3"><a href="register">Register Now!</a></h2>
+            <%}else{ %>
+                <h2 colspan="4"><a href="games">Play Now!</a></h2>
+            <%} %>
+            
+        </div>
+    </div>
+    
+    <div class="main col-md-12 text-center my-5 py-5">
+    	<div class="container">
+    		<h1>PlayerUnknown's Battlegrounds Gameplay</h1><br>
+        	<div class="embed-container">
+        	<iframe src='https://www.youtube.com/embed/dHuk72sMljE' frameborder='0' allowfullscreen></iframe>
+        	</div>
+    	</div>
+    </div>
+        
+    <div class="main col-md-12 my-5 py-5 text-center">
+    	<div class="container">
+    	<h1>About Us</h1><br>
+    		<div class="row">
+            	<div class="col-md-9 text-left justify-content">
+                	<p>
+                    	"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta 
+                        sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
+                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem 
+                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt 
+                        ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem 
+                        ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
+                        reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+                        eum fugiat quo voluptas nulla pariatur?"
+                	</p>
+            	</div>
+            	<div class="col-md-3 sub-content">
+        	    	<img class="img-responsive" src="images/logo.png"/>
+            	</div>            	
+        	</div>
+    	</div>
     </div>
     
     <jsp:include page="WEB-INF/views/scrolltop.jsp"/>
     
 	<jsp:include page="WEB-INF/views/footer.jsp"/>
+	
+	</div>
 </body>
 </html>

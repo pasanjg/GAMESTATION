@@ -22,96 +22,6 @@
 	
 	<style>
 
-        h1{
-			color:black;
-			text-align: center;
-			font-size:60px;
-            margin: 80px;
-		}
-        
-		body{
-			
-			margin: 0px;
-		}
-        
-        .content{
-            width: 600px;
-            height: auto;
-            color: black;
-            background-color: white;
-            margin-top: 170px;
-            margin-left:auto;
-            margin-right: auto;
-            margin-bottom: 100px;
-            padding: 5px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-		.container{
-			width:600px;
-			height:auto;
-            text-align: center;
-			margin-top:50px;
-			margin-bottom: 100px;
-			text-align: center;
-		}
-		
-		.container img{
-			width:100px;
-			height:100px;
-			margin-top:-60px;
-			margin-bottom:30px;
-		}
-        
-        .container td{
-            text-align: left;
-            vertical-align: baseline;
-        }
-
-		input[type="text"], input[type="password"], input[type="email"], input[list="platform"], input[list="question"], input[list="country"]{
-			width:280px;
-			height:20px;
-            font-size: 16px;
-			margin-bottom: 20px;
-			border:1px solid gray;
-            border-radius: 5px;
-			padding:5px;
-		}
-        
-        a{
-            text-decoration: none;
-            color: dodgerblue;
-        }
-        
-        a:hover{
-            color: #e74c3c;
-        }
-
-		input[type="submit"], input[type="reset"]{
-			height: 40px;
-			width: 80px;
-			font-size: 16px;
-			color: white;
-			background-color: red;
-			border: 1px solid red;
-			border-radius: 5px;
-			transition: background-color 0.2s ease-in-out;
-		}
-        
-        input[type="submit"]:hover{
-			color: red;
-			background-color: white;
-			border: 1px solid red;
-			border-radius: 5px;
-		}
-        
-        input[type="reset"]:hover{
-			color: red;
-			background-color: white;
-			border: 1px solid red;
-			border-radius: 5px;
-		}
-        
 	</style>
 	
 	<script type="text/javascript">
@@ -136,121 +46,83 @@
 	
 </head>
 <body>
-    
-    <div class="content">
-	<h1>Register</h1>
-	<div class = "container">
-		<img src = "images/signup.png" alt = "Avatar">
-		
-		<% if(delete_confirm != null) { %>
-        	<p style="color: red;"><%= delete_confirm %></p>
-        <%} %>
-		
-		<form method="POST" action="register" method="post" onsubmit="return checkPassword();">
-			<table align="center">
 
-				<tr>
-					<td>First Name </td>
-					<td>
-						<input type="text" name="firstName" required>
-					</td>
-				</tr>
-                
-                <tr>
-					<td>Last Name </td>
-					<td>
-						<input type="text" name="lastName" required>
-					</td>
-				</tr>
+    <div class="container gs-top px-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card my-5 p-4 text-center">
+					<h3>Register Now!</h3>
+					<div class="col my-3">
+						<img class="img-responsive" src="images/signup.png" width="100" height="100" alt="Avatar">
+					</div>
+					
+					<% if(delete_confirm != null) { %>
+        				<p style="color: red;"><%= delete_confirm %></p>
+        			<%} %>
+					
+					<div class="card-body">
+						<form method="POST" action="register" method="post" onsubmit="return checkPassword();" autocomplete="off">
+							<div class="form-group">
+								<input type="text" class="form-control" name="firstName" id="colFormLabel" placeholder="First Name" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="lastName" id="colFormLabel" placeholder="Last Name" required>
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" name="email" id="colFormLabel" placeholder="Email" required>
+							</div>
+							<div class="form-group">
+								<div class="custom-control custom-radio custom-control-inline">
+  									<input type="radio" id="male" name="gender" value="Male" class="custom-control-input" required>
+ 								 	<label class="custom-control-label" for="male">Male</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+  									<input type="radio" id="female" name="gender" value="Female" class="custom-control-input" required>
+  									<label class="custom-control-label" for="female">Female</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<select class="custom-select" name="country" placeholder="Select your country" required>
+									<option value="" disabled selected>Select your option</option>
+									<option value="Sri Lanka">Sri Lanka</option>
+									<option value="India">India</option>
+									<option value="China">China</option>
+									<option value="United States">United States</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<select class="custom-select" name="platform" required>
+									<option value="" disabled selected>Select your platform</option>
+									<option value="PC">PC</option>
+									<option value="Playstation">PlayStation</option>
+									<option value="Xbox">Xbox</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="userName" id="colFormLabel" placeholder="username" required>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password1" onKeyUp="checkPassword()" id= "pass1" placeholder="Password" required>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password2" onKeyUp="checkPassword()" id= "pass2" placeholder="Confirm password" required>
+							</div>
 
-				<tr>
-					<td>Gender </td>
-					<td>
-						<input type="radio" name="gender" value="Male" required>Male
-						<input type="radio" name="gender" value="Female" required>Female<br/>&nbsp;
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Country </td>
-					<td>
-						<input list="country" name="country" placeholder="Select country" required>
-						<datalist id="country">
-							<option value="Sri Lanka">
-							<option value="India">
-                            <option value="China">
-                            <option value="United States">
-						</datalist>
-                    </td>
-				</tr>
-                
-                <tr>
-					<td>Gaming Platform </td>
-					<td>
-						<input list="platform" name="platform" placeholder="Select one" required>
-						<datalist id="platform">
-							<option value="PC">
-							<option value="PlayStation">
-                            <option value="Xbox">
-						</datalist>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Username </td>
-					<td>
-						<input type="text" name="userName" required>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Password </td>
-					<td>
-						<input type="password" name="password1" onKeyUp="checkPassword()" id= "pass1" required>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Confirm Password &emsp;</td>
-					<td>
-						<input type="password" name="password2" onKeyUp="checkPassword()" id= "pass2" required>
-					</td>
-				</tr>
-
-				<tr>
-					<td>Email Address </td>
-					<td>
-						<input type="email" name="email" required>
-					</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" style="text-align: center;">
-						<span id="status" style="color: red;"></span>
-						<br> &nbsp;
-					</td>
-				</tr>
-				
-				<tr>
-                    <td>
-                    	
-                    </td>
-					<td>
-						<input type="reset" name="reset" value="Reset">
-						<input type="submit" name="register" value="Submit">					
-					</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" style="text-align: center;"> 
-						<br> <span>Already a member? <a href="login">Log in</a></span> 
-					</td>
-				</tr>
-
-			</table>
-		</form>
+							<div class="form-group">
+								<span id="status" style="color: red;"></span>
+							</div>
+							
+							<button class="btn btn-gs-red px-4" type="reset" name="login" value="Login">Reset</button>
+							<button class="btn btn-gs-red px-4" type="submit" name="login" value="Login">Submit</button> <br/> <br/>
+							<span>Already a member? <a href="login" style="color: red;">Log in</a></span> 
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-    </div>
+    
     <jsp:include page="WEB-INF/views/footer.jsp"/>
+    
 </body>
 </html>

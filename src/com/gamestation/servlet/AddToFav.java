@@ -20,50 +20,53 @@ import com.gamestation.service.IGameService;
 @WebServlet("/add-fav")
 public class AddToFav extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddToFav() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("currentSessionUser");
-		
-		if(user != null) {
-		
-			String gameID = request.getParameter("favourite");
-		
-			IGameService iGameService = new GameServiceImpl();
-			iGameService.addToFav(user.getUserID(), gameID);
-		
-			String confirm = "Game added to Favourites!";
-			request.setAttribute("confirm", confirm);
-		
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
-			dispatcher.forward(request, response);
-		
-		}
-		else {
-			
-			response.sendRedirect("login");
-			
-		}
-		
+	public AddToFav() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("currentSessionUser");
+
+		if (user != null) {
+
+			String gameID = request.getParameter("favourite");
+
+			IGameService iGameService = new GameServiceImpl();
+			iGameService.addToFav(user.getUserID(), gameID);
+
+			String confirm = "Game added to Favourites!";
+			request.setAttribute("confirm", confirm);
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
+			dispatcher.forward(request, response);
+
+		} else {
+
+			response.sendRedirect("login");
+
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

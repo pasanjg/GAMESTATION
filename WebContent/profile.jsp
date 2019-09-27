@@ -36,11 +36,6 @@
 	
 	<style>
 
-        
-        
-        
-		
-        
 	</style>
 	
 </head>
@@ -68,28 +63,23 @@
 							<td align="left"><b>Name </td>
 							<td align="right"><b><%= user.getFirstName() + " " + user.getLastName() %></td>
 						</tr>
-
 						<tr>
 							<td align="left"><b>From</td>
 							<td align="right"><b><%= user.getCountry() %></td>
 						</tr>
-
 						<tr>
 							<td align="left"><b>Platform</td>
 							<td align="right"><b><%= user.getPlatform() %></td>
 						</tr>
-
 						<tr>
 							<td align="left"></td>
 							<td align="right">
-									<a href="edit-profile">
-										<button type="submit" class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;">
-											<i class="material-icons">&#xe3c9;</i>
-										</button>
-									</a>
-						
+								<a href="edit-profile">
+									<button type="submit" class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;">
+										<i class="material-icons">&#xe3c9;</i>
+									</button>
+								</a>
 							</td>
-							
 						</tr>
 						<tr>
 							<td colspan="2" align="center"> 
@@ -99,8 +89,6 @@
 							</td>
 						</tr>
 					</table>
-
-					
 				</div>
 
 				<div class="col-sm-12" id="profile-details">

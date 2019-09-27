@@ -21,136 +21,52 @@
 	
 	<style>
 	
-		img{
-			margin-top: 40px;
-		}
-
-        h1{
-			color:black;
-			margin-top: 0px;
-			text-align: center;
-			font-size: 30px;
-            transition: color 0.15s;
-		}
-		
-		h1:hover{
-			color: red;
-		}
-        
-		body{
-			
-			margin: 0px;
-		}
-        
-        .mainArea{
-            width: auto;
-            min-height: 600px;
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 70px;
-            margin-left: 20px;
-            margin-right: 20px;
-            padding: 15px;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-        }
-        
-        .sideBar{
-            width: 500px;
-            height: 560px;
-            margin-top: auto;
-            padding: 20px;
-            float: left;
-        }
-        
-        .content{
-            width: auto;
-            height: 560px;
-            margin-top: auto;
-            padding: 20px;
-            float: left;
-        }
-        
-        .mainArea table td{
-        	width: 50%;
-        	height: auto;
-        	text-align: center;
-        	padding: 10px;
-        	vertical-align: baseline;
-        }
-        
-        input[type="submit"], .contact{
-			height: 40px;
-			width: auto;
-			font-size: 16px;
-			color: white;
-			background-color: red;
-			border: 1px solid red;
-			border-radius: 5px;
-			transition: background-color 0.2s ease-in-out;
-		}
-        
-        input[type="submit"]:hover, .contact:hover{
-			color: red;
-			background-color: white;
-			border: 1px solid red;
-			border-radius: 5px;
-		}
-        
-
 	</style>
 	
 </head>
 <body>
 
-	<div class="mainArea" style="min-height: auto; margin-bottom: 0px; margin-top: 120px; padding: 1px;">
-		<h2>All Games</font></h2>
+<div class="container gs-top">
+	<div class="row">
+		<div class="col-md-12 mx-2 my-5 p-0" id="profile-main">
+			<div id="top-bar" class="text-center mb-4">
+				<h2>All Games</h2>
+			</div>
+			<div class="row">
+       			<% for(Game showGame : gameList) { %>
+	        		<div class="col-sm-6 col-md-4 col-lg-3">
+						<div class="card text-center mb-4 pt-4">
+							<a href="play-game?GameID=<%= showGame.getGameID() %>" style="color: black">
+								<img src="images/<%= showGame.getGameID() %>.jpg" width="100" height="100" alt="<%= showGame.getgameName() %>">
+							</a>
+							<div class="card-container">
+								<p><strong><%=showGame.getgameName() %></strong><br>
+				        		Category: <%=showGame.getcategory() %></p>
+								
+								<div class="mb-2">
+								<form method="GET" action="play-game">
+												<input type="hidden" name="GameID" value="<%= showGame.getGameID() %>">
+									 			<input class="btn btn-gs-red" type="submit" value="Play Game"/>
+									 		</form>
+								</div>
+								<div class="my-2">
+							 		<form method="GET" action="add-fav">
+										<input type="hidden" name="favourite" value="<%= showGame.getGameID() %>">
+							 			<input class="btn btn-gs-red" type="submit" value="Add to Favourites"/>
+							 		</form>
+								</div>
+							</div>
+						</div>
+					</div>
+       			<% } %>
+			</div>
+		</div>
 	</div>
+</div>
     
-    <div class="mainArea">
+<jsp:include page="scrolltop.jsp"/>
     
-        	<table align="center">
-        	<% for(Game showGame : gameList) { %>
-        		<tr>
-        			<td colspan="2" style="width: 500px">
-        				<!-- Add game image & details -->
-        				<a href="play-game?GameID=<%= showGame.getGameID() %>" style="color: black">
-        					<img src="images/<%= showGame.getGameID() %>.jpg" width="150" alt="<%= showGame.getgameName() %>">
-        					<h2><%=showGame.getgameName() %></h2>
-        					<h3>Category: <%=showGame.getcategory() %></h3>
-        				</a>
-        				
-        			</td>
-	
-        			<td style="width: 50px">
-        				<!-- Add buttons -->
-        				<form method="GET" action="play-game">
-							<input type="hidden" name="GameID" value="<%= showGame.getGameID() %>">
-				 			<input type="submit" value= "Play Game"/>
-				 		</form>
-				 	</td>
-				 	
-				 	<td style="width: 100px">	
-				 		<form method="GET" action="add-fav">
-							<input type="hidden" name="favourite" value="<%= showGame.getGameID() %>">
-				 			<input type="submit" value= "Add to Favourites"/>
-				 		</form>
-        			</td>
-        		</tr>
-        		
-        		<tr>
-        			<td colspan="3"><hr></td>
-        		</tr>
-        		
-        	
-        	<% } %>
-        	</table>
-        
-    </div>
-    
-    <jsp:include page="scrolltop.jsp"/>
-    
-    <jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"/>
     
 </body>
 </html>

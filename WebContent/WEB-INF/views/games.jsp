@@ -30,7 +30,7 @@
 	<div class="row">
 		<div class="col-md-12 mx-2 my-5 p-0" id="profile-main">
 			<div id="top-bar" class="text-center mb-4">
-				<h2>All Games</h2>
+				<h3>All Games</h3>
 			</div>
 			<div class="row ml-0 mr-0">
        			<% for(Game showGame : gameList) { %>

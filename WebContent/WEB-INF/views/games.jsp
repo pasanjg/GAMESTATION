@@ -32,7 +32,7 @@
 			<div id="top-bar" class="text-center mb-4">
 				<h2>All Games</h2>
 			</div>
-			<div class="row">
+			<div class="row ml-0 mr-0">
        			<% for(Game showGame : gameList) { %>
 	        		<div class="col-sm-6 col-md-4 col-lg-3">
 						<div class="card text-center mb-4 pt-4">
@@ -46,13 +46,13 @@
 								<div class="mb-2">
 								<form method="GET" action="play-game">
 												<input type="hidden" name="GameID" value="<%= showGame.getGameID() %>">
-									 			<input class="btn btn-gs-red" type="submit" value="Play Game"/>
+									 			<input class="btn btn-gs-red w-100" type="submit" value="Play Game"/>
 									 		</form>
 								</div>
 								<div class="my-2">
 							 		<form method="GET" action="add-fav">
 										<input type="hidden" name="favourite" value="<%= showGame.getGameID() %>">
-							 			<input class="btn btn-gs-red" type="submit" value="Add to Favourites"/>
+							 			<input class="btn btn-gs-red w-100" type="submit" value="Add to Favourites"/>
 							 		</form>
 								</div>
 							</div>

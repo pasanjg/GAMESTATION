@@ -73,7 +73,7 @@ public class DeleteProfile extends HttpServlet {
 			String delete_error = "Current password did not match!";
 			request.setAttribute("delete_error", delete_error);
 
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/getProfile.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/settings.jsp");
 			dispatcher.forward(request, response);
 
 		}

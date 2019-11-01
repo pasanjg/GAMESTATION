@@ -152,7 +152,7 @@
 				</tr>
 				
 				<tr>
-					<td colspan="2" align="center"> <a href="edit-profile"><input type="button" value="Edit Profile"></a></td>
+					<td colspan="2" align="center"> <a href="settings"><input type="button" value="Edit Profile"></a></td>
 				</tr>
 				
 				<tr>

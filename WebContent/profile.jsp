@@ -74,7 +74,7 @@
 						<tr>
 							<td align="left"></td>
 							<td align="right">
-								<a href="edit-profile">
+								<a href="settings">
 									<button type="submit" class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;">
 										<i class="material-icons">&#xe3c9;</i>
 									</button>

@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet("/settings")
-public class EditProfile extends HttpServlet {
+public class Settings extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditProfile() {
+	public Settings() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -58,27 +58,27 @@
 				<div class="tablinks" style="color: gray"
 					onclick="openTab(this, 'edit-profile', 'green')" id="defaultOpen">
 					<span style="font-size: 1.5rem;">
-						<h5>
+						<h6>
 							<i class="fas fa-user-edit"></i> Edit Profile
-						</h5>
+						</h6>
 					</span>
 				</div>
 				<hr>
 				<div class="tablinks" style="color: gray"
 					onclick="openTab(this, 'change-pass', 'blue')">
 					<span style="font-size: 1.5rem;">
-						<h5>
+						<h6>
 							<i class="fas fa-key"></i> Change Password
-						</h5>
+						</h6>
 					</span>
 				</div>
 				<hr>
 				<div class="tablinks" style="color: gray"
 					onclick="openTab(this, 'delete-account', 'red')">
 					<span style="font-size: 1.5rem;">
-						<h5>
+						<h6>
 							<i class="fas fa-minus-circle"></i> Delete Account
-						</h5>
+						</h6>
 					</span>
 				</div>
 			</div>
@@ -86,7 +86,7 @@
 				<div id="top-bar" class="text-center px-3">
 					<h3>Settings</h3>
 				</div>
-				<div class="row ml-0 mr-0 pb-4 px-3">
+				<div class="row ml-0 mr-0 pb-4 px-3" style="max-height: 400px;">
 					<div class="m-auto w-100 text-center">
 						<%
 							if (error != null) {
@@ -110,7 +110,7 @@
 					</div>
 
 					<div id="edit-profile"
-						class="tabcontent-settings m-auto w-100 pt-4 px-5">
+						class="tabcontent-settings m-auto w-100 pt-4 px-5" style="max-height: 360px">
 						<!-- SECTION 01 -->
 						<%
 							if (user != null) {
@@ -194,7 +194,7 @@
 									<td>
 										<div class="form-group">
 											<input class="custom-select" list="platform" name="platform"
-												placeholder="Select one" value="<%=user.getPlatform()%>"
+												placeholder="Select your platform" value="<%=user.getPlatform()%>"
 												required>
 											<datalist id="platform">
 												<option value="PC">
@@ -223,7 +223,7 @@
 						%>
 					</div>
 
-					<div id="change-pass" class="tabcontent-settings m-auto w-100 px-5">
+					<div id="change-pass" class="tabcontent-settings m-auto px-5" style="max-height: 360px">
 						<!-- SECTION 02 -->
 						<form onsubmit="return checkPassword();" method="POST"
 							action="update-password">
@@ -275,7 +275,7 @@
 					</div>
 
 					<div id="delete-account"
-						class="tabcontent-settings m-auto w-100 p-5 px-5">
+						class="tabcontent-settings m-auto p-5 px-5" style="max-height: 360px">
 						<!-- SECTION 03 -->
 						<form onSubmit="return checkProceed()" method="POST"
 							action="delete-profile">

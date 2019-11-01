@@ -3,186 +3,143 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.gamestation.service.IContactService"%>
 <%@page import="com.gamestation.service.ContactServiceImpl"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="header.jsp"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:include page="header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 
-	<%
-    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	
-		String deleteMsg = (String) request.getAttribute("deleteMsg");
-		
-		User user = (User) session.getAttribute("currentSessionUser");
-		
-		IContactService iContactService = new ContactServiceImpl();
-		ArrayList<Contact> contactList = new ArrayList<Contact>();
-		contactList = iContactService.getMessages();
-		
-		if(user == null || user.getType().equals("user")){
-			
-			response.sendRedirect("index.jsp");
-		}
-				
-    %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-	<title>Messages | GameStation </title>
-	
-	<style>
-	
-		img{
-			margin-top: 40px;
-		}
+	String deleteMsg = (String) request.getAttribute("deleteMsg");
+	User user = (User) session.getAttribute("currentSessionUser");
 
-        h1{
-			color:black;
-			margin-top: 0px;
-			text-align: center;
-			font-size: 30px;
-            transition: color 0.15s;
-		}
-		
-		h1:hover{
-			color: red;
-		}
-        
-		body{
-			
-			margin: 0px;
-		}
-        
-        .mainArea{
-            width: auto;
-            min-height: 600px;
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 70px;
-            margin-left: 20px;
-            margin-right: 20px;
-            padding: 15px;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-        }
-        
-        .sideBar{
-            width: 500px;
-            height: 560px;
-            margin-top: auto;
-            padding: 20px;
-            float: left;
-        }
-        
-        .content{
-            width: auto;
-            height: 560px;
-            margin-top: auto;
-            padding: 20px;
-            float: left;
-        }
-        
-        .mainArea table td{
-        	width: 40%;
-        	height: auto;
-        	text-align: center;
-        	padding: 10px;
-        }
-        
-        input[type="submit"], .contact{
-			height: 40px;
-			width: auto;
-			font-size: 16px;
-			color: white;
-			background-color: red;
-			border: 1px solid red;
-			border-radius: 5px;
-			transition: background-color 0.2s ease-in-out;
-		}
-        
-        input[type="submit"]:hover, .contact:hover{
-			color: red;
-			background-color: white;
-			border: 1px solid red;
-			border-radius: 5px;
-		}
-        
+	IContactService iContactService = new ContactServiceImpl();
+	ArrayList<Contact> contactList = new ArrayList<Contact>();
+	contactList = iContactService.getMessages();
 
-	</style>
-	
+	if (user == null || user.getType().equals("user")) {
+
+		response.sendRedirect("index.jsp");
+	}
+%>
+
+<title>Messages | GameStation</title>
+
+<style>
+</style>
+
 </head>
 <body>
 
-	<div class="mainArea" style="min-height: auto; margin-bottom: 0px; margin-top: 120px; padding: 1px;">
-		<h2>You have <font color="red"><%= contactList.size() %></font> messages to respond</h2>
-		<% if(deleteMsg != null) { %>
-        	<p style="color: green;" align="center"><br/><%= deleteMsg %></p>
-        <%} %>
-	</div>
-    
-    <div class="mainArea">
-      	<%if(contactList.size() != 0) { %>
-      	<div style="max-width: 900px; margin: auto;">
-        	<table align="center">
-        	<h4>Delete messages once you have taken actions!</h4>
-        	
-        	<% for(Contact showMessage : contactList) { %>
-        		<tr>
-        		
-        			<td style="text-align: left;"><b>Message ID</b></td>
-        			<td style="text-align: left;"><%= showMessage.getMessageID() %></td>
-        			<td rowspan="4">	
-				 		<form method="POST" action="delete-message">
-							<input type="hidden" name="mid" value="<%= showMessage.getMessageID() %>">
-				 			<input type="submit" value= "Delete"/>
-				 		</form>
-        			</td>
-        			
-        		</tr>
+	<div class="container gs-top">
+		<div class="row">
+			<div class="col-md-12 mx-2 my-5 p-0" id="profile-main"
+				style="height: 500px">
+				<div id="top-bar" class="text-center mb-4">
+					<h4>
+						You have <font color="red"><%=contactList.size()%></font> messages
+						to respond
+					</h4>
+				</div>
+				<div class="row ml-0 mr-0" style="max-height: 425px; overflow: auto">
 
-        		<tr>
-        			
-        			<td style="text-align: left;"><b>From</b></td>
-        			<td style="text-align: left;"><%= showMessage.getName() %></td>
-        		
-        		</tr>
-        		
-        		<tr>
-        			
-        			<td style="text-align: left;"><b>Email</b></td>
-        			<td style="text-align: left;"><%= showMessage.getEmail() %></td>
-        		
-        		</tr>
-        		
-        		<tr>
-        		
-        			<td colspan="3" style="text-align: center; overflow: auto;">
-        				<b>Message</b><br/><br/>
-        				<%= showMessage.getMessage() %>
-        			</td>
-        		
-        		</tr>
-        		
-        		<tr>
-        			<td colspan="3"><hr></td>
-        		</tr>
-        		
-        	
-        	<% } %>
-        	</table>
-        </div>
-		<%}else{ %>
-		
-			<img align="middle" src="images/error.png">
-			
-			<h2 style="color: dimgray;">No Messages</h2>
-		
-		<%} %>
-        
-    </div>
-    
-    <jsp:include page="scrolltop.jsp"/>
-    
-    <jsp:include page="footer.jsp"/>
-    
+					<%
+						if (contactList.size() != 0) {
+					%>
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Ref. ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								for (Contact showMessage : contactList) {
+							%>
+							<tr>
+								<th scope="row"><%=showMessage.getMessageID()%></th>
+								<td><%=showMessage.getName()%></td>
+								<td><%=showMessage.getEmail()%></td>
+								<td>
+									<button class="btn btn-gs-red" data-toggle="modal"
+										data-target="#<%=showMessage.getMessageID()%>">View</button> <%-- <form method="POST" action="delete-message">
+										<input type="hidden" name="mid"
+											value="<%=showMessage.getMessageID()%>"> <input
+											type="submit" value="Delete" class="btn btn-gs-red" />
+									</form> --%>
+								</td>
+
+								<div class="modal fade" id="<%=showMessage.getMessageID()%>"
+									tabindex="-1" role="dialog" aria-labelledby=""
+									aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="">
+													<%=showMessage.getName()%>
+												</h4>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<h6>
+													Email:
+													<%=showMessage.getEmail()%></h6>
+												<h6>Date: 2019-10-20</h6>
+												<p>
+													<%=showMessage.getMessage()%>
+												</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-gs-red"
+													data-dismiss="modal">Close</button>
+												<!-- <button type="button" class="btn btn-gs-green">Save
+													changes</button> -->
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
+
+					<%
+						} else {
+					%>
+
+					<div class="col text-center">
+						<img class="img-responsive" src="images/error.png">
+						<h4>Oops! No messages</h4>
+						<h5 class="text-secondary mb-4">
+							New messages from gamers appear here. <br> Make sure to
+							respond immediately
+						</h5>
+					</div>
+
+					<%
+						}
+					%>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="scrolltop.jsp" />
+
+	<jsp:include page="footer.jsp" />
+
 </body>
 </html>

@@ -43,7 +43,8 @@
 						to respond
 					</h4>
 				</div>
-				<div class="row ml-0 mr-0" style="max-height: 425px; overflow: auto">
+				<div class="row ml-0 mr-0 px-3"
+					style="max-height: 425px; overflow: auto">
 
 					<%
 						if (contactList.size() != 0) {
@@ -72,12 +73,11 @@
 										<input type="hidden" name="mid"
 											value="<%=showMessage.getMessageID()%>"> <input
 											type="submit" value="Delete" class="btn btn-gs-red" />
-									</form> --%>
+										</form> --%>
 								</td>
 
 								<div class="modal fade" id="<%=showMessage.getMessageID()%>"
-									tabindex="-1" role="dialog" aria-labelledby=""
-									aria-hidden="true">
+									tabindex="-1" role="dialog" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
 											<div class="modal-header">

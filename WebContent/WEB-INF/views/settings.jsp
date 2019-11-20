@@ -55,7 +55,7 @@
 	<div class="container gs-top">
 		<div class="row pt-5">
 			<div class="col-sm-12 col-md-3 mt-5 p-4 h-auto" id="profile-details">
-				<div class="tablinks" style="color: gray"
+				<div class="tablinks" style="color: gray; cursor: pointer;"
 					onclick="openTab(this, 'edit-profile', 'green')" id="defaultOpen">
 					<span style="font-size: 1.5rem;">
 						<h6>
@@ -64,7 +64,7 @@
 					</span>
 				</div>
 				<hr>
-				<div class="tablinks" style="color: gray"
+				<div class="tablinks" style="color: gray; cursor: pointer;"
 					onclick="openTab(this, 'change-pass', 'blue')">
 					<span style="font-size: 1.5rem;">
 						<h6>
@@ -73,7 +73,7 @@
 					</span>
 				</div>
 				<hr>
-				<div class="tablinks" style="color: gray"
+				<div class="tablinks" style="color: gray; cursor: pointer;"
 					onclick="openTab(this, 'delete-account', 'red')">
 					<span style="font-size: 1.5rem;">
 						<h6>
@@ -110,7 +110,8 @@
 					</div>
 
 					<div id="edit-profile"
-						class="tabcontent-settings m-auto w-100 pt-4 px-5" style="max-height: 360px">
+						class="tabcontent-settings m-auto w-100 pt-4 px-5"
+						style="max-height: 360px">
 						<!-- SECTION 01 -->
 						<%
 							if (user != null) {
@@ -194,8 +195,8 @@
 									<td>
 										<div class="form-group">
 											<input class="custom-select" list="platform" name="platform"
-												placeholder="Select your platform" value="<%=user.getPlatform()%>"
-												required>
+												placeholder="Select your platform"
+												value="<%=user.getPlatform()%>" required>
 											<datalist id="platform">
 												<option value="PC">
 												<option value="PlayStation">
@@ -223,7 +224,8 @@
 						%>
 					</div>
 
-					<div id="change-pass" class="tabcontent-settings m-auto px-5" style="max-height: 360px">
+					<div id="change-pass" class="tabcontent-settings m-auto px-5"
+						style="max-height: 360px">
 						<!-- SECTION 02 -->
 						<form onsubmit="return checkPassword();" method="POST"
 							action="update-password">
@@ -275,7 +277,8 @@
 					</div>
 
 					<div id="delete-account"
-						class="tabcontent-settings m-auto p-5 px-5" style="max-height: 360px">
+						class="tabcontent-settings m-auto p-5 px-5"
+						style="max-height: 360px">
 						<!-- SECTION 03 -->
 						<form onSubmit="return checkProceed()" method="POST"
 							action="delete-profile">

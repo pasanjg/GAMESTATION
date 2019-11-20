@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class EditProfile
  */
 
-@WebServlet("/edit-profile")
-public class EditProfile extends HttpServlet {
+@WebServlet("/settings")
+public class Settings extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditProfile() {
+	public Settings() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,7 +34,7 @@ public class EditProfile extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/getProfile.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/settings.jsp");
 		dispatcher.forward(request, response);
 	}
 

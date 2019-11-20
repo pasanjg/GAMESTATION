@@ -7,7 +7,6 @@
 
 	<%
 		User user = (User) session.getAttribute("currentSessionUser");
-	
 		String delete_confirm = (String) request.getAttribute("delete_confirm");
 	
 		if(user != null){
@@ -83,7 +82,7 @@
 							</div>
 							<div class="form-group">
 								<select class="custom-select" name="country" placeholder="Select your country" required>
-									<option value="" disabled selected>Select your option</option>
+									<option value="" disabled selected>Select your country</option>
 									<option value="Sri Lanka">Sri Lanka</option>
 									<option value="India">India</option>
 									<option value="China">China</option>

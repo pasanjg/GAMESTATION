@@ -74,7 +74,7 @@ public class UpdatePassword extends HttpServlet {
 			String errorString = "Current password did not match!";
 			request.setAttribute("errorString", errorString);
 
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/getProfile.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/settings.jsp");
 			dispatcher.forward(request, response);
 
 		}

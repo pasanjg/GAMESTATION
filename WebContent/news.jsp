@@ -23,7 +23,7 @@
 				</div>
 				<!-- ROW 1 -->
 				<div class="row ml-0 mr-0">
-					<div class="col-sm-12 col-md-6 p-3">
+					<div class="col-sm-12 col-md-6 p-4">
 						<h2>Pillars of Eternity II: Deadfire</h2>
 						<p class="text-justify">The sequel to 2015's well-regarded
 							isometric RPG Pillars of Eternity, Deadfire returns to the world
@@ -34,7 +34,7 @@
 							game. Major overhauls include companion A.I., class systems,
 							combat speed, afflictions, and more.</p>
 					</div>
-					<div class="col-sm-12 col-md-6 p-3 text-center">
+					<div class="col-sm-12 col-md-6 p-4 text-center">
 						<h2>Watch Trailer</h2>
 						<iframe height="300" style="width: 100%"
 							src="https://www.youtube.com/embed/ln_plWALAoI" frameborder="0"
@@ -46,7 +46,7 @@
 
 				<!-- ROW 2 -->
 				<div class="row ml-0 mr-0">
-					<div class="col-sm-12 col-md-6 p-3">
+					<div class="col-sm-12 col-md-6 p-4">
 						<h2>Mount & Blade 2: Bannerlord</h2>
 						<p class="text-justify">It's been a long wait for the sequel
 							to Mount & Blade: Warband, and it may be a bit longer still, but
@@ -57,7 +57,7 @@
 							letting your A.I. commander dictate the overall flow of the
 							fight.</p>
 					</div>
-					<div class="col-sm-12 col-md-6 p-3 text-center">
+					<div class="col-sm-12 col-md-6 p-4 text-center">
 						<h2>Watch Trailer</h2>
 						<iframe height="300" style="width: 100%"
 							src="https://www.youtube.com/embed/LmX5DFgRBXk" frameborder="0"
@@ -69,7 +69,7 @@
 
 				<!-- ROW 3 -->
 				<div class="row ml-0 mr-0">
-					<div class="col-sm-12 col-md-6 p-3">
+					<div class="col-sm-12 col-md-6 p-4">
 						<h2>Cyberpunk 2077</h2>
 						<p class="text-justify">The studio behind The Witcher dives
 							into the world of the Cyberpunk pen-and-paper RPG by Mike
@@ -77,7 +77,7 @@
 							Witcher 3: Wild Hunt. CD Projekt Red has also confirmed the game
 							will have some multiplayer elements as well.</p>
 					</div>
-					<div class="col-sm-12 col-md-6 p-3 text-center">
+					<div class="col-sm-12 col-md-6 p-4 text-center">
 						<h2>Watch Trailer</h2>
 						<iframe height="300" style="width: 100%"
 							src="https://www.youtube.com/embed/P99qJGrPNLs" frameborder="0"
@@ -89,7 +89,7 @@
 
 				<!-- ROW 4 -->
 				<div class="row ml-0 mr-0">
-					<div class="col-sm-12 col-md-6 p-3">
+					<div class="col-sm-12 col-md-6 p-4">
 						<h2>Greedfall</h2>
 						<p class="text-justify">Spiders' RPGs are typically rough and
 							derivative, but the studio is nothing if not prolific, and is
@@ -101,7 +101,7 @@
 							decisions (big and small) that change the fate of the island and
 							its inhabitants.</p>
 					</div>
-					<div class="col-sm-12 col-md-6 p-3 text-center">
+					<div class="col-sm-12 col-md-6 p-4 text-center">
 						<h2>Watch Trailer</h2>
 						<iframe height="300" style="width: 100%"
 							src="https://www.youtube.com/embed/zCAUpxLfCbo" frameborder="0"

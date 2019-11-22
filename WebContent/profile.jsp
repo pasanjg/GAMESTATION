@@ -57,8 +57,7 @@
 
 				<div class="col-sm-12" id="profile-details">
 					<div class="picture pt-2">
-						<img src="images/default.png" width="150" /> <br />
-						<br />
+						<img src="images/default.png" width="150" /> <br /> <br />
 						<h5><%=user.getUserName()%></h5>
 						<hr>
 					</div>
@@ -149,8 +148,8 @@
 					<div class="col-sm-12 col-md-6 col-lg-4">
 						<div class="card text-center mb-4 pt-4">
 							<a href="play-game?GameID=<%=gameID%>" style="color: black">
-								<img src="images/<%=gameID%>.jpg" height="135"
-								alt="<%=gameID%>" style="margin: auto;">
+								<img src="images/<%=gameID%>.jpg" height="135" alt="<%=gameID%>"
+								style="margin: auto;">
 							</a>
 							<div class="card-container">
 								<h6>

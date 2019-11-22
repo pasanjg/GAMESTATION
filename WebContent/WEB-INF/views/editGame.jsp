@@ -262,7 +262,8 @@
 							<table class="table table-borderless" align="center">
 								<tr>
 									<td colspan="2" style="text-align: center;"><font
-										color="red"> <b>Note: You cannot recover games once deleted!</b><br> <br>
+										color="red"> <b>Note: You cannot recover games once
+												deleted!</b><br> <br>
 									</font></td>
 								</tr>
 

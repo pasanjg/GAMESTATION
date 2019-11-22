@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css">
 <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
+<link rel="stylesheet" href="assets/css/scrollbar.css" type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -93,9 +94,10 @@
 				%>
 
 				<ul id="navigation" class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="games">GAMES</a>
 					<li class="nav-item"><a class="nav-link" href="edit-game">EDIT
 							GAMES</a></li>
-					<li class="nav-item"><a class="nav-link" href="messages">MESSAGE</a>
+					<li class="nav-item"><a class="nav-link" href="messages">MESSAGES</a>
 					</li>
 				</ul>
 

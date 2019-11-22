@@ -50,7 +50,7 @@ public class AddGame extends HttpServlet {
 		String confirmString = "Game added!";
 		request.setAttribute("confirmString", confirmString);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addGame.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/editGame.jsp");
 		dispatcher.forward(request, response);
 
 	}

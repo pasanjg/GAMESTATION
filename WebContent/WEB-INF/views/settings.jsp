@@ -54,7 +54,8 @@
 
 	<div class="container gs-top">
 		<div class="row pt-5 mb-5">
-			<div class="col-sm-12 col-md-3 mt-5 p-4 h-auto" id="profile-details">
+			<div class="col-sm-12 col-md-3 mt-5 p-4" id="profile-details"
+				style="height: 180px;">
 				<div class="tablinks" style="color: gray; cursor: pointer;"
 					onclick="openTab(this, 'edit-profile', 'green')" id="defaultOpen">
 					<span style="font-size: 1.5rem;">

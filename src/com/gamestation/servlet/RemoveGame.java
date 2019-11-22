@@ -37,7 +37,7 @@ public class RemoveGame extends HttpServlet {
 		Game game = new Game();
 
 		game.setgameName(request.getParameter("gameName"));
-		game.setGameID(request.getParameter("GameID"));
+		game.setGameID(request.getParameter("gameID"));
 
 		IGameService iGameService = new GameServiceImpl();
 		iGameService.removeGame(game);
@@ -45,7 +45,7 @@ public class RemoveGame extends HttpServlet {
 		String confirmString = "Game removed!";
 		request.setAttribute("confirmString", confirmString);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/removeGame.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/editGame.jsp");
 		dispatcher.forward(request, response);
 
 	}

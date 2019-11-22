@@ -50,7 +50,7 @@ public class UpdateGame extends HttpServlet {
 		String confirmString = "Game updated!";
 		request.setAttribute("confirmString", confirmString);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/updateGame.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/editGame.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<style>
-</style>
+
+<link href="assets/css/sticky-footer.css" rel="stylesheet">
+
 </head>
 <body>
 

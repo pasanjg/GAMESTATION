@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<div class="container-fluid bg-dark text-white py-4">
+	<footer class="footer container-fluid bg-dark text-white py-4">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-2">
@@ -67,14 +67,14 @@
 			</div>
 		</div>
 
-		<footer class="text-muted text-center">
+		<div class="text-muted text-center">
 			<span>Last updated: <%=new java.util.Date()%></span>
 			<!-- <span id="date"></span><br> -->
 			<p>Copyright &copy; GameStation | Online Gaming Site 2019. All
 				Rights Reserved.</p>
-		</footer>
+		</div>
 
-	</div>
+	</footer>
 	<script>
 		var today = new Date();
 		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'

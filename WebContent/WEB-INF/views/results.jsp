@@ -59,7 +59,7 @@
 									<form method="GET" action="play-game">
 										<input type="hidden" name="GameID"
 											value="<%=showGame.getGameID()%>"> <input
-											class="btn btn-gs-red w-100" type="submit" value="Play Game" />
+											class="btn btn-gs-green w-100" type="submit" value="Play Game" />
 									</form>
 								</div>
 								<div class="my-2">

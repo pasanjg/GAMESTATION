@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2019 at 07:02 PM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: Dec 07, 2019 at 11:03 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.0.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,6 +34,14 @@ CREATE TABLE `contact` (
   `email` varchar(45) DEFAULT NULL,
   `message` varchar(500) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`messageid`, `name`, `email`, `message`) VALUES
+('M1001', 'Pasan Godamune', 'pasanjg@gmail.com', 'This is a test message to check the new ui changes'),
+('M1002', 'Bruce Wayne', 'school@mail.com', 'Test message');
 
 -- --------------------------------------------------------
 
@@ -115,13 +123,14 @@ INSERT INTO `gameurl` (`GameID`, `code`) VALUES
 --
 
 CREATE TABLE `user` (
-  `userID` varchar(10) NOT NULL,
-  `firstName` varchar(20) DEFAULT NULL,
-  `lastName` varchar(20) DEFAULT NULL,
+  `id` varchar(10) NOT NULL,
+  `firstname` varchar(20) DEFAULT NULL,
+  `lastname` varchar(20) DEFAULT NULL,
   `gender` varchar(7) DEFAULT 'Male',
   `country` varchar(20) DEFAULT NULL,
   `platform` varchar(20) DEFAULT NULL,
-  `userName` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(30) NOT NULL,
   `type` varchar(10) NOT NULL DEFAULT 'user'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -130,27 +139,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `firstName`, `lastName`, `gender`, `country`, `platform`, `userName`, `email`, `type`) VALUES
-('P1001', 'Admin', 'Admin', 'Male', 'Sri Lanka', 'PC', 'admin', 'admin@gamestation.com', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `useraccount`
---
-
-CREATE TABLE `useraccount` (
-  `userID` varchar(10) NOT NULL,
-  `userName` varchar(20) NOT NULL,
-  `password` varchar(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `useraccount`
---
-
-INSERT INTO `useraccount` (`userID`, `userName`, `password`) VALUES
-('P1001', 'admin', 'admin');
+INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `country`, `platform`, `username`, `password`, `email`, `type`) VALUES
+('P1001', 'Admin', 'Gamestation', 'Male', 'Sri Lanka', 'PC', 'admin', '2DACEEBC4E31654D326AE7889B397ED50FF7E5AFFF374D1F89525865FD87EFE0', 'admin@gamestation.com', 'admin'),
+('P1002', 'Pasan', 'Godamun', 'Male', 'Sri Lanka', 'PlayStation', 'pasan', '33417ABD8AB740F098A1718DB8B5DF707BDFD1243E906CA70CEFDACE312BCF27', 'pasan@gamestation.com', 'user');
 
 --
 -- Indexes for dumped tables
@@ -169,16 +160,22 @@ ALTER TABLE `favourite`
   ADD PRIMARY KEY (`userID`,`gameID`);
 
 --
+-- Indexes for table `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`gameID`);
+
+--
+-- Indexes for table `gameurl`
+--
+ALTER TABLE `gameurl`
+  ADD PRIMARY KEY (`GameID`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`,`userName`,`email`);
-
---
--- Indexes for table `useraccount`
---
-ALTER TABLE `useraccount`
-  ADD PRIMARY KEY (`userID`,`userName`);
+  ADD PRIMARY KEY (`id`,`username`,`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

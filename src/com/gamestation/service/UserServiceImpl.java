@@ -228,7 +228,7 @@ public class UserServiceImpl implements IUserService {
 	public void deleteUser(String userID) {
 
 		String deleteUserQuery = "DELETE FROM user WHERE id = ?";
-		String deleteFavouriteQuery = "DELETE FROM favourite WHERE id = ?";
+		String deleteFavouriteQuery = "DELETE FROM favourite WHERE userID = ?";
 
 		try {
 

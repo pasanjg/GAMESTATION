@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.gamestation.model.User;
 import com.gamestation.service.IUserService;
 import com.gamestation.service.UserServiceImpl;
+import com.gamestation.util.PasswordHash;
 
 /**
  * Servlet implementation class DeleteProfile
@@ -53,6 +54,8 @@ public class DeleteProfile extends HttpServlet {
 		String userID = user.getUserID();
 		String currentPassword = request.getParameter("password");
 		String getPassword = iuserService.getPassword(userID);
+		
+		currentPassword = PasswordHash.hashPassword(currentPassword);
 
 		if (getPassword.equals(currentPassword)) {
 

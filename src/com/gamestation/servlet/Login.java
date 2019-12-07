@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.gamestation.model.User;
 import com.gamestation.service.IUserService;
 import com.gamestation.service.UserServiceImpl;
+import com.gamestation.util.PasswordHash;
 
 /**
  * Servlet implementation class Login
@@ -65,6 +66,8 @@ public class Login extends HttpServlet {
 		String type = user.getType();
 
 		if (user.isValid()) {
+			
+			user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 			HttpSession session = request.getSession();
 			session.setAttribute("currentSessionUser", user);

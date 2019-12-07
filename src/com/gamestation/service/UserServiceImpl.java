@@ -2,6 +2,7 @@ package com.gamestation.service;
 
 import com.gamestation.model.User;
 import com.gamestation.conn.DBConnection;
+import com.gamestation.util.PasswordHash;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 public class UserServiceImpl implements IUserService {
 
 	public void addUser(User user) {
+		
+		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 		String addUserQuery = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?)";
 
@@ -66,6 +69,8 @@ public class UserServiceImpl implements IUserService {
 
 		ArrayList<User> arrayList = new ArrayList<>();
 		String uID = null;
+		
+		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 		String loginQuery1 = "SELECT * FROM user WHERE username = ? AND password = ?";
 
@@ -142,6 +147,8 @@ public class UserServiceImpl implements IUserService {
 
 		String updateUserPasswordQuery = "UPDATE user SET password = ? WHERE id = ?";
 		String updateUserRecoveryPasswordQuery = "UPDATE passwordrecovery SET password = ? WHERE id = ?";
+		
+		password = PasswordHash.hashPassword(password);
 
 		try {
 			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(updateUserPasswordQuery);

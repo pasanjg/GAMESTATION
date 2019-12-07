@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.gamestation.model.User;
 import com.gamestation.service.IUserService;
 import com.gamestation.service.UserServiceImpl;
+import com.gamestation.util.PasswordHash;
 
 /**
  * Servlet implementation class UpdatePassword
@@ -56,6 +57,8 @@ public class UpdatePassword extends HttpServlet {
 		String currentPassword = request.getParameter("currentPassword");
 		String getPassword = iuserService.getPassword(userID);
 		String newPassword = request.getParameter("password1");
+		
+		currentPassword = PasswordHash.hashPassword(currentPassword);
 
 		if (getPassword.equals(currentPassword)) {
 

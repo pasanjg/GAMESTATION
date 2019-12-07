@@ -3,7 +3,7 @@ package com.gamestation.servlet;
 import com.gamestation.model.Contact;
 import com.gamestation.service.IContactService;
 import com.gamestation.service.ContactServiceImpl;
-import com.gamestation.util.CommonUtil;
+import com.gamestation.util.GenerateID;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class ContactInfo extends HttpServlet {
 
 		Contact contact = new Contact();
 		IContactService iContactService = new ContactServiceImpl();
-		String messageID = CommonUtil.generateMessageIDs(iContactService.getMessageIDs());
+		String messageID = GenerateID.generateMessageIDs(iContactService.getMessageIDs());
 
 		contact.setMessageID(messageID);
 		contact.setName(request.getParameter("name"));

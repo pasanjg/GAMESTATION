@@ -2,7 +2,7 @@ package com.gamestation.util;
 
 import java.util.ArrayList;
 
-public class CommonUtil {
+public class GenerateID {
 
 	public static String generateUserIDs(ArrayList<String> arrayList) {
 

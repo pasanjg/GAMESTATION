@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gamestation.model.Game;
 import com.gamestation.service.IGameService;
-import com.gamestation.util.CommonUtil;
+import com.gamestation.util.GenerateID;
 import com.gamestation.service.GameServiceImpl;
 
 @WebServlet("/add-game")
@@ -37,7 +37,7 @@ public class AddGame extends HttpServlet {
 
 		Game game = new Game();
 		IGameService iGameService = new GameServiceImpl();
-		String gameID = CommonUtil.generateGameIDs(iGameService.getGameIDs());
+		String gameID = GenerateID.generateGameIDs(iGameService.getGameIDs());
 
 		game.setGameID(gameID);
 		game.setgameName(request.getParameter("gameName"));

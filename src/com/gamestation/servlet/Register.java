@@ -3,7 +3,7 @@ package com.gamestation.servlet;
 import com.gamestation.model.User;
 import com.gamestation.service.IUserService;
 import com.gamestation.service.UserServiceImpl;
-import com.gamestation.util.CommonUtil;
+import com.gamestation.util.GenerateID;
 //import com.gamestation.util.DBQuery;
 
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class Register extends HttpServlet {
 
 		User user = new User();
 		IUserService iUserService = new UserServiceImpl();
-		String userID = CommonUtil.generateUserIDs(iUserService.getUserIDs());
+		String userID = GenerateID.generateUserIDs(iUserService.getUserIDs());
 
 		user.setUserID(userID);
 		user.setFirstName(request.getParameter("firstName"));

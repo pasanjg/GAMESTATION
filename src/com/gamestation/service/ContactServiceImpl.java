@@ -15,8 +15,9 @@ public class ContactServiceImpl implements IContactService {
 		String addContactQuery = "INSERT INTO contact VALUES(?,?,?,?)";
 
 		try {
+			
 			// add data to contact table
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(addContactQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addContactQuery);
 
 			ps.setString(1, contact.getMessageID());
 			ps.setString(2, contact.getName());
@@ -25,8 +26,7 @@ public class ContactServiceImpl implements IContactService {
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -37,14 +37,13 @@ public class ContactServiceImpl implements IContactService {
 		String deleteMessageQuery = "DELETE from contact WHERE  MessageID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(deleteMessageQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(deleteMessageQuery);
 
 			ps.setString(1, messageID);
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -59,7 +58,7 @@ public class ContactServiceImpl implements IContactService {
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(getMessagesQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getMessagesQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -74,8 +73,7 @@ public class ContactServiceImpl implements IContactService {
 				contactList.add(contact);
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -91,7 +89,7 @@ public class ContactServiceImpl implements IContactService {
 
 		PreparedStatement ps;
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(findIDQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(findIDQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -99,8 +97,7 @@ public class ContactServiceImpl implements IContactService {
 				arrayList.add(resultSet.getString(1));
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

@@ -18,7 +18,7 @@ public class GameServiceImpl implements IGameService {
 
 		PreparedStatement ps;
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(ShowGameQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(ShowGameQuery);
 
 			ps.setString(1, GameID);
 
@@ -28,8 +28,7 @@ public class GameServiceImpl implements IGameService {
 				game1.setgamecode(resultSet.getString(1));
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -46,7 +45,7 @@ public class GameServiceImpl implements IGameService {
 		PreparedStatement ps;
 
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(getUserQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getUserQuery);
 
 			ps.setString(1, gameID);
 
@@ -58,8 +57,7 @@ public class GameServiceImpl implements IGameService {
 
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return game1.getgameName();
@@ -71,7 +69,7 @@ public class GameServiceImpl implements IGameService {
 		String addGameURLQuery = "INSERT INTO gameurl VALUES(?,?)";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(addGameQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addGameQuery);
 
 			ps.setString(1, game.getGameID());
 			ps.setString(2, game.getgameName());
@@ -80,15 +78,14 @@ public class GameServiceImpl implements IGameService {
 
 			ps.executeUpdate();
 
-			ps = DBConnection.getDBconnection().prepareStatement(addGameURLQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addGameURLQuery);
 
 			ps.setString(1, game.getGameID());
 			ps.setString(2, game.getgamecode());
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -96,15 +93,10 @@ public class GameServiceImpl implements IGameService {
 
 	public void updateGame(Game game) {
 
-		String updateGameQuery = " UPDATE game SET gameName = ?, category = ?, tag = ? WHERE gameID = ?"; // writing
-																											// Quarry to
-																											// update
-																											// game
-																											// table
+		String updateGameQuery = " UPDATE game SET gameName = ?, category = ?, tag = ? WHERE gameID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(updateGameQuery); // connecting to
-																										// database
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateGameQuery);
 
 			// Assign values to quary
 			ps.setString(1, game.getgameName());
@@ -113,8 +105,7 @@ public class GameServiceImpl implements IGameService {
 			ps.setString(4, game.getGameID());
 
 			ps.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -126,21 +117,20 @@ public class GameServiceImpl implements IGameService {
 		String removeGameURLQuery = "DELETE from gameurl WHERE  gameID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(removeGameQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(removeGameQuery);
 
 			ps.setString(1, game.getGameID());
 			ps.setString(2, game.getgameName());
 
 			ps.executeUpdate();
 
-			ps = DBConnection.getDBconnection().prepareStatement(removeGameURLQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(removeGameURLQuery);
 
 			ps.setString(1, game.getGameID());
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -153,7 +143,7 @@ public class GameServiceImpl implements IGameService {
 
 		PreparedStatement ps;
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(findIDQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(findIDQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -161,8 +151,7 @@ public class GameServiceImpl implements IGameService {
 				arrayList.add(resultSet.getString(1));
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -178,7 +167,7 @@ public class GameServiceImpl implements IGameService {
 		PreparedStatement ps;
 
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(searchQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(searchQuery);
 
 			ps.setString(1, "%" + search + "%");
 			ps.setString(2, "%" + search + "%");
@@ -197,8 +186,7 @@ public class GameServiceImpl implements IGameService {
 
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -214,7 +202,7 @@ public class GameServiceImpl implements IGameService {
 		PreparedStatement ps;
 
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(listQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(listQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -228,8 +216,7 @@ public class GameServiceImpl implements IGameService {
 
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -242,15 +229,14 @@ public class GameServiceImpl implements IGameService {
 		String addFavQuery = "INSERT INTO favourite VALUES(?,?)";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(addFavQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addFavQuery);
 
 			ps.setString(1, userID);
 			ps.setString(2, gameID);
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -263,7 +249,7 @@ public class GameServiceImpl implements IGameService {
 		String getFavQuery = "SELECT gameID FROM favourite WHERE userID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(getFavQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getFavQuery);
 
 			ps.setString(1, userID);
 
@@ -273,8 +259,7 @@ public class GameServiceImpl implements IGameService {
 				arrayList.add(resultSet.getString(1));
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -286,15 +271,14 @@ public class GameServiceImpl implements IGameService {
 		String removeFavQuery = "DELETE FROM favourite WHERE userID = ? AND gameID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(removeFavQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(removeFavQuery);
 
 			ps.setString(1, userID);
 			ps.setString(2, gameID);
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

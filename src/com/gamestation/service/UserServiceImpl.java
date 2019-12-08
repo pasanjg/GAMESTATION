@@ -19,7 +19,7 @@ public class UserServiceImpl implements IUserService {
 
 		try {
 			// add data to user table
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(addUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addUserQuery);
 
 			ps.setString(1, user.getUserID());
 			ps.setString(2, user.getFirstName());
@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements IUserService {
 				+ "SET firstname = ?, lastname = ?, gender = ?, country = ?, platform = ?, email = ? " + "WHERE id = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(updateUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserQuery);
 
 			ps.setString(1, user.getFirstName());
 			ps.setString(2, user.getLastName());
@@ -58,7 +58,7 @@ public class UserServiceImpl implements IUserService {
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -76,7 +76,7 @@ public class UserServiceImpl implements IUserService {
 
 		PreparedStatement ps;
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(loginQuery1);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(loginQuery1);
 
 			ps.setString(1, user.getUserName());
 			ps.setString(2, user.getPassword());
@@ -111,7 +111,7 @@ public class UserServiceImpl implements IUserService {
 				user.setValid(false);
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -125,7 +125,7 @@ public class UserServiceImpl implements IUserService {
 		String getPasswordQuery = "SELECT * FROM user WHERE id = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(getPasswordQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getPasswordQuery);
 
 			ps.setString(1, userID);
 
@@ -136,7 +136,7 @@ public class UserServiceImpl implements IUserService {
 				password = resultSet.getString(8);
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -151,21 +151,21 @@ public class UserServiceImpl implements IUserService {
 		password = PasswordHash.hashPassword(password);
 
 		try {
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(updateUserPasswordQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserPasswordQuery);
 
 			ps.setString(1, password);
 			ps.setString(2, userID);
 
 			ps.executeUpdate();
 
-			ps = DBConnection.getDBconnection().prepareStatement(updateUserRecoveryPasswordQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserRecoveryPasswordQuery);
 
 			ps.setString(1, password);
 			ps.setString(2, userID);
 
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -179,7 +179,7 @@ public class UserServiceImpl implements IUserService {
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(getUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getUserQuery);
 
 			ps.setString(1, userID);
 
@@ -201,7 +201,7 @@ public class UserServiceImpl implements IUserService {
 				userList.add(user);
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -217,7 +217,7 @@ public class UserServiceImpl implements IUserService {
 
 		PreparedStatement ps;
 		try {
-			ps = DBConnection.getDBconnection().prepareStatement(findIDQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(findIDQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -225,7 +225,7 @@ public class UserServiceImpl implements IUserService {
 				arrayList.add(resultSet.getString(1));
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -239,15 +239,15 @@ public class UserServiceImpl implements IUserService {
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBconnection().prepareStatement(deleteUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(deleteUserQuery);
 			ps.setString(1, userID);
 			ps.executeUpdate();
 
-			ps = DBConnection.getDBconnection().prepareStatement(deleteFavouriteQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(deleteFavouriteQuery);
 			ps.setString(1, userID);
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

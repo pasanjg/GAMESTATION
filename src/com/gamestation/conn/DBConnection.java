@@ -6,20 +6,49 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-	public DBConnection() {
+	private volatile static DBConnection dbConnectionInstance;
+	private Connection connection;
+	private String url;
+	private String username;
+	private String password;
+
+	private DBConnection() {
+
+		url = "jdbc:mysql://localhost:3306/gamestation";
+		username = "root";
+		password = null;
 
 	}
 
-	public static Connection getDBconnection() throws ClassNotFoundException, SQLException {
+	public Connection getConnection() {
 
-		// Server connection parameters
-		String url = "jdbc:mysql://localhost:3306/gamestation";
-		String username = "root";
-		String password = null;
+		try {
 
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(url, username, password);
+			Class.forName("com.mysql.jdbc.Driver");
+			this.connection = DriverManager.getConnection(this.url, this.username, this.password);
 
-		return conn;
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return this.connection;
+	}
+
+	public static synchronized DBConnection getDBConnectionInstance() throws SQLException {
+
+		if (dbConnectionInstance == null) {
+
+			synchronized (DBConnection.class) {
+
+				if (dbConnectionInstance == null) {
+					dbConnectionInstance = new DBConnection();
+					
+				} else if (dbConnectionInstance.getConnection().isClosed()) {
+					dbConnectionInstance = new DBConnection();
+				}
+			}
+		}
+
+		return dbConnectionInstance;
 	}
 }

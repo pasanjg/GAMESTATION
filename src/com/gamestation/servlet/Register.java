@@ -79,6 +79,8 @@ public class Register extends HttpServlet {
 		user.setType("user");
 
 		iUserService.addUser(user);
+		
+		System.out.println("register sev: "+user.getUserID());
 
 		HttpSession session = request.getSession();
 		session.setAttribute("currentSessionUser", user);

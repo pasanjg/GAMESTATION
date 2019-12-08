@@ -54,9 +54,7 @@
 
 						<%
 							IUserService iUserService = new UserServiceImpl();
-								ArrayList<User> arrayList = iUserService.getUser(user.getUserID());
-
-								for (User player : arrayList) {
+								User player = iUserService.getUser(user.getUserID());
 						%>
 
 						<tr>
@@ -129,10 +127,6 @@
 									<h6>user<%=player.getType()%></h6>
 								</td>
 							</tr> --%>
-
-						<%
-							}
-						%>
 
 					</table>
 

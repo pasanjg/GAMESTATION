@@ -57,9 +57,28 @@
 
 				<div class="col-sm-12 pt-5" id="profile-details">
 					<div class="picture pt-2">
+
+						<%
+							if (user.getImgDataBase64() != null) {
+						%>
+
+						<img id="openImgUpload"
+							src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
+							width="150"
+							style="height: 150px; width: 150px; object-fit: cover;" />
+
+						<%
+							} else {
+						%>
+
 						<img id="openImgUpload" src="images/default.png" width="150"
-							style="height: 150px; width: 150px; object-fit: cover;" /> <br />
-						<br />
+							style="height: 150px; width: 150px; object-fit: cover;" />
+
+						<%
+							}
+						%>
+
+						<br /> <br />
 						<h5><%=user.getUserName()%></h5>
 						<form action="upload" method="POST" enctype="multipart/form-data">
 							<input type="file" id="imgUpload" name="image" accept="image/*"

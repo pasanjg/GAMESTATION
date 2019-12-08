@@ -121,8 +121,26 @@
 					<li class="nav-item dropdown text-white"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> <img src="images/default.png"
-							width="32" />
+						aria-expanded="false"> 
+						
+						<%
+							if (user.getImgDataBase64() != null) {
+ 						%>
+
+							<img src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
+							width="32" style="height: 32px; width: 32px; object-fit: cover;" />
+
+						<%
+							} else {
+						%> 
+						
+						<img src="images/default.png" width="32"
+							style="height: 32px; width: 32px; object-fit: cover;" /> 
+							
+						<%
+ 							}
+ 						%>
+
 					</a>
 						<div id="dropDown" class="dropdown-menu"
 							aria-labelledby="navbarDropdown">
@@ -132,7 +150,8 @@
 							<a href="login">
 								<button type="submit" class="btn btn-red w-100 rounded-0">Logout</button>
 							</a>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 
 				<%

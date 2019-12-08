@@ -3,6 +3,7 @@ package com.gamestation.service;
 import com.gamestation.model.User;
 import com.gamestation.conn.DBConnection;
 import com.gamestation.util.PasswordHash;
+import com.mysql.jdbc.Blob;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class UserServiceImpl implements IUserService {
 
@@ -17,9 +19,10 @@ public class UserServiceImpl implements IUserService {
 
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
-		String addUserQuery = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String addUserQuery = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
+
 			// add data to user table
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(addUserQuery);
@@ -34,12 +37,15 @@ public class UserServiceImpl implements IUserService {
 			ps.setString(8, user.getPassword());
 			ps.setString(9, user.getEmail());
 			ps.setString(10, user.getType());
+			ps.setString(11, null);
 
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("add user: "+user.getUserID());
 
 	}
 
@@ -49,6 +55,7 @@ public class UserServiceImpl implements IUserService {
 				+ "SET firstname = ?, lastname = ?, gender = ?, country = ?, platform = ?, email = ? " + "WHERE id = ?";
 
 		try {
+
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(updateUserQuery);
 
@@ -71,15 +78,14 @@ public class UserServiceImpl implements IUserService {
 
 	public User loginUser(User user) {
 
-		ArrayList<User> arrayList = new ArrayList<>();
-		String uID = null;
-
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 		String loginQuery1 = "SELECT * FROM user WHERE username = ? AND password = ?";
 
 		PreparedStatement ps;
+
 		try {
+
 			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(loginQuery1);
 
 			ps.setString(1, user.getUserName());
@@ -89,24 +95,23 @@ public class UserServiceImpl implements IUserService {
 
 			if (resultSet.next()) {
 
-				uID = resultSet.getString(1);
+				user.setUserID(resultSet.getString(1));
+				user.setUserID(resultSet.getString(1));
+				user.setFirstName(resultSet.getString(2));
+				user.setLastName(resultSet.getString(3));
+				user.setGender(resultSet.getString(4));
+				user.setCountry(resultSet.getString(5));
+				user.setPlatform(resultSet.getString(6));
+				user.setUserName(resultSet.getString(7));
+				user.setPassword(resultSet.getString(8));
+				user.setEmail(resultSet.getString(9));
+				user.setType(resultSet.getString(10));
+				user.setValid(true);
 
-				user.setUserID(uID);
-				arrayList = getUser(uID);
+				Blob image = (Blob) resultSet.getBlob(11);
 
-				for (User player : arrayList) {
-
-					user.setUserName(player.getUserName());
-					user.setFirstName(player.getFirstName());
-					user.setLastName(player.getLastName());
-					user.setGender(player.getGender());
-					user.setCountry(player.getCountry());
-					user.setPlatform(player.getPlatform());
-					user.setEmail(player.getEmail());
-					user.setType(player.getType());
-
-					user.setValid(true);
-
+				if (image != null) {
+					user.loadImage(image);
 				}
 
 			}
@@ -129,6 +134,7 @@ public class UserServiceImpl implements IUserService {
 		String getPasswordQuery = "SELECT * FROM user WHERE id = ?";
 
 		try {
+
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(getPasswordQuery);
 
@@ -156,6 +162,7 @@ public class UserServiceImpl implements IUserService {
 		password = PasswordHash.hashPassword(password);
 
 		try {
+
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(updateUserPasswordQuery);
 
@@ -178,9 +185,9 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	// retrieve user from DB
-	public ArrayList<User> getUser(String userID) {
+	public User getUser(String userparam) {
 
-		ArrayList<User> userList = new ArrayList<User>();
+		User user = new User();
 
 		String getUserQuery = "SELECT * FROM user WHERE id = ?";
 
@@ -189,31 +196,42 @@ public class UserServiceImpl implements IUserService {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(getUserQuery);
 
-			ps.setString(1, userID);
+			ps.setString(1, userparam);
+//			ps.setString(2, userparam);
 
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 
-				User user = new User();
-				user.setUserID(resultSet.getString(1));
-				user.setFirstName(resultSet.getString(2));
-				user.setLastName(resultSet.getString(3));
-				user.setGender(resultSet.getString(4));
-				user.setCountry(resultSet.getString(5));
-				user.setPlatform(resultSet.getString(6));
-				user.setUserName(resultSet.getString(7));
-				user.setPassword(resultSet.getString(8));
-				user.setEmail(resultSet.getString(9));
-				user.setType(resultSet.getString(10));
-				userList.add(user);
+				User player = new User();
+				player.setUserID(resultSet.getString(1));
+				player.setFirstName(resultSet.getString(2));
+				player.setLastName(resultSet.getString(3));
+				player.setGender(resultSet.getString(4));
+				player.setCountry(resultSet.getString(5));
+				player.setPlatform(resultSet.getString(6));
+				player.setUserName(resultSet.getString(7));
+				player.setPassword(resultSet.getString(8));
+				player.setEmail(resultSet.getString(9));
+				player.setType(resultSet.getString(10));
+
+				Blob image = (Blob) resultSet.getBlob(11);
+
+				if (image != null) {
+					player.loadImage(image);
+				}
+
+				user = player;
+				System.out.println("get user: "+player.getUserID());
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return userList;
+		System.out.println(user.getUserID());
+		
+		return user;
 	}
 
 	// get user IDs of users who are already registered
@@ -224,7 +242,9 @@ public class UserServiceImpl implements IUserService {
 		String findIDQuery = "SELECT id FROM user";
 
 		PreparedStatement ps;
+
 		try {
+
 			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(findIDQuery);
 
 			ResultSet resultSet = ps.executeQuery();
@@ -278,6 +298,7 @@ public class UserServiceImpl implements IUserService {
 		}
 
 		try {
+
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(uploadImageQuery);
 

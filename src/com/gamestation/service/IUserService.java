@@ -15,7 +15,7 @@ public interface IUserService {
 
 	public void updatePassword(String userID, String password);
 
-	public ArrayList<User> getUser(String userID);
+	public User getUser(String userID);
 
 	public ArrayList<String> getUserIDs();
 

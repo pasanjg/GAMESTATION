@@ -54,6 +54,9 @@ public class UploadImage extends HttpServlet {
 		user.setImage(request.getPart("image"));
 		
 		iUserService.uploadImage(user);
+		user = iUserService.getUser(user.getUserID());
+		
+		session.setAttribute("currentSessionUser", user);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
 		dispatcher.forward(request, response);

@@ -21,4 +21,5 @@ public interface IUserService {
 
 	public void deleteUser(String userID);
 
+	public void uploadImage(User user);
 }

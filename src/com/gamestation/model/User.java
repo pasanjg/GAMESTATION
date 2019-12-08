@@ -1,5 +1,7 @@
 package com.gamestation.model;
 
+import javax.servlet.http.Part;
+
 public class User {
 
 	private String userID;
@@ -12,6 +14,7 @@ public class User {
 	private String password;
 	private String email;
 	private String type = null;
+	private Part image;
 	public boolean valid;
 
 	public void setUserID(String userID) {
@@ -92,6 +95,14 @@ public class User {
 
 	public String getType() {
 		return this.type;
+	}
+
+	public Part getImage() {
+		return image;
+	}
+
+	public void setImage(Part image) {
+		this.image = image;
 	}
 
 	public boolean isValid() {

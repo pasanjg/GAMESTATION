@@ -61,8 +61,8 @@
 							style="height: 150px; width: 150px; object-fit: cover;" /> <br />
 						<br />
 						<h5><%=user.getUserName()%></h5>
-						<form>
-							<input type="file" id="imgUpload" accept="image/*"
+						<form action="upload" method="POST" enctype="multipart/form-data">
+							<input type="file" id="imgUpload" name="image" accept="image/*"
 								style="display: none" required />
 							<button id="uploadBtn" class="btn btn-gs-red" type="submit"
 								name="upload" value="Upload Image" style="display: none">Upload

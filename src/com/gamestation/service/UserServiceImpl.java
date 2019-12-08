@@ -4,6 +4,8 @@ import com.gamestation.model.User;
 import com.gamestation.conn.DBConnection;
 import com.gamestation.util.PasswordHash;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,14 +14,15 @@ import java.util.ArrayList;
 public class UserServiceImpl implements IUserService {
 
 	public void addUser(User user) {
-		
+
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 		String addUserQuery = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// add data to user table
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(addUserQuery);
 
 			ps.setString(1, user.getUserID());
 			ps.setString(2, user.getFirstName());
@@ -46,7 +49,8 @@ public class UserServiceImpl implements IUserService {
 				+ "SET firstname = ?, lastname = ?, gender = ?, country = ?, platform = ?, email = ? " + "WHERE id = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(updateUserQuery);
 
 			ps.setString(1, user.getFirstName());
 			ps.setString(2, user.getLastName());
@@ -69,7 +73,7 @@ public class UserServiceImpl implements IUserService {
 
 		ArrayList<User> arrayList = new ArrayList<>();
 		String uID = null;
-		
+
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
 		String loginQuery1 = "SELECT * FROM user WHERE username = ? AND password = ?";
@@ -125,7 +129,8 @@ public class UserServiceImpl implements IUserService {
 		String getPasswordQuery = "SELECT * FROM user WHERE id = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getPasswordQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(getPasswordQuery);
 
 			ps.setString(1, userID);
 
@@ -147,18 +152,20 @@ public class UserServiceImpl implements IUserService {
 
 		String updateUserPasswordQuery = "UPDATE user SET password = ? WHERE id = ?";
 		String updateUserRecoveryPasswordQuery = "UPDATE passwordrecovery SET password = ? WHERE id = ?";
-		
+
 		password = PasswordHash.hashPassword(password);
 
 		try {
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserPasswordQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(updateUserPasswordQuery);
 
 			ps.setString(1, password);
 			ps.setString(2, userID);
 
 			ps.executeUpdate();
 
-			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(updateUserRecoveryPasswordQuery);
+			ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(updateUserRecoveryPasswordQuery);
 
 			ps.setString(1, password);
 			ps.setString(2, userID);
@@ -179,7 +186,8 @@ public class UserServiceImpl implements IUserService {
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(getUserQuery);
 
 			ps.setString(1, userID);
 
@@ -239,7 +247,8 @@ public class UserServiceImpl implements IUserService {
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(deleteUserQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(deleteUserQuery);
 			ps.setString(1, userID);
 			ps.executeUpdate();
 
@@ -250,6 +259,40 @@ public class UserServiceImpl implements IUserService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void uploadImage(User user) {
+
+		InputStream inputStream = null; // input stream of the upload file
+
+		String uploadImageQuery = "UPDATE user SET image = ? WHERE id = ?";
+
+		if (user.getImage() != null) {
+
+			// obtains input stream of the upload file
+			try {
+				inputStream = user.getImage().getInputStream();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		try {
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(uploadImageQuery);
+
+			if (inputStream != null) {
+				// fetches input stream of the upload file for the blob column
+				ps.setBlob(1, inputStream);
+				ps.setString(2, user.getUserID());
+
+				ps.executeUpdate();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

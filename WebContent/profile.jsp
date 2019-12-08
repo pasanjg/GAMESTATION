@@ -55,10 +55,21 @@
 						arrayList = iGameService.getFav(user.getUserID());
 				%>
 
-				<div class="col-sm-12" id="profile-details">
+				<div class="col-sm-12 pt-5" id="profile-details">
 					<div class="picture pt-2">
-						<img src="images/default.png" width="150" /> <br /> <br />
+						<img id="openImgUpload" src="images/default.png" width="150"
+							style="height: 150px; width: 150px; object-fit: cover;" /> <br />
+						<br />
 						<h5><%=user.getUserName()%></h5>
+						<form>
+							<input type="file" id="imgUpload" accept="image/*"
+								style="display: none" required />
+							<button id="uploadBtn" class="btn btn-gs-red" type="submit"
+								name="upload" value="Upload Image" style="display: none">Upload
+								Image</button>
+							<button id="resetBtn" class="btn btn-gs-red" type="reset"
+								name="reset" value="" style="display: none">Reset Image</button>
+						</form>
 						<hr>
 					</div>
 
@@ -209,6 +220,38 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$('#openImgUpload').click(function() {
+			$('#imgUpload').trigger('click');
+
+		});
+
+		$('#imgUpload').change(function() {
+
+			var file = this.files[0];
+			var fileType = file["type"];
+			var validImageTypes = [ "image/jpeg", "image/png" ];
+			if ($.inArray(fileType, validImageTypes) < 0) {
+				alert('Invalid file type. Only JPEG or PNG is allowed.');
+				$('#resetBtn').trigger('click');
+				file = null;
+			}
+
+			if (file != null) {
+
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#openImgUpload').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(file);
+				$("#uploadBtn").css("display", "inline");
+			}
+
+		});
+	</script>
 
 	<jsp:include page="WEB-INF/views/footer.jsp" />
 

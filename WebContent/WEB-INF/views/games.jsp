@@ -38,8 +38,9 @@
 						<div class="card text-center mb-4 pt-4">
 							<a href="play-game?GameID=<%=showGame.getGameID()%>"
 								style="color: black"> <img
-								src="images/<%=showGame.getGameID()%>.jpg" width="100"
-								height="100" alt="<%=showGame.getgameName()%>">
+								src="images/<%=showGame.getGameID()%>.jpg"
+								alt="<%=showGame.getgameName()%>"
+								style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
 							<div class="card-container">
 								<p>
@@ -50,7 +51,8 @@
 									<form method="GET" action="play-game">
 										<input type="hidden" name="GameID"
 											value="<%=showGame.getGameID()%>"> <input
-											class="btn btn-gs-green w-100" type="submit" value="Play Game" />
+											class="btn btn-gs-green w-100" type="submit"
+											value="Play Game" />
 									</form>
 								</div>
 								<div class="my-2">

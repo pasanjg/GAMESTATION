@@ -179,7 +179,7 @@
 						<div class="card text-center mb-4 pt-4">
 							<a href="play-game?GameID=<%=gameID%>" style="color: black">
 								<img src="images/<%=gameID%>.jpg" height="135" alt="<%=gameID%>"
-								style="margin: auto;">
+								style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
 							<div class="card-container">
 								<h6>

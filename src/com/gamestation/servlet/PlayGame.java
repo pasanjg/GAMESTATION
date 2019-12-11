@@ -32,7 +32,7 @@ public class PlayGame extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String GameID = request.getParameter("GameID");
+		String GameID = request.getParameter("game-data");
 
 		request.setAttribute("GameID", GameID);
 

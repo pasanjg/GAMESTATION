@@ -6,9 +6,10 @@
 <jsp:include page="header.jsp" />
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<%
+	<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 	IGameService iGameService = new GameServiceImpl();
@@ -16,12 +17,13 @@
 	gameList = iGameService.listAllGames();
 %>
 
-<title>Games | GameStation</title>
+	<title>Games | GameStation</title>
 
-<style>
-</style>
+	<style>
+	</style>
 
 </head>
+
 <body>
 
 	<div class="container gs-top">
@@ -36,11 +38,9 @@
 					%>
 					<div class="col-sm-6 col-md-4 col-lg-3">
 						<div class="card text-center mb-4 pt-4">
-							<a href="play-game?GameID=<%=showGame.getGameID()%>"
-								style="color: black"> <img
-								src="images/<%=showGame.getGameID()%>.jpg"
-								alt="<%=showGame.getgameName()%>"
-								style="width: 100%; height: 150px; object-fit: cover;">
+							<a href="play-game?game-data=<%=showGame.getGameID()%>" style="color: black"> <img
+									src="images/<%=showGame.getGameID()%>.jpg" alt="<%=showGame.getgameName()%>"
+									style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
 							<div class="card-container">
 								<p>
@@ -49,18 +49,14 @@
 
 								<div class="mb-2">
 									<form method="GET" action="play-game">
-										<input type="hidden" name="GameID"
-											value="<%=showGame.getGameID()%>"> <input
-											class="btn btn-gs-green w-100" type="submit"
-											value="Play Game" />
+										<input type="hidden" name="game-data" value="<%=showGame.getGameID()%>"> <input
+											class="btn btn-gs-green w-100" type="submit" value="Play Game" />
 									</form>
 								</div>
 								<div class="my-2">
 									<form method="GET" action="add-fav">
-										<input type="hidden" name="favourite"
-											value="<%=showGame.getGameID()%>"> <input
-											class="btn btn-gs-red w-100" type="submit"
-											value="Add to Favourites" />
+										<input type="hidden" name="favourite" value="<%=showGame.getGameID()%>"> <input
+											class="btn btn-gs-red w-100" type="submit" value="Add to Favourites" />
 									</form>
 								</div>
 							</div>
@@ -79,4 +75,5 @@
 	<jsp:include page="footer.jsp" />
 
 </body>
+
 </html>

@@ -55,24 +55,31 @@
 						arrayList = iGameService.getFav(user.getUserID());
 				%>
 
-				<div class="col-sm-12 pt-5" id="profile-details">
+				<div class="col-sm-12 pt-4" id="profile-details">
 					<div class="picture pt-2">
 
 						<%
 							if (user.getImgDataBase64() != null) {
 						%>
 
-						<img id="openImgUpload"
+						<img id="photoCamera" class="profile-img over" src="images/photo-camera.png"
+							width="150"
+							style="height: 150px; width: 150px; display: none" />
+						<img id="openImgUpload" class="profile-img under"
 							src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
 							width="150"
-							style="height: 150px; width: 150px; object-fit: cover;" />
+							style="height: 150px; width: 150px;" />
 
 						<%
 							} else {
 						%>
 
-						<img id="openImgUpload" src="images/default.png" width="150"
-							style="height: 150px; width: 150px; object-fit: cover;" />
+						<img id="photoCamera" class="profile-img over" src="images/photo-camera.png"
+							width="150"
+							style="height: 150px; width: 150px; display: none;" />
+						<img id="openImgUpload" class="profile-img under" src="images/default.png"
+							width="150"
+							style="height: 150px; width: 150px;" />
 
 						<%
 							}
@@ -241,33 +248,44 @@
 	</div>
 
 	<script>
-		$('#openImgUpload').click(function() {
-			$('#imgUpload').trigger('click');
+		$(document).ready(function() {
+			$('#photoCamera').click(function() {
+				$('#imgUpload').trigger('click');
 
-		});
+			});
 
-		$('#imgUpload').change(function() {
+			$('#imgUpload').change(function() {
 
-			var file = this.files[0];
-			var fileType = file["type"];
-			var validImageTypes = [ "image/jpeg", "image/png" ];
-			if ($.inArray(fileType, validImageTypes) < 0) {
-				alert('Invalid file type. Only JPEG or PNG is allowed.');
-				$('#resetBtn').trigger('click');
-				file = null;
-			}
-
-			if (file != null) {
-
-				var reader = new FileReader();
-
-				reader.onload = function(e) {
-					$('#openImgUpload').attr('src', e.target.result);
+				var file = this.files[0];
+				var fileType = file["type"];
+				var validImageTypes = [ "image/jpeg", "image/png" ];
+				if ($.inArray(fileType, validImageTypes) < 0) {
+					alert('Invalid file type. Only JPEG or PNG is allowed.');
+					$('#resetBtn').trigger('click');
+					file = null;
 				}
 
-				reader.readAsDataURL(file);
-				$("#uploadBtn").css("display", "inline");
-			}
+				if (file != null) {
+
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						$('#openImgUpload').attr('src', e.target.result);
+					}
+
+					reader.readAsDataURL(file);
+					$("#uploadBtn").css("display", "inline");
+				}
+
+			});
+
+			$("#openImgUpload").mouseenter(function() {
+				$("#photoCamera").toggle();
+			});
+
+			$("#photoCamera").mouseleave(function() {
+				$("#photoCamera").toggle();
+			});
 
 		});
 	</script>

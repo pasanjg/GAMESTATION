@@ -166,6 +166,21 @@ embed {
 	border-radius: 5px 5px 0 0;
 }
 
+.profile-img {
+	object-fit: cover;
+	border-radius: 50% !important;
+}
+
+.over {
+	position: absolute;
+	z-index: 1;
+}
+
+.under {
+	position: relative;
+	z-index: 0;
+}
+
 .card {
 	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

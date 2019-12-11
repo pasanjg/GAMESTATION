@@ -127,15 +127,15 @@
 							if (user.getImgDataBase64() != null) {
  						%>
 
-							<img src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
-							width="32" style="height: 32px; width: 32px; object-fit: cover;" />
+							<img class="profile-img" src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
+							width="32" style="height: 32px; width: 32px;" />
 
 						<%
 							} else {
 						%> 
 						
-						<img src="images/default.png" width="32"
-							style="height: 32px; width: 32px; object-fit: cover;" /> 
+						<img class="profile-img" src="images/default.png" width="32"
+							style="height: 32px; width: 32px;" /> 
 							
 						<%
  							}

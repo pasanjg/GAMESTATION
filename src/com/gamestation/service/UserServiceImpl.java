@@ -44,8 +44,6 @@ public class UserServiceImpl implements IUserService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println("add user: "+user.getUserID());
 
 	}
 
@@ -197,7 +195,7 @@ public class UserServiceImpl implements IUserService {
 					.prepareStatement(getUserQuery);
 
 			ps.setString(1, userparam);
-//			ps.setString(2, userparam);
+			// ps.setString(2, userparam);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -222,15 +220,13 @@ public class UserServiceImpl implements IUserService {
 				}
 
 				user = player;
-				System.out.println("get user: "+player.getUserID());
+
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println(user.getUserID());
-		
 		return user;
 	}
 

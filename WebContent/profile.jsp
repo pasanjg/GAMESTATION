@@ -10,7 +10,7 @@
 
 <head>
 
-	<%
+<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 	User user = (User) session.getAttribute("currentSessionUser");
@@ -28,22 +28,22 @@
 	}
 %>
 
-	<%
+<%
 	if (user != null) {
 %>
 
-	<title><%=user.getUserName()%> | GameStation</title>
+<title><%=user.getUserName()%> | GameStation</title>
 
-	<%
+<%
 	}
 %>
 
-	<style>
-	</style>
+<style>
+</style>
 
 </head>
 
-<body>
+<body onload="imageUploadAction()">
 
 	<div id="content" class="container gs-top">
 		<div class="row">
@@ -64,19 +64,22 @@
 							if (user.getImgDataBase64() != null) {
 						%>
 
-						<img id="photoCamera" class="profile-img over" src="images/photo-camera.png" width="150"
-							style="height: 150px; width: 150px; display: none" />
-						<img id="openImgUpload" class="profile-img under"
-							src="data:image/PNG;base64,<%=user.getImgDataBase64()%>" width="150"
-							style="height: 150px; width: 150px;" />
+						<img id="photoCamera" class="profile-img over"
+							src="images/photo-camera.png" width="150"
+							style="height: 150px; width: 150px; display: none" /> <img
+							id="openImgUpload" class="profile-img under"
+							src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
+							width="150" style="height: 150px; width: 150px;" />
 
 						<%
 							} else {
 						%>
 
-						<img id="photoCamera" class="profile-img over" src="images/photo-camera.png" width="150"
-							style="height: 150px; width: 150px; display: none;" />
-						<img id="openImgUpload" class="profile-img under" src="images/default.png" width="150"
+						<img id="photoCamera" class="profile-img over"
+							src="images/photo-camera.png" width="150"
+							style="height: 150px; width: 150px; display: none;" /> <img
+							id="openImgUpload" class="profile-img under"
+							src="images/default.png" width="150"
 							style="height: 150px; width: 150px;" />
 
 						<%
@@ -86,13 +89,13 @@
 						<br /> <br />
 						<h5><%=user.getUserName()%></h5>
 						<form action="upload" method="POST" enctype="multipart/form-data">
-							<input type="file" id="imgUpload" name="image" accept="image/*" style="display: none"
-								required />
-							<button id="uploadBtn" class="btn btn-gs-red" type="submit" name="upload"
-								value="Upload Image" style="display: none">Upload
+							<input type="file" id="imgUpload" name="image" accept="image/*"
+								style="display: none" required />
+							<button id="uploadBtn" class="btn btn-gs-red" type="submit"
+								name="upload" value="Upload Image" style="display: none">Upload
 								Image</button>
-							<button id="resetBtn" class="btn btn-gs-red" type="reset" name="reset" value=""
-								style="display: none">Reset Image</button>
+							<button id="resetBtn" class="btn btn-gs-red" type="reset"
+								name="reset" value="" style="display: none">Reset Image</button>
 						</form>
 						<hr>
 					</div>
@@ -117,7 +120,7 @@
 										style="margin-top: 5px; padding: 3px 5px 0 5px;">
 										<i class="material-icons">&#xe3c9;</i>
 									</button>
-								</a></td>
+							</a></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
@@ -139,7 +142,8 @@
 					<p style="text-align: left;">This paragraph contains a breif
 						description about the user. Editable text.</p>
 					<p style="text-align: right; margin: 0">
-						<button class="btn btn-grey" style="margin-top: 5px; padding: 3px 5px 0 5px;">
+						<button class="btn btn-grey"
+							style="margin-top: 5px; padding: 3px 5px 0 5px;">
 							<i class="material-icons">&#xe3c9;</i>
 						</button>
 					</p>
@@ -183,7 +187,7 @@
 						<div class="card text-center mb-4 pt-4">
 							<a href="play-game?game-data=<%=gameID%>" style="color: black">
 								<img src="images/<%=gameID%>.jpg" height="135" alt="<%=gameID%>"
-									style="width: 100%; height: 150px; object-fit: cover;">
+								style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
 							<div class="card-container">
 								<h6>
@@ -193,13 +197,15 @@
 
 								<div class="d-inline">
 									<form class="d-inline" method="GET" action="play-game">
-										<input class="form-control" type="hidden" name="game-data" value="<%=gameID%>">
+										<input class="form-control" type="hidden" name="game-data"
+											value="<%=gameID%>">
 										<button class="btn btn-gs-green w-45" type="submit">Play</button>
 									</form>
 								</div>
 								<div class="d-inline">
 									<form class="d-inline" method="GET" action="remove-fav">
-										<input class="form-control" type="hidden" name="GameID" value="<%=gameID%>">
+										<input class="form-control" type="hidden" name="GameID"
+											value="<%=gameID%>">
 										<button class="btn btn-gs-red w-45" type="submit">Remove</button>
 									</form>
 								</div>
@@ -243,46 +249,7 @@
 	</div>
 
 	<script>
-		$(document).ready(function () {
-			$('#photoCamera').click(function () {
-				$('#imgUpload').trigger('click');
-
-			});
-
-			$('#imgUpload').change(function () {
-
-				var file = this.files[0];
-				var fileType = file["type"];
-				var validImageTypes = ["image/jpeg", "image/png"];
-				if ($.inArray(fileType, validImageTypes) < 0) {
-					alert('Invalid file type. Only JPEG or PNG is allowed.');
-					$('#resetBtn').trigger('click');
-					file = null;
-				}
-
-				if (file != null) {
-
-					var reader = new FileReader();
-
-					reader.onload = function (e) {
-						$('#openImgUpload').attr('src', e.target.result);
-					}
-
-					reader.readAsDataURL(file);
-					$("#uploadBtn").css("display", "inline");
-				}
-
-			});
-
-			$("#openImgUpload").mouseenter(function () {
-				$("#photoCamera").toggle();
-			});
-
-			$("#photoCamera").mouseleave(function () {
-				$("#photoCamera").toggle();
-			});
-
-		});
+		
 	</script>
 
 	<jsp:include page="WEB-INF/views/footer.jsp" />

@@ -33,6 +33,8 @@
 
 <script src="https://kit.fontawesome.com/64e4326dc2.js"></script>
 
+<script src="assets/js/scripts.js" type="text/javascript"></script>
+
 <%
 	User user = (User) session.getAttribute("currentSessionUser");
 	String type = (String) request.getAttribute("type");
@@ -43,19 +45,8 @@
 
 <link rel="shortcut icon" href="favicon.ico" />
 
-<script type="text/javascript">
-	function checkSearch() {
+<script>
 
-		var query = document.getElementById('navSearchBar').value;
-
-		if ((query == null) || (query == "")) {
-			return false;
-		}
-
-		else {
-			return true;
-		}
-	}
 </script>
 
 </head>

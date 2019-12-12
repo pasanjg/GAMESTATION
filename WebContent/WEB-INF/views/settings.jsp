@@ -23,34 +23,11 @@
 </style>
 
 <script type="text/javascript">
-	function checkPassword() {
-		var password1 = document.getElementById('pass1').value;
-		var password2 = document.getElementById('pass2').value;
-
-		if ((password1 == null && password2 == null)
-				|| (password1 == "" && password2 == "")) {
-			document.getElementById('status').innerHTML = "Password cannot be empty!";
-			return false;
-		} else if (password1 == password2) {
-			document.getElementById('status').innerHTML = "Passwords Match!";
-			return true;
-		} else {
-			document.getElementById('status').innerHTML = "Passwords Do Not Match!";
-			return false;
-		}
-	}
-
-	function checkProceed() {
-		if (confirm("You are trying to delete your account. It cannot be recovered again.")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	
 </script>
 
 </head>
-<body>
+<body onload="tabSelectAction()">
 
 	<div class="container gs-top">
 		<div class="row pt-5 mb-5">
@@ -111,7 +88,7 @@
 					</div>
 
 					<div id="edit-profile"
-						class="tabcontent-settings m-auto w-100 pt-4 px-5"
+						class="tabcontent m-auto w-100 pt-4 px-5"
 						style="max-height: 360px">
 						<!-- SECTION 01 -->
 						<%
@@ -225,7 +202,7 @@
 						%>
 					</div>
 
-					<div id="change-pass" class="tabcontent-settings m-auto px-5"
+					<div id="change-pass" class="tabcontent m-auto px-5"
 						style="max-height: 360px">
 						<!-- SECTION 02 -->
 						<form onsubmit="return checkPassword();" method="POST"
@@ -278,7 +255,7 @@
 					</div>
 
 					<div id="delete-account"
-						class="tabcontent-settings m-auto p-5 px-5"
+						class="tabcontent m-auto p-5 px-5"
 						style="max-height: 360px">
 						<!-- SECTION 03 -->
 						<form onSubmit="return checkProceed()" method="POST"
@@ -321,22 +298,7 @@
 	</div>
 
 	<script>
-		function openTab(evt, tabName, color) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent-settings");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].style.color = "gray";
-			}
-			document.getElementById(tabName).style.display = "block";
-			evt.style.color = "#000";
-		}
-
-		// Get the element with id="defaultOpen" and click on it
-		document.getElementById("defaultOpen").click();
+		
 	</script>
 
 	<jsp:include page="WEB-INF/views/scrolltop.jsp" />

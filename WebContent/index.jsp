@@ -26,8 +26,8 @@
 		<div class="main col-md-12 text-center text-white my-5 py-5"
 			style="background-color: #e74c3c;">
 			<div class="container">
-				<strong><h3 class="font-weight-bold">GAMERS ON ANY
-						PLATFORM</h3></strong><br>
+				<h3 class="font-weight-bold">GAMERS ON ANY PLATFORM</h3>
+				<br>
 				<div class="row">
 					<div class="col-md-4">
 						<h3>PlayStation</h3>
@@ -67,7 +67,8 @@
 		<div class="main col-md-12 text-center text-white my-5 py-5"
 			style="background-color: #717171;">
 			<div class="container">
-				<strong><h3 class="font-weight-bold">GAMING CATEGORIES</h3></strong><br>
+				<h3 class="font-weight-bold">GAMING CATEGORIES</h3>
+				<br>
 				<div class="row">
 					<div class="col-md-3">
 						<h3>Action</h3>
@@ -127,20 +128,21 @@
 				<br>
 				<div class="row">
 					<div class="col-md-9 text-left justify-content">
-						<p>"Sed ut perspiciatis unde omnis iste natus error sit
-							voluptatem accusantium doloremque laudantium, totam rem aperiam,
-							eaque ipsa quae ab illo inventore veritatis et quasi architecto
-							beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-							quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi
-							nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-							sit amet, consectetur, adipisci velit, sed quia non numquam eius
-							modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-							voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-							ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-							consequatur? Quis autem vel eum iure reprehenderit qui in ea
-							voluptate velit esse quam nihil molestiae consequatur, vel illum
-							qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+						<p class="text-justify">"Sed ut perspiciatis unde omnis iste
+							natus error sit voluptatem accusantium doloremque laudantium,
+							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+							quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+							ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+							sed quia consequuntur magni dolores eos qui ratione voluptatem
+							sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
+							dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+							eius modi tempora incidunt ut labore et dolore magnam aliquam
+							quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam, nisi ut
+							aliquid ex ea commodi consequatur? Quis autem vel eum iure
+							reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+							consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+							pariatur?"</p>
 					</div>
 					<div class="col-md-3 sub-content">
 						<img class="img-responsive" src="images/logo.png" />

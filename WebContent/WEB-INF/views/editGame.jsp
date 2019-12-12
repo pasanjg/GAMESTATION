@@ -211,34 +211,34 @@
 												category of the game</label>
 											<div
 												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="action" name="gameCategory"
+												<input type="radio" id="new-action" name="gameCategory"
 													value="Action" checked="checked"
 													class="custom-control-input" required> <label
-													class="custom-control-label" for="action">Action</label>
+													class="custom-control-label" for="new-action">Action</label>
 											</div>
 											<div
 												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="racing" name="gameCategory"
+												<input type="radio" id="new-racing" name="gameCategory"
 													value="Racing" class="custom-control-input" required>
-												<label class="custom-control-label" for="racing">Racing</label>
+												<label class="custom-control-label" for="new-racing">Racing</label>
 											</div>
 											<div
 												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="sport" name="gameCategory"
+												<input type="radio" id="new-sport" name="gameCategory"
 													value="Sport" class="custom-control-input" required>
-												<label class="custom-control-label" for="sport">Sport</label>
+												<label class="custom-control-label" for="new-sport">Sport</label>
 											</div>
 											<div
 												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="puzzle" name="gameCategory"
+												<input type="radio" id="new-puzzle" name="gameCategory"
 													value="Puzzle" class="custom-control-input" required>
-												<label class="custom-control-label" for="puzzle">Puzzle</label>
+												<label class="custom-control-label" for="new-puzzle">Puzzle</label>
 											</div>
 											<div
 												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="other" name="gameCategory"
+												<input type="radio" id="new-other" name="gameCategory"
 													value="Other" class="custom-control-input" required>
-												<label class="custom-control-label" for="other">Other</label>
+												<label class="custom-control-label" for="new-other">Other</label>
 											</div>
 										</div>
 									</td>

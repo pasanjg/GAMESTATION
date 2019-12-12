@@ -4,7 +4,7 @@
 <%@page import="com.gamestation.service.IContactService"%>
 <%@page import="com.gamestation.service.ContactServiceImpl"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="header.jsp" />
+<jsp:include page="WEB-INF/views/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,9 +137,9 @@
 		</div>
 	</div>
 
-	<jsp:include page="scrolltop.jsp" />
+	<jsp:include page="WEB-INF/views/scrolltop.jsp" />
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="WEB-INF/views/footer.jsp" />
 
 </body>
 </html>

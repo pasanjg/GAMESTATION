@@ -37,7 +37,7 @@ public class SearchGame extends HttpServlet {
 		request.setAttribute("search", search);
 
 		// response.setContentType("text/html");
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/results.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/results.jsp");
 		dispatcher.forward(request, response);
 
 	}

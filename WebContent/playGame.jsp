@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<jsp:include page="header.jsp" />
+<jsp:include page="WEB-INF/views/header.jsp" />
 
 <html>
 <head>
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="WEB-INF/views/footer.jsp" />
 
 </body>
 </html>

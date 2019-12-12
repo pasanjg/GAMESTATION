@@ -83,7 +83,7 @@ public class Register extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("currentSessionUser", user);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/viewUser.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewUser.jsp");
 		dispatcher.forward(request, response);
 
 	}

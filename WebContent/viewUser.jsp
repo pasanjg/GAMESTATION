@@ -3,7 +3,7 @@
 <%@page import="com.gamestation.service.UserServiceImpl"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="java.util.ArrayList"%>
-<jsp:include page="header.jsp" />
+<jsp:include page="WEB-INF/views/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,7 +143,7 @@
 		</div>
 	</div>
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="WEB-INF/views/footer.jsp" />
 
 </body>
 </html>

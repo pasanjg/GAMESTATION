@@ -47,7 +47,7 @@ public class ContactInfo extends HttpServlet {
 
 		request.setAttribute("currentMessage", contact);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/viewMessage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewMessage.jsp");
 		dispatcher.forward(request, response);
 
 	}

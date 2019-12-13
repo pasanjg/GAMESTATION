@@ -217,6 +217,8 @@ public class UserServiceImpl implements IUserService {
 				if (image != null) {
 					player.loadImage(image);
 				}
+				
+				player.setAbout(resultSet.getString(12));
 
 				user = player;
 

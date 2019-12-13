@@ -14,9 +14,7 @@
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 	User user = (User) session.getAttribute("currentSessionUser");
-
 	String confirm = (String) request.getAttribute("confirmString");
-
 	String confirmAddOrRem = (String) request.getAttribute("confirm");
 
 	ArrayList<String> arrayList = new ArrayList<String>();
@@ -139,17 +137,60 @@
 				<div class="col-sm-12" id="profile-details">
 					<span class="text-left"><b>About</b></span>
 					<hr>
-					<p style="text-align: left;">This paragraph contains a breif
-						description about the user. Editable text.</p>
-					<p style="text-align: right; margin: 0">
-						<button class="btn btn-grey"
-							style="margin-top: 5px; padding: 3px 5px 0 5px;">
-							<i class="material-icons">&#xe3c9;</i>
-						</button>
-					</p>
+
+					<div id="profileAbout">
+						<%
+							if (user.getAbout() == null) {
+						%>
+						<p class="text-left">This paragraph contains a brief
+							description about the user. Editable text.</p>
+						<%
+							} else {
+						%>
+						<p id="profile-about" class="text-left">
+							<%=user.getAbout()%>
+						</p>
+						<%
+							}
+						%>
+					</div>
+
+					<form action="profile" method="POST">
+						<div id="editAbout" class="form-group" style="display: none">
+						
+							<%-- <%
+								if (user.getAbout() == null) {
+							%>
+							<textarea class="form-control" name="about" rows="4"
+								placeholder="Enter your description here..." required></textarea>
+							<%
+								} else {
+							%>
+							<textarea class="form-control" name="about" rows="4"
+								placeholder="Enter your description here..." required><%=user.getAbout()%></textarea>
+							<%
+								}
+							%> --%>
+
+							<textarea class="form-control" name="about" rows="4"
+								placeholder="Enter your description here..." required></textarea>
+
+						</div>
+
+						<div class="text-right">
+							<button id="confirmAbout" class="btn btn-gs-red mr-2"
+								type="submit" name="upload" value="Confirm"
+								style="display: none">Confirm</button>
+							<button class="btn btn-grey" onclick="editProfile()"
+								style="padding: 3px 5px 0 5px;">
+								<i class="material-icons">&#xe3c9;</i>
+							</button>
+						</div>
+					</form>
+
 				</div>
 
-				<div class="col-sm-12" id="profile-details">another section</div>
+				<!-- <div class="col-sm-12" id="profile-details">another section</div> -->
 
 				<%
 					}

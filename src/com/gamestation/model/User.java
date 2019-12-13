@@ -18,6 +18,7 @@ public class User {
 	private String userName;
 	private String password;
 	private String email;
+	private String about;
 	private String type = null;
 	private Part imagePart;
 	private String imgDataBase64 = null;
@@ -95,6 +96,14 @@ public class User {
 		return this.email;
 	}
 
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -126,10 +135,9 @@ public class User {
 	public void setValid(boolean newValid) {
 		this.valid = newValid;
 	}
-	
-	
+
 	public void loadImage(Blob image) throws SQLException {
-		
+
 		byte[] imgData = image.getBytes(1, (int) image.length());
 		this.imgDataBase64 = new String(Base64.getEncoder().encode(imgData));
 	}

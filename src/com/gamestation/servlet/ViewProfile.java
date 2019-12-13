@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.gamestation.model.User;
+import com.gamestation.service.IUserService;
+import com.gamestation.service.UserServiceImpl;
 
 /**
  * Servlet implementation class ViewProfile
@@ -22,7 +27,6 @@ public class ViewProfile extends HttpServlet {
 	 */
 	public ViewProfile() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -31,7 +35,6 @@ public class ViewProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
 		dispatcher.forward(request, response);
@@ -43,7 +46,23 @@ public class ViewProfile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		IUserService iUserService = new UserServiceImpl();
+
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("currentSessionUser");
+
+		user.setAbout(request.getParameter("about"));
+
+		user = iUserService.addUserAbout(user);
+
+		session.setAttribute("currentSessionUser", user);
+
+		String confirmString = "Profile about updated!";
+		request.setAttribute("confirmString", confirmString);
+
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

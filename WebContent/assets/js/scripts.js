@@ -1,11 +1,8 @@
 function checkSearch() {
-
 	var query = document.getElementById('navSearchBar').value;
-
 	if ((query == null) || (query == "")) {
 		return false;
 	}
-
 	else {
 		return true;
 	}
@@ -95,5 +92,13 @@ function imageUploadAction() {
 			$("#photoCamera").toggle();
 		});
 
+	});
+}
+
+function editProfile() {
+	$(document).ready(function() {
+		$("#profileAbout").toggle();
+		$("#editAbout").toggle();
+		$("#confirmAbout").toggle();
 	});
 }

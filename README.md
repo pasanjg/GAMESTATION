@@ -2,6 +2,8 @@
 
 
 # JSP/SERVLET WEB APPLICATION
+Improved version of the second year project. Initial version is in [`gamestation-v1`](https://github.com/pasanjg/GAMESTATION/tree/gamestation-v1) branch :see_no_evil:
+
 ### Download 
 
 - [Eclipse JEE](https://www.eclipse.org/downloads/)

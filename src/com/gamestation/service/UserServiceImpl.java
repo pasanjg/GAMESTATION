@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Base64;
 
 public class UserServiceImpl implements IUserService {
 
@@ -19,7 +18,7 @@ public class UserServiceImpl implements IUserService {
 
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
-		String addUserQuery = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		String addUserQuery = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 
@@ -49,7 +48,7 @@ public class UserServiceImpl implements IUserService {
 
 	public User updateUser(User user) {
 
-		String updateUserQuery = "UPDATE user "
+		String updateUserQuery = "UPDATE users "
 				+ "SET firstname = ?, lastname = ?, gender = ?, country = ?, platform = ?, email = ? " + "WHERE id = ?";
 
 		try {
@@ -78,7 +77,7 @@ public class UserServiceImpl implements IUserService {
 
 		user.setPassword(PasswordHash.hashPassword(user.getPassword()));
 
-		String loginQuery1 = "SELECT * FROM user WHERE username = ? AND password = ?";
+		String loginQuery1 = "SELECT * FROM users WHERE username = ? AND password = ?";
 
 		PreparedStatement ps;
 
@@ -93,7 +92,6 @@ public class UserServiceImpl implements IUserService {
 
 			if (resultSet.next()) {
 
-				user.setUserID(resultSet.getString(1));
 				user.setUserID(resultSet.getString(1));
 				user.setFirstName(resultSet.getString(2));
 				user.setLastName(resultSet.getString(3));
@@ -112,6 +110,8 @@ public class UserServiceImpl implements IUserService {
 					user.loadImage(image);
 				}
 
+				user.setAbout(resultSet.getString(12));
+
 			}
 
 			else {
@@ -129,7 +129,7 @@ public class UserServiceImpl implements IUserService {
 	public String getPassword(String userID) {
 
 		String password = null;
-		String getPasswordQuery = "SELECT * FROM user WHERE id = ?";
+		String getPasswordQuery = "SELECT * FROM users WHERE id = ?";
 
 		try {
 
@@ -141,7 +141,6 @@ public class UserServiceImpl implements IUserService {
 			ResultSet resultSet = ps.executeQuery();
 
 			if (resultSet.next()) {
-
 				password = resultSet.getString(8);
 			}
 
@@ -187,7 +186,7 @@ public class UserServiceImpl implements IUserService {
 
 		User user = new User();
 
-		String getUserQuery = "SELECT * FROM user WHERE id = ?";
+		String getUserQuery = "SELECT * FROM users WHERE id = ?";
 
 		try {
 
@@ -235,7 +234,7 @@ public class UserServiceImpl implements IUserService {
 
 		ArrayList<String> arrayList = new ArrayList<String>();
 
-		String findIDQuery = "SELECT id FROM user";
+		String findIDQuery = "SELECT id FROM users";
 
 		PreparedStatement ps;
 
@@ -258,7 +257,7 @@ public class UserServiceImpl implements IUserService {
 
 	public void deleteUser(String userID) {
 
-		String deleteUserQuery = "DELETE FROM user WHERE id = ?";
+		String deleteUserQuery = "DELETE FROM users WHERE id = ?";
 		String deleteFavouriteQuery = "DELETE FROM favourite WHERE userID = ?";
 
 		try {
@@ -281,7 +280,7 @@ public class UserServiceImpl implements IUserService {
 
 		InputStream inputStream = null; // input stream of the upload file
 
-		String uploadImageQuery = "UPDATE user SET image = ? WHERE id = ?";
+		String uploadImageQuery = "UPDATE users SET image = ? WHERE id = ?";
 
 		if (user.getImage() != null) {
 
@@ -310,6 +309,27 @@ public class UserServiceImpl implements IUserService {
 			e.printStackTrace();
 		}
 
+	}
+
+	public User addUserAbout(User user) {
+
+		String addUserAboutQuery = "UPDATE users SET about = ? WHERE id = ?";
+
+		try {
+
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(addUserAboutQuery);
+
+			ps.setString(1, user.getAbout());
+			ps.setString(2, user.getUserID());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user;
 	}
 
 }

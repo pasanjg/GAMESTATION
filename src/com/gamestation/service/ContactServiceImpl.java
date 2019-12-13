@@ -12,12 +12,13 @@ public class ContactServiceImpl implements IContactService {
 
 	public void addContact(Contact contact) {
 
-		String addContactQuery = "INSERT INTO contact VALUES(?,?,?,?)";
+		String addContactQuery = "INSERT INTO messages VALUES(?,?,?,?)";
 
 		try {
-			
+
 			// add data to contact table
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addContactQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(addContactQuery);
 
 			ps.setString(1, contact.getMessageID());
 			ps.setString(2, contact.getName());
@@ -34,10 +35,11 @@ public class ContactServiceImpl implements IContactService {
 
 	public void deleteMessage(String messageID) {
 
-		String deleteMessageQuery = "DELETE from contact WHERE  MessageID = ?";
+		String deleteMessageQuery = "DELETE from messages WHERE  MessageID = ?";
 
 		try {
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(deleteMessageQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(deleteMessageQuery);
 
 			ps.setString(1, messageID);
 
@@ -54,11 +56,12 @@ public class ContactServiceImpl implements IContactService {
 
 		ArrayList<Contact> contactList = new ArrayList<Contact>();
 
-		String getMessagesQuery = "SELECT * FROM contact";
+		String getMessagesQuery = "SELECT * FROM messages";
 
 		try {
 
-			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getMessagesQuery);
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(getMessagesQuery);
 
 			ResultSet resultSet = ps.executeQuery();
 
@@ -85,7 +88,7 @@ public class ContactServiceImpl implements IContactService {
 
 		ArrayList<String> arrayList = new ArrayList<String>();
 
-		String findIDQuery = "SELECT messageid FROM contact";
+		String findIDQuery = "SELECT messageid FROM messages";
 
 		PreparedStatement ps;
 		try {

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import com.gamestation.service.GameServiceImpl;
  * Servlet implementation class upgateGane
  */
 @WebServlet("/update-game")
+@MultipartConfig(maxFileSize = 16177215)
 public class UpdateGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +44,7 @@ public class UpdateGame extends HttpServlet {
 		game.setGameName(request.getParameter("gameName"));
 		game.setTag(request.getParameter("gametag"));
 		game.setCategory(request.getParameter("gameCategory"));
+		game.setImage(request.getPart("image"));
 
 		IGameService iGameService = new GameServiceImpl();
 		iGameService.updateGame(game);

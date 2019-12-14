@@ -148,7 +148,8 @@
 										<p>Upload Image</p>
 										<div class="row border p-3 text-center">
 											<div class="col">
-												<img class="addPhotoCamera over" src="images/photo-camera.png"
+												<img class="addPhotoCamera over"
+													src="images/photo-camera.png"
 													style="height: 150px; width: 250px; object-fit: cover; display: none;" />
 												<img class="addImage under" src="images/game-default.png"
 													style="height: 150px; width: 250px; object-fit: cover;" />
@@ -174,7 +175,8 @@
 
 					<div id="update-games" class="tabcontent m-auto w-100 pt-4 px-5">
 						<!-- SECTION 02 -->
-						<form name="update-game" method="POST" action="update-game">
+						<form name="update-game" method="POST" action="update-game"
+							enctype="multipart/form-data">
 							<table class="table table-borderless" align="center">
 								<tr>
 									<td colspan="2">
@@ -244,7 +246,8 @@
 										<p>Upload Image</p>
 										<div class="row border p-3 text-center">
 											<div class="col">
-												<img class="updatePhotoCamera over" src="images/photo-camera.png"
+												<img class="updatePhotoCamera over"
+													src="images/photo-camera.png"
 													style="height: 150px; width: 250px; object-fit: cover; display: none;" />
 												<img class="updateImage under" src="images/game-default.png"
 													style="height: 150px; width: 250px; object-fit: cover;" />

@@ -156,6 +156,7 @@ public class GameServiceImpl implements IGameService {
 		String updateGameQuery = " UPDATE games SET gameName = ?, category = ?, tag = ? WHERE gameID = ?";
 
 		try {
+
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(updateGameQuery);
 
@@ -165,6 +166,11 @@ public class GameServiceImpl implements IGameService {
 			ps.setString(4, game.getGameID());
 
 			ps.executeUpdate();
+
+			if (game.getImage() != null) {
+				uploadImage(game);
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -362,7 +368,6 @@ public class GameServiceImpl implements IGameService {
 	}
 
 	public void uploadImage(Game game) {
-		System.out.println(game.getGameID());
 
 		InputStream inputStream = null; // input stream of the upload file
 

@@ -26,7 +26,6 @@ public class AddToFav extends HttpServlet {
 	 */
 	public AddToFav() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -35,14 +34,23 @@ public class AddToFav extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("currentSessionUser");
 
 		if (user != null) {
 
-			String gameID = request.getParameter("favourite");
+			String gameID = request.getParameter("gameID");
 
 			IGameService iGameService = new GameServiceImpl();
 			iGameService.addToFav(user.getUserID(), gameID);
@@ -54,21 +62,9 @@ public class AddToFav extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		} else {
-
 			response.sendRedirect("login");
-
 		}
 
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

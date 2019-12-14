@@ -20,12 +20,10 @@ public class AddGame extends HttpServlet {
 
 	public AddGame() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addGame.jsp");
 		dispatcher.forward(request, response);
@@ -40,10 +38,10 @@ public class AddGame extends HttpServlet {
 		String gameID = GenerateID.generateGameIDs(iGameService.getGameIDs());
 
 		game.setGameID(gameID);
-		game.setgameName(request.getParameter("gameName"));
-		game.setcategory(request.getParameter("category"));
+		game.setGameName(request.getParameter("gameName"));
+		game.setCategory(request.getParameter("category"));
 		game.setTag(request.getParameter("tag"));
-		game.setgamecode(request.getParameter("codeTag"));
+		game.setGameCode(request.getParameter("codeTag"));
 
 		iGameService.addGame(game);
 

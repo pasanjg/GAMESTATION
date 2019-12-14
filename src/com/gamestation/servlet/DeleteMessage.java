@@ -24,7 +24,7 @@ public class DeleteMessage extends HttpServlet {
 	 */
 	public DeleteMessage() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**

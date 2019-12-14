@@ -21,7 +21,6 @@ public class GetMessages extends HttpServlet {
 	 */
 	public GetMessages() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

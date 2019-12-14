@@ -50,12 +50,12 @@
 							<a href="play-game?game-data=<%=showGame.getGameID()%>"
 								style="color: black"> <img
 								src="images/<%=showGame.getGameID()%>.jpg" width="100"
-								height="100" alt="<%=showGame.getgameName()%>">
+								height="100" alt="<%=showGame.getGameName()%>">
 							</a>
 							<div class="card-container">
 								<p>
-									<strong><%=showGame.getgameName()%></strong><br> Category:
-									<%=showGame.getcategory()%></p>
+									<strong><%=showGame.getGameName()%></strong><br> Category:
+									<%=showGame.getCategory()%></p>
 
 								<div class="mb-2">
 									<form method="GET" action="play-game">

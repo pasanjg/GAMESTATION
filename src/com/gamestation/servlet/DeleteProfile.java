@@ -27,7 +27,6 @@ public class DeleteProfile extends HttpServlet {
 	 */
 	public DeleteProfile() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -16,29 +16,29 @@ public class Game {
 
 	}
 
-	public void setgamecode(String gamecode) {
+	public void setGameCode(String gamecode) {
 		this.gamecode = gamecode;
 	}
 
-	public String getgamecode() {
+	public String getGameCode() {
 		return this.gamecode;
 
 	}
 
-	public void setgameName(String gameName) {
+	public void setGameName(String gameName) {
 		this.gameName = gameName;
 	}
 
-	public String getgameName() {
+	public String getGameName() {
 		return this.gameName;
 
 	}
 
-	public void setcategory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
-	public String getcategory() {
+	public String getCategory() {
 		return this.category;
 
 	}

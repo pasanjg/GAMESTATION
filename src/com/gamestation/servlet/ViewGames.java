@@ -21,7 +21,6 @@ public class ViewGames extends HttpServlet {
 	 */
 	public ViewGames() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,7 +29,6 @@ public class ViewGames extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/games.jsp");
 		dispatcher.forward(request, response);
@@ -42,7 +40,6 @@ public class ViewGames extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

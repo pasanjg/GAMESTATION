@@ -1,4 +1,5 @@
 <%@page import="com.gamestation.model.User"%>
+<%@page import="com.gamestation.model.Game"%>
 <%@page import="com.gamestation.service.IGameService"%>
 <%@page import="com.gamestation.service.GameServiceImpl"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -17,7 +18,7 @@
 	String confirm = (String) request.getAttribute("confirmString");
 	String confirmAddOrRem = (String) request.getAttribute("confirm");
 
-	ArrayList<String> arrayList = new ArrayList<String>();
+	ArrayList<Game> gameList = new ArrayList<Game>();
 	IGameService iGameService = new GameServiceImpl();
 
 	if (user == null) {
@@ -52,7 +53,7 @@
 				<%
 					if (user != null) {
 
-						arrayList = iGameService.getFav(user.getUserID());
+						gameList = iGameService.getFav(user.getUserID());
 				%>
 
 				<div class="col-sm-12 pt-4" id="profile-details">
@@ -157,7 +158,7 @@
 
 					<form action="profile" method="POST">
 						<div id="editAbout" class="form-group" style="display: none">
-						
+
 							<%-- <%
 								if (user.getAbout() == null) {
 							%>
@@ -217,36 +218,38 @@
 					%>
 
 					<%
-						if (arrayList.size() != 0) {
+						if (gameList.size() != 0) {
 					%>
 
 					<%
-						for (String gameID : arrayList) {
+						for (Game favourite : gameList) {
 					%>
 
 					<div class="col-sm-12 col-md-6 col-lg-4">
 						<div class="card text-center mb-4 pt-4">
-							<a href="play-game?game-data=<%=gameID%>" style="color: black">
-								<img src="images/<%=gameID%>.jpg" height="135" alt="<%=gameID%>"
+							<a href="play-game?game-data=<%=favourite.getGameID()%>"
+								style="color: black"> <img
+								src="images/<%=favourite.getGameID()%>.jpg"
+								alt="<%=favourite.getGameID()%>"
 								style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
 							<div class="card-container">
 								<h6>
-									<b><%=iGameService.loadGameName(gameID)%></b>
+									<b><%=favourite.getGameName()%></b>
 								</h6>
 								<p>Game Category</p>
 
 								<div class="d-inline">
-									<form class="d-inline" method="GET" action="play-game">
-										<input class="form-control" type="hidden" name="game-data"
-											value="<%=gameID%>">
+									<form class="d-inline" method="GET" action="play">
+										<input class="form-control" type="hidden" name="game"
+											value="<%=favourite.getGameCode()%>">
 										<button class="btn btn-gs-green w-45" type="submit">Play</button>
 									</form>
 								</div>
 								<div class="d-inline">
-									<form class="d-inline" method="GET" action="remove-fav">
-										<input class="form-control" type="hidden" name="GameID"
-											value="<%=gameID%>">
+									<form class="d-inline" method="POST" action="remove-fav">
+										<input class="form-control" type="hidden" name="gameID"
+											value="<%=favourite.getGameID()%>">
 										<button class="btn btn-gs-red w-45" type="submit">Remove</button>
 									</form>
 								</div>

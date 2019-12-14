@@ -27,7 +27,6 @@ public class UpdateGame extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/updateGame.jsp");
 		dispatcher.forward(request, response);
@@ -40,9 +39,9 @@ public class UpdateGame extends HttpServlet {
 		Game game = new Game();
 
 		game.setGameID(request.getParameter("gameID"));
-		game.setgameName(request.getParameter("gameName"));
+		game.setGameName(request.getParameter("gameName"));
 		game.setTag(request.getParameter("gametag"));
-		game.setcategory(request.getParameter("gameCategory"));
+		game.setCategory(request.getParameter("gameCategory"));
 
 		IGameService iGameService = new GameServiceImpl();
 		iGameService.updateGame(game);

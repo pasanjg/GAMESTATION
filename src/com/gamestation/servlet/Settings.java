@@ -22,7 +22,6 @@ public class Settings extends HttpServlet {
 	 */
 	public Settings() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -32,7 +31,6 @@ public class Settings extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/settings.jsp");
 		dispatcher.forward(request, response);

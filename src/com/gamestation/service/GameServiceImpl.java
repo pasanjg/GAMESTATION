@@ -10,11 +10,11 @@ import com.gamestation.model.Game;
 
 public class GameServiceImpl implements IGameService {
 
-	public String getcode(String GameID) {
+	public String getCode(String GameID) {
 
 		Game game1 = new Game();
 
-		String ShowGameQuery = "SELECT code FROM gameurl WHERE GameID = ? ";
+		String ShowGameQuery = "SELECT code FROM games WHERE gameID = ? ";
 
 		PreparedStatement ps;
 		try {
@@ -25,64 +25,63 @@ public class GameServiceImpl implements IGameService {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				game1.setgamecode(resultSet.getString(1));
+				game1.setGameCode(resultSet.getString(1));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return game1.getgamecode();
+		return game1.getGameCode();
 
 	}
 
-	public String loadGameName(String gameID) {
+	public Game loadGame(String gameCode) {
 
-		Game game1 = new Game();
+		Game game = new Game();
 
-		String getUserQuery = "SELECT gameName FROM games WHERE GameID = ?";
+		String getUserQuery = "SELECT * FROM games WHERE code = ?";
 
 		PreparedStatement ps;
 
 		try {
 			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(getUserQuery);
 
-			ps.setString(1, gameID);
+			ps.setString(1, gameCode);
 
 			ResultSet resultSet = ps.executeQuery();
 
-			while (resultSet.next()) {
+			if (resultSet.next()) {
+				game.setGameID(resultSet.getString(1));
+				game.setGameName(resultSet.getString(2));
+				game.setCategory(resultSet.getString(3));
+				game.setTag(resultSet.getString(4));
+				game.setGameCode(resultSet.getString(5));
 
-				game1.setgameName(resultSet.getString(1));
-
+			} else {
+				return null;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return game1.getgameName();
+
+		return game;
 	}
 
 	public void addGame(Game game) {
 
-		String addGameQuery = "INSERT INTO game VALUES(?,?,?,?)";
-		String addGameURLQuery = "INSERT INTO gameurl VALUES(?,?)";
+		String addGameQuery = "INSERT INTO games VALUES(?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(addGameQuery);
 
 			ps.setString(1, game.getGameID());
-			ps.setString(2, game.getgameName());
-			ps.setString(3, game.getcategory());
+			ps.setString(2, game.getGameName());
+			ps.setString(3, game.getCategory());
 			ps.setString(4, game.getTag());
-
-			ps.executeUpdate();
-
-			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addGameURLQuery);
-
-			ps.setString(1, game.getGameID());
-			ps.setString(2, game.getgamecode());
+			ps.setString(5, game.getGameCode());
 
 			ps.executeUpdate();
 
@@ -92,17 +91,46 @@ public class GameServiceImpl implements IGameService {
 
 	}
 
+	public Game getGame(String gameID) {
+
+		Game game = new Game();
+
+		String findIDQuery = "SELECT * FROM games WHERE gameID = ?";
+
+		PreparedStatement ps;
+		try {
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(findIDQuery);
+
+			ps.setString(1, gameID);
+
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				game.setGameID(resultSet.getString(1));
+				game.setGameName(resultSet.getString(2));
+				game.setCategory(resultSet.getString(3));
+				game.setTag(resultSet.getString(4));
+				game.setGameCode(resultSet.getString(5));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return game;
+
+	}
+
 	public void updateGame(Game game) {
 
-		String updateGameQuery = " UPDATE game SET gameName = ?, category = ?, tag = ? WHERE gameID = ?";
+		String updateGameQuery = " UPDATE games SET gameName = ?, category = ?, tag = ? WHERE gameID = ?";
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(updateGameQuery);
 
-			// Assign values to quary
-			ps.setString(1, game.getgameName());
-			ps.setString(2, game.getcategory());
+			ps.setString(1, game.getGameName());
+			ps.setString(2, game.getCategory());
 			ps.setString(3, game.getTag());
 			ps.setString(4, game.getGameID());
 
@@ -116,20 +144,13 @@ public class GameServiceImpl implements IGameService {
 	public void removeGame(Game game) {
 
 		String removeGameQuery = "DELETE from games WHERE  gameID = ? and gameName = ?";
-		String removeGameURLQuery = "DELETE from gameurl WHERE  gameID = ?";
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
 					.prepareStatement(removeGameQuery);
 
 			ps.setString(1, game.getGameID());
-			ps.setString(2, game.getgameName());
-
-			ps.executeUpdate();
-
-			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(removeGameURLQuery);
-
-			ps.setString(1, game.getGameID());
+			ps.setString(2, game.getGameName());
 
 			ps.executeUpdate();
 
@@ -181,9 +202,10 @@ public class GameServiceImpl implements IGameService {
 			while (resultSet.next()) {
 				Game game = new Game();
 				game.setGameID(resultSet.getString(1));
-				game.setgameName(resultSet.getString(2));
-				game.setcategory(resultSet.getString(3));
+				game.setGameName(resultSet.getString(2));
+				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
+				game.setGameCode(resultSet.getString(5));
 
 				arrayList.add(game);
 
@@ -212,8 +234,10 @@ public class GameServiceImpl implements IGameService {
 			while (resultSet.next()) {
 				Game game = new Game();
 				game.setGameID(resultSet.getString(1));
-				game.setgameName(resultSet.getString(2));
-				game.setcategory(resultSet.getString(3));
+				game.setGameName(resultSet.getString(2));
+				game.setCategory(resultSet.getString(3));
+				game.setTag(resultSet.getString(4));
+				game.setGameCode(resultSet.getString(5));
 
 				arrayList.add(game);
 
@@ -229,7 +253,7 @@ public class GameServiceImpl implements IGameService {
 
 	public void addToFav(String userID, String gameID) {
 
-		String addFavQuery = "INSERT INTO favourite VALUES(?,?)";
+		String addFavQuery = "INSERT INTO favourites VALUES(?,?)";
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(addFavQuery);
@@ -245,9 +269,9 @@ public class GameServiceImpl implements IGameService {
 
 	}
 
-	public ArrayList<String> getFav(String userID) {
+	public ArrayList<Game> getFav(String userID) {
 
-		ArrayList<String> arrayList = new ArrayList<String>();
+		ArrayList<Game> arrayList = new ArrayList<Game>();
 
 		String getFavQuery = "SELECT gameID FROM favourites WHERE userID = ?";
 
@@ -259,7 +283,7 @@ public class GameServiceImpl implements IGameService {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				arrayList.add(resultSet.getString(1));
+				arrayList.add(getGame(resultSet.getString(1)));
 			}
 
 		} catch (SQLException e) {

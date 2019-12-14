@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2019 at 01:46 AM
+-- Generation Time: Dec 14, 2019 at 03:05 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.0.24
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `favourites` (
   `userID` varchar(10) NOT NULL,
-  `gameID` varchar(10) NOT NULL
+  `GameID` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43,57 +43,28 @@ CREATE TABLE `games` (
   `gameID` varchar(10) NOT NULL,
   `gameName` varchar(20) NOT NULL,
   `category` varchar(10) NOT NULL,
-  `tag` varchar(20) NOT NULL
+  `tag` varchar(20) NOT NULL,
+  `code` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `games`
 --
 
-INSERT INTO `games` (`gameID`, `gameName`, `category`, `tag`) VALUES
-('G001', 'bloxorz', 'puzzle', 'puzzle game'),
-('G002', 'Twisted Lines', 'puzzle', 'puzzle game'),
-('G003', 'Euro Soccer Forever', 'sports', 'soccer'),
-('G004', 'Basketball Stars', 'sports', 'basketball'),
-('G005', 'Sportbike Champion', 'racing', 'bike game'),
-('G006', 'Commando: Rush', 'action', 'shooting'),
-('G007', 'Diablo Valley Rally', 'racing', 'off Road'),
-('G008', 'Assault Course 2', 'action', 'shooting'),
-('G009', 'RotorStorm', 'action', 'helicopter game'),
-('G010', 'Supercar Showdown', 'racing', 'car game'),
-('G011', 'ProBaseball', 'sports', 'baseball'),
-('G012', 'Magic Balls', 'puzzle', 'patten'),
-('G013', 'Stealth Sniper 2', 'action', 'sniper');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gameurl`
---
-
-CREATE TABLE `gameurl` (
-  `GameID` varchar(10) NOT NULL,
-  `code` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `gameurl`
---
-
-INSERT INTO `gameurl` (`GameID`, `code`) VALUES
-('G001', 'bloxorz'),
-('G002', 'twisted-lines'),
-('G003', 'euro-soccer-forever'),
-('G004', 'basketball-stars'),
-('G005', 'sportbike-champion'),
-('G006', 'commando-rush'),
-('G007', 'diablo-valley-rally'),
-('G008', 'assault-course-2'),
-('G009', 'rotorstorm'),
-('G010', 'supercar-showdown'),
-('G011', 'probaseball'),
-('G012', 'magic-balls'),
-('G013', 'stealth-sniper-2');
+INSERT INTO `games` (`gameID`, `gameName`, `category`, `tag`, `code`) VALUES
+('G001', 'bloxorz', 'puzzle', 'puzzle game', 'bloxorz'),
+('G002', 'Twisted Lines', 'puzzle', 'puzzle game', 'twisted-lines'),
+('G003', 'Euro Soccer Forever', 'sports', 'soccer', 'euro-soccer-forever'),
+('G004', 'Basketball Stars', 'sports', 'basketball', 'basketball-stars'),
+('G005', 'Sportbike Champion', 'racing', 'bike game', 'sportbike-champion'),
+('G006', 'Commando: Rush', 'action', 'shooting', 'commando-rush'),
+('G007', 'Diablo Valley Rally', 'racing', 'off Road', 'diablo-valley-rally'),
+('G008', 'Assault Course 2', 'action', 'shooting', 'assault-course-2'),
+('G009', 'RotorStorm', 'action', 'helicopter game', 'rotorstorm'),
+('G010', 'Supercar Showdown', 'racing', 'car game', 'supercar-showdown'),
+('G011', 'ProBaseball', 'sports', 'baseball', 'probaseball'),
+('G012', 'Magic Balls', 'puzzle', 'patten', 'magic-balls'),
+('G013', 'Stealth Sniper 2', 'action', 'sniper', 'stealth-sniper-2');
 
 -- --------------------------------------------------------
 
@@ -155,19 +126,13 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `gender`, `country`, `platfo
 -- Indexes for table `favourites`
 --
 ALTER TABLE `favourites`
-  ADD PRIMARY KEY (`userID`,`gameID`);
+  ADD PRIMARY KEY (`userID`,`GameID`);
 
 --
 -- Indexes for table `games`
 --
 ALTER TABLE `games`
-  ADD PRIMARY KEY (`gameID`);
-
---
--- Indexes for table `gameurl`
---
-ALTER TABLE `gameurl`
-  ADD PRIMARY KEY (`GameID`),
+  ADD PRIMARY KEY (`gameID`),
   ADD UNIQUE KEY `code` (`code`);
 
 --

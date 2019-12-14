@@ -21,7 +21,6 @@ public class SearchGame extends HttpServlet {
 	 */
 	public SearchGame() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,13 +29,11 @@ public class SearchGame extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		String search = request.getParameter("q");
 
 		request.setAttribute("search", search);
 
-		// response.setContentType("text/html");
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/results.jsp");
 		dispatcher.forward(request, response);
 

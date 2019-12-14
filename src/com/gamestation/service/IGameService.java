@@ -6,19 +6,21 @@ import com.gamestation.model.Game;
 
 public interface IGameService {
 
-	public String getcode(String GameID);
+	public String getCode(String GameID);
 
-	public String loadGameName(String gameID);
+	public Game loadGame(String gameCode);
 
 	public void addToFav(String userID, String gameID);
 
-	public ArrayList<String> getFav(String userID);
+	public ArrayList<Game> getFav(String userID);
 
 	public void removeFav(String userID, String gameID);
 
 	public ArrayList<String> getGameIDs();
 
 	public void addGame(Game game);
+	
+	public Game getGame(String gameCode);
 
 	public void updateGame(Game game);
 

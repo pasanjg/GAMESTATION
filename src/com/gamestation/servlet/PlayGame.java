@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PlayGame
  */
-@WebServlet("/play-game")
+@WebServlet("/play")
 public class PlayGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,6 @@ public class PlayGame extends HttpServlet {
 	 */
 	public PlayGame() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,11 +29,10 @@ public class PlayGame extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		String GameID = request.getParameter("game-data");
+		String gameCode = request.getParameter("game");
 
-		request.setAttribute("GameID", GameID);
+		request.setAttribute("gameCode", gameCode);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/playGame.jsp");
 		dispatcher.forward(request, response);
@@ -47,7 +45,6 @@ public class PlayGame extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

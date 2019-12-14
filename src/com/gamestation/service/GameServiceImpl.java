@@ -60,7 +60,7 @@ public class GameServiceImpl implements IGameService {
 				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
-				
+
 				Blob image = (Blob) resultSet.getBlob(6);
 
 				if (image != null) {
@@ -174,6 +174,7 @@ public class GameServiceImpl implements IGameService {
 	public void removeGame(Game game) {
 
 		String removeGameQuery = "DELETE from games WHERE  gameID = ? and gameName = ?";
+		String removeGameFavourite = "DELETE from favourites WHERE  gameID = ?";
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
@@ -181,6 +182,12 @@ public class GameServiceImpl implements IGameService {
 
 			ps.setString(1, game.getGameID());
 			ps.setString(2, game.getGameName());
+
+			ps.executeUpdate();
+
+			ps = DBConnection.getDBConnectionInstance().getConnection().prepareStatement(removeGameFavourite);
+
+			ps.setString(1, game.getGameID());
 
 			ps.executeUpdate();
 
@@ -274,7 +281,7 @@ public class GameServiceImpl implements IGameService {
 				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
-				
+
 				Blob image = (Blob) resultSet.getBlob(6);
 
 				if (image != null) {

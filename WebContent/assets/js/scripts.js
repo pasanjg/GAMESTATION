@@ -2,8 +2,7 @@ function checkSearch() {
 	var query = document.getElementById('navSearchBar').value;
 	if ((query == null) || (query == "")) {
 		return false;
-	}
-	else {
+	} else {
 		return true;
 	}
 }
@@ -33,7 +32,7 @@ function checkProceed() {
 	}
 }
 
-function tabSelectAction(){
+function tabSelectAction() {
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
 }
@@ -52,50 +51,45 @@ function openTab(evt, tabName, color) {
 	evt.style.color = "#000";
 }
 
-function imageUploadAction() {
+function imageUploadAction(hoverImg, fileInput, image) {
 	$(document).ready(function() {
-		$('#photoCamera').click(function() {
-			$('#imgUpload').trigger('click');
-
+		$(hoverImg).click(function() {
+			$(fileInput).trigger('click');
 		});
 
-		$('#imgUpload').change(function() {
+		$(fileInput).change(function() {
 
 			var file = this.files[0];
 			var fileType = file["type"];
 			var validImageTypes = [ "image/jpeg", "image/png" ];
 			if ($.inArray(fileType, validImageTypes) < 0) {
 				alert('Invalid file type. Only JPEG or PNG is allowed.');
-				$('#resetBtn').trigger('click');
+				$('.resetBtn').trigger('click');
 				file = null;
 			}
 
 			if (file != null) {
-
 				var reader = new FileReader();
-
 				reader.onload = function(e) {
-					$('#openImgUpload').attr('src', e.target.result);
+					$(image).attr('src', e.target.result);
 				}
-
 				reader.readAsDataURL(file);
 				$("#uploadBtn").css("display", "inline");
 			}
 
 		});
 
-		$("#openImgUpload").mouseenter(function() {
-			$("#photoCamera").toggle();
+		$(image).mouseenter(function() {
+			$(hoverImg).toggle();
 		});
 
-		$("#photoCamera").mouseleave(function() {
-			$("#photoCamera").toggle();
+		$(hoverImg).mouseleave(function() {
+			$(hoverImg).toggle();
 		});
-
 	});
 }
 
-function editProfile() {
+function editProfileAbout() {
 	$(document).ready(function() {
 		$("#profileAbout").toggle();
 		$("#editAbout").toggle();

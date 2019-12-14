@@ -27,7 +27,8 @@
 </script>
 
 </head>
-<body onload="imageUploadAction(); tabSelectAction();">
+<body
+	onload="tabSelectAction();imageUploadAction('.addPhotoCamera', '.addImgFile', '.addImage');imageUploadAction('.updatePhotoCamera', '.updateImgFile', '.updateImage');">
 
 	<div class="container gs-top">
 		<div class="row pt-5 mb-5">
@@ -147,16 +148,14 @@
 										<p>Upload Image</p>
 										<div class="row border p-3 text-center">
 											<div class="col">
-												<img id="photoCamera" class="over"
-													src="images/photo-camera.png"
+												<img class="addPhotoCamera over" src="images/photo-camera.png"
 													style="height: 150px; width: 250px; object-fit: cover; display: none;" />
-												<img id="openImgUpload" class="under"
-													src="images/game-default.png"
+												<img class="addImage under" src="images/game-default.png"
 													style="height: 150px; width: 250px; object-fit: cover;" />
-												<input type="file" id="imgUpload" name="image"
+												<input type="file" class="addImgFile" name="image"
 													accept="image/*" style="display: none" required />
 
-												<button id="resetBtn" class="btn btn-gs-red" type="reset"
+												<button class="resetBtn btn btn-gs-red" type="reset"
 													name="reset" value="" style="display: none">Reset
 													Image</button>
 											</div>
@@ -236,6 +235,25 @@
 												<input type="radio" id="new-other" name="gameCategory"
 													value="Other" class="custom-control-input" required>
 												<label class="custom-control-label" for="new-other">Other</label>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<p>Upload Image</p>
+										<div class="row border p-3 text-center">
+											<div class="col">
+												<img class="updatePhotoCamera over" src="images/photo-camera.png"
+													style="height: 150px; width: 250px; object-fit: cover; display: none;" />
+												<img class="updateImage under" src="images/game-default.png"
+													style="height: 150px; width: 250px; object-fit: cover;" />
+												<input type="file" class="updateImgFile" name="image"
+													accept="image/*" style="display: none" required />
+
+												<button class="resetBtn btn btn-gs-red" type="reset"
+													name="reset" value="" style="display: none">Reset
+													Image</button>
 											</div>
 										</div>
 									</td>

@@ -42,7 +42,8 @@
 
 </head>
 
-<body onload="imageUploadAction()">
+<body
+	onload="imageUploadAction('.photoCamera', '.profileImgFile', '.profileImage')">
 
 	<div id="content" class="container gs-top">
 		<div class="row">
@@ -59,14 +60,15 @@
 				<div class="col-sm-12 pt-4" id="profile-details">
 					<div class="picture pt-2">
 
+						<img class="photoCamera profile-img over"
+							src="images/photo-camera.png" width="150"
+							style="height: 150px; width: 150px; display: none" />
+
 						<%
 							if (user.getImgDataBase64() != null) {
 						%>
 
-						<img id="photoCamera" class="profile-img over"
-							src="images/photo-camera.png" width="150"
-							style="height: 150px; width: 150px; display: none" /> <img
-							id="openImgUpload" class="profile-img under"
+						<img class="profileImage profile-img under"
 							src="data:image/PNG;base64,<%=user.getImgDataBase64()%>"
 							width="150" style="height: 150px; width: 150px;" />
 
@@ -74,10 +76,7 @@
 							} else {
 						%>
 
-						<img id="photoCamera" class="profile-img over"
-							src="images/photo-camera.png" width="150"
-							style="height: 150px; width: 150px; display: none;" /> <img
-							id="openImgUpload" class="profile-img under"
+						<img id="openProfileImgUpload" class="profile-img under"
 							src="images/default.png" width="150"
 							style="height: 150px; width: 150px;" />
 
@@ -88,13 +87,13 @@
 						<br /> <br />
 						<h5><%=user.getUserName()%></h5>
 						<form action="upload" method="POST" enctype="multipart/form-data">
-							<input type="file" id="imgUpload" name="image" accept="image/*"
-								style="display: none" required />
+							<input type="file" class="profileImgFile" name="image"
+								accept="image/*" style="display: none" required />
 							<button id="uploadBtn" class="btn btn-gs-red" type="submit"
 								name="upload" value="Upload Image" style="display: none">Upload
 								Image</button>
-							<button id="resetBtn" class="btn btn-gs-red" type="reset"
-								name="reset" value="" style="display: none">Reset Image</button>
+							<button class="resetBtn btn btn-gs-red" type="reset" name="reset"
+								value="" style="display: none">Reset Image</button>
 						</form>
 						<hr>
 					</div>
@@ -182,7 +181,7 @@
 							<button id="confirmAbout" class="btn btn-gs-red mr-2"
 								type="submit" name="upload" value="Confirm"
 								style="display: none">Confirm</button>
-							<button class="btn btn-grey" onclick="editProfile()"
+							<button class="btn btn-grey" onclick="editProfileAbout()"
 								style="padding: 3px 5px 0 5px;">
 								<i class="material-icons">&#xe3c9;</i>
 							</button>

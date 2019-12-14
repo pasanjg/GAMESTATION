@@ -227,11 +227,29 @@
 
 					<div class="col-sm-12 col-md-6 col-lg-4">
 						<div class="card text-center mb-4 pt-4">
+
+							<%
+								if (favourite.getImgDataBase64() != null && !favourite.getImgDataBase64().isEmpty()) {
+							%>
 							<a href="play-game?game-data=<%=favourite.getGameID()%>"
 								style="color: black"> <img
-								src="images/<%=favourite.getGameID()%>.jpg"
-								alt="<%=favourite.getGameID()%>"
+								src="data:image/PNG;base64,<%=favourite.getImgDataBase64()%>"
+								alt="<%=favourite.getGameName()%>"
 								style="width: 100%; height: 150px; object-fit: cover;">
+							</a>
+
+							<%
+								} else {
+							%>
+							<a href="play-game?game-data=<%=favourite.getGameID()%>"
+								style="color: black"> <img src="images/game-default.png"
+								alt="<%=favourite.getGameName()%>"
+								style="width: 100%; height: 150px; object-fit: cover;">
+							</a>
+							<%
+								}
+							%>
+
 							</a>
 							<div class="card-container">
 								<h6>

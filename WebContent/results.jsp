@@ -47,12 +47,28 @@
 					%>
 					<div class="col-sm-6 col-md-4 col-lg-3">
 						<div class="card text-center mb-4 pt-4">
+
+							<%
+							if (showGame.getImgDataBase64() != null && !showGame.getImgDataBase64().isEmpty()) {
+							%>
 							<a href="play-game?game-data=<%=showGame.getGameID()%>"
 								style="color: black"> <img
-								src="images/<%=showGame.getGameID()%>.jpg"
+								src="data:image/PNG;base64,<%=showGame.getImgDataBase64()%>"
 								alt="<%=showGame.getGameName()%>"
 								style="width: 100%; height: 150px; object-fit: cover;">
 							</a>
+							<%
+								} else {
+							%>
+							<a href="play-game?game-data=<%=showGame.getGameID()%>"
+								style="color: black"> <img src="images/game-default.png"
+								alt="<%=showGame.getGameName()%>"
+								style="width: 100%; height: 150px; object-fit: cover;">
+							</a>
+							<%
+								}
+							%>
+
 							<div class="card-container">
 								<p>
 									<strong><%=showGame.getGameName()%></strong><br> Category:

@@ -29,5 +29,7 @@ public interface IGameService {
 	public ArrayList<Game> searchGame(String search);
 
 	public ArrayList<Game> listAllGames();
+	
+	public void uploadImage(Game game);
 
 }

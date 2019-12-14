@@ -1,5 +1,7 @@
 package com.gamestation.service;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,12 +9,13 @@ import java.util.ArrayList;
 
 import com.gamestation.conn.DBConnection;
 import com.gamestation.model.Game;
+import com.mysql.jdbc.Blob;
 
 public class GameServiceImpl implements IGameService {
 
 	public String getCode(String GameID) {
 
-		Game game1 = new Game();
+		Game game = new Game();
 
 		String ShowGameQuery = "SELECT code FROM games WHERE gameID = ? ";
 
@@ -25,14 +28,14 @@ public class GameServiceImpl implements IGameService {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				game1.setGameCode(resultSet.getString(1));
+				game.setGameCode(resultSet.getString(1));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return game1.getGameCode();
+		return game.getGameCode();
 
 	}
 
@@ -57,6 +60,12 @@ public class GameServiceImpl implements IGameService {
 				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
+				
+				Blob image = (Blob) resultSet.getBlob(6);
+
+				if (image != null) {
+					game.loadImage(image);
+				}
 
 			} else {
 				return null;
@@ -71,7 +80,19 @@ public class GameServiceImpl implements IGameService {
 
 	public void addGame(Game game) {
 
-		String addGameQuery = "INSERT INTO games VALUES(?,?,?,?,?)";
+		String addGameQuery = "INSERT INTO games VALUES(?,?,?,?,?,?)";
+
+		InputStream inputStream = null; // input stream of the upload file
+
+		if (game.getImage() != null) {
+
+			// obtains input stream of the upload file
+			try {
+				inputStream = game.getImage().getInputStream();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 		try {
 			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
@@ -82,8 +103,11 @@ public class GameServiceImpl implements IGameService {
 			ps.setString(3, game.getCategory());
 			ps.setString(4, game.getTag());
 			ps.setString(5, game.getGameCode());
+			ps.setBlob(6, inputStream);
 
 			ps.executeUpdate();
+
+			uploadImage(game);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,6 +135,12 @@ public class GameServiceImpl implements IGameService {
 				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
+
+				Blob image = (Blob) resultSet.getBlob(6);
+
+				if (image != null) {
+					game.loadImage(image);
+				}
 			}
 
 		} catch (SQLException e) {
@@ -207,6 +237,12 @@ public class GameServiceImpl implements IGameService {
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
 
+				Blob image = (Blob) resultSet.getBlob(6);
+
+				if (image != null) {
+					game.loadImage(image);
+				}
+
 				arrayList.add(game);
 
 			}
@@ -238,6 +274,12 @@ public class GameServiceImpl implements IGameService {
 				game.setCategory(resultSet.getString(3));
 				game.setTag(resultSet.getString(4));
 				game.setGameCode(resultSet.getString(5));
+				
+				Blob image = (Blob) resultSet.getBlob(6);
+
+				if (image != null) {
+					game.loadImage(image);
+				}
 
 				arrayList.add(game);
 
@@ -305,6 +347,42 @@ public class GameServiceImpl implements IGameService {
 			ps.setString(2, gameID);
 
 			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void uploadImage(Game game) {
+		System.out.println(game.getGameID());
+
+		InputStream inputStream = null; // input stream of the upload file
+
+		String uploadImageQuery = "UPDATE games SET image = ? WHERE gameID = ?";
+
+		if (game.getImage() != null) {
+
+			// obtains input stream of the upload file
+			try {
+				inputStream = game.getImage().getInputStream();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		try {
+
+			PreparedStatement ps = DBConnection.getDBConnectionInstance().getConnection()
+					.prepareStatement(uploadImageQuery);
+
+			if (inputStream != null) {
+				// fetches input stream of the upload file for the blob column
+				ps.setBlob(1, inputStream);
+				ps.setString(2, game.getGameID());
+
+				ps.executeUpdate();
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

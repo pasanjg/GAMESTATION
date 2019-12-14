@@ -104,21 +104,21 @@
 
 							<%
 							if (user.getImgDataBase64() != null) {
- 						%>
+ 							%>
 
 							<img class="profile-img" src="data:image/PNG;base64,<%=user.getImgDataBase64()%>" width="32"
 								style="height: 32px; width: 32px;" />
 
 							<%
 							} else {
-						%>
+							%>
 
 							<img class="profile-img" src="images/default.png" width="32"
 								style="height: 32px; width: 32px;" />
 
 							<%
  							}
- 						%>
+ 							%>
 
 						</a>
 						<div id="dropDown" class="dropdown-menu" aria-labelledby="navbarDropdown">

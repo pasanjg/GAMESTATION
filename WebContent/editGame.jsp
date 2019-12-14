@@ -13,7 +13,6 @@
 	String confirm = (String) request.getAttribute("confirmString");
 
 	if (user == null || user.getType().equals("user")) {
-
 		response.sendRedirect("index.jsp");
 	}
 %>
@@ -28,7 +27,7 @@
 </script>
 
 </head>
-<body onload="tabSelectAction()">
+<body onload="imageUploadAction(); tabSelectAction();">
 
 	<div class="container gs-top">
 		<div class="row pt-5 mb-5">
@@ -78,7 +77,8 @@
 
 					<div id="add-games" class="tabcontent m-auto w-100 px-5">
 						<!-- SECTION 01 -->
-						<form name="add-game" method="POST" action="add-game">
+						<form name="add-game" method="POST" action="add-game"
+							enctype="multipart/form-data">
 							<table class="table table-borderless" align="center">
 								<tr>
 									<td colspan="2">
@@ -143,6 +143,27 @@
 
 								</tr>
 								<tr>
+									<td colspan="2">
+										<p>Upload Image</p>
+										<div class="row border p-3 text-center">
+											<div class="col">
+												<img id="photoCamera" class="over"
+													src="images/photo-camera.png"
+													style="height: 150px; width: 250px; object-fit: cover; display: none;" />
+												<img id="openImgUpload" class="under"
+													src="images/game-default.png"
+													style="height: 150px; width: 250px; object-fit: cover;" />
+												<input type="file" id="imgUpload" name="image"
+													accept="image/*" style="display: none" required />
+
+												<button id="resetBtn" class="btn btn-gs-red" type="reset"
+													name="reset" value="" style="display: none">Reset
+													Image</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
 									<td colspan="2" style="text-align: center;"><input
 										class="btn btn-gs-red" type="submit" value="Add game">
 										<input class="btn btn-gs-red" type="reset" value="Reset">
@@ -152,8 +173,7 @@
 						</form>
 					</div>
 
-					<div id="update-games"
-						class="tabcontent m-auto w-100 pt-4 px-5">
+					<div id="update-games" class="tabcontent m-auto w-100 pt-4 px-5">
 						<!-- SECTION 02 -->
 						<form name="update-game" method="POST" action="update-game">
 							<table class="table table-borderless" align="center">
@@ -219,7 +239,6 @@
 											</div>
 										</div>
 									</td>
-
 								</tr>
 								<tr>
 									<td colspan="2" style="text-align: center;"><input
@@ -231,8 +250,7 @@
 						</form>
 					</div>
 
-					<div id="remove-games"
-						class="tabcontent m-auto w-100 pt-4 px-5">
+					<div id="remove-games" class="tabcontent m-auto w-100 pt-4 px-5">
 						<!-- SECTION 03 -->
 						<form name="remove-game" method="POST" action="remove-game">
 

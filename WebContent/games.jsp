@@ -34,6 +34,10 @@
 				</div>
 				<div class="row ml-0 mr-0">
 					<%
+						if (gameList.size() != 0) {
+					%>
+
+					<%
 						for (Game showGame : gameList) {
 					%>
 					<div class="col-sm-6 col-md-4 col-lg-3">
@@ -42,7 +46,7 @@
 							<%
 								if (showGame.getImgDataBase64() != null && !showGame.getImgDataBase64().isEmpty()) {
 							%>
-							<a href="play-game?game-data=<%=showGame.getGameID()%>"
+							<a href="play?game=<%=showGame.getGameCode()%>"
 								style="color: black"> <img
 								src="data:image/PNG;base64,<%=showGame.getImgDataBase64()%>"
 								alt="<%=showGame.getGameName()%>"
@@ -84,6 +88,31 @@
 							</div>
 						</div>
 					</div>
+					<%
+						}
+					%>
+
+					<%
+						} else {
+					%>
+
+					<div class="col text-center pb-5">
+
+						<img class="img-responsive" src="images/error.png">
+						<h4>
+							Oops! We don't have any games right now. <br /> Awesome content
+							coming soon!
+						</h4>
+						<h6 class="text-secondary mb-4">
+							To find the service you need, you can quickly contact our
+							Customer Support Team. <br /> We are glad to help you out.
+						</h6>
+						<a href="contact">
+							<button class="btn btn-gs-red">Contact Now</button>
+						</a>
+
+					</div>
+
 					<%
 						}
 					%>

@@ -16,11 +16,14 @@ More updates are yet to come :heart_eyes:
 
 
 ### Steps
+
+Follow these steps to setup GAMESTATION in your `localhost`
+
 ##### 1. Clone GameStation
 
     git clone https://github.com/pasanjg/GAMESTATION.git
 
-##### 2. Import [`gamestation.sql`](gamestation.sql) to phpMyAdmin.
+##### 2. Import [`gamestation.zip`](database/gamestation.zip) to phpMyAdmin.
 
 ##### 3. Open project with Eclipse JEE.
 
@@ -28,6 +31,7 @@ More updates are yet to come :heart_eyes:
 
 ##### 5. Run on Server.
 
+Now, the application will be launched in the browser.
 
 
 ### Credentials
